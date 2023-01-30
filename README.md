@@ -2,7 +2,7 @@
 
 # Webshop React Vite coderhouse
 
-<p align="center" ><img width="90%" src="https://res.cloudinary.com/dpiwmbsog/image/upload/v1674274140/webShop_ueec12.png" alt="banner stack guille"></p>
+<p align="center" ><img width="90%" src="https://res.cloudinary.com/dpiwmbsog/image/upload/v1675053436/Captura_desde_2023-01-30_01-36-55_zbiv35.png" alt="banner stack guille"></p>
     
 ## 📚 Sobre el proyecto. 
 * Se corresponde a la segunda entrega del proyectop de React de Coderhouse.
