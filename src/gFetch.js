@@ -26,3 +26,15 @@ export const getProds = () => {
         }
     })
 }
+
+export const getProducto = ({idSearch}) => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(productos.filter((el)=> el.id == idSearch))
+        }, 3000);
+
+        if (productos.length === 0) {
+            reject(new Error('cargando datos ...'))
+        }
+    })
+}

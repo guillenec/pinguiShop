@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { getProds } from "../../gFetch";
 import ItemList from "../ItemList/ItemList";
+import Loading from "../Loading/Loading";
 
 // componente contenedor
 const ItemListContainer = ({ greeting }) => {
@@ -36,7 +37,7 @@ const ItemListContainer = ({ greeting }) => {
             </section>
             <section className="cardsContainer">
                 {
-                    loading ? <div className="contentLoader"><span className="loader">Loading</span></div>
+                    loading ? <Loading />
                         : <ItemList arregloProds={productos}/>
                 }
             </section>
