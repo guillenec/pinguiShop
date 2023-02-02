@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 const Item = ({element}) => {
     const {id:id, nombre:nombre, precio:precio, descripcion:desc, imagenA:img1} = element;
@@ -17,7 +18,7 @@ const Item = ({element}) => {
                     <div>
                         <a ><ion-icon name="heart"></ion-icon></a>
                         <a ><ion-icon name="cart"></ion-icon></a>
-                        <a ><ion-icon name="resize"></ion-icon></a>
+                        <Link to={`/detalle/${id} `}><ion-icon name="resize"></ion-icon></Link>
                     </div>
                 </section>
             </div>

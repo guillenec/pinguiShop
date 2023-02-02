@@ -1,0 +1,181 @@
+.itemDetailContain{
+    position: relative;
+    width: 100%;
+    height: 500px;
+    display: flex;
+    gap: 10px; 
+
+    .containerImgs{
+        width: 50%;
+        height: 100%;
+        %hereding_mid{
+            aspect-ratio: 1/1;
+            object-fit: contain;
+        }
+        .img1, .img2, .img3{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .img1 {
+            width: 100%;
+            height: 80%;
+            
+            img{
+                height: 80%;
+                @extend %hereding_mid;
+            }
+        }
+        .imgSecundary{
+            width: 100%;
+            height: 20%;
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: center;
+            gap: 20px;
+
+            .img2 { 
+                height: 100%;
+                img{
+                    height: 70%;
+                    @extend %hereding_mid;  
+                }
+            }
+            .img3 { 
+                height: 100%;            
+                img{
+                    height: 70%;
+                    @extend %hereding_mid;  
+                }
+            }
+        }
+        
+
+    }
+
+    .detalle { 
+        display: flex;
+        flex-direction: column;
+        align-content: flex-start;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 1.3rem;
+
+        .nombre{
+            font-family: $tituloGeneral;
+            text-transform: uppercase;
+            font-size: 2rem;
+            color: $color3;
+            font-weight: 500;
+        }
+        .descripcion{
+            font-family: $parrafoGeneral;
+            font-size: 1rem;
+            color: $color5;
+            font-weight: 600;
+        }
+        .precio {
+            font-family: $parrafoGeneral;
+            font-size: 1.8rem;
+            color: $color4;
+            font-weight: 700;
+        }
+        .categoria{
+            color: $color3;
+            font-family: $parrafoGeneral;
+            text-transform: capitalize;
+            font-size: 1rem;
+            display: flex;
+            align-content: center;
+            align-items: center;
+            gap: 10px;
+
+            strong{
+                font-family: $tituloGeneral;
+                text-transform: capitalize;
+                font-size: 1rem;
+                color: $color5;
+                font-weight: 500
+            }
+            
+        }
+        .palabraClave{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-content: flex-start;
+            justify-content: flex-start;
+            gap: 10px;
+            width: 90%;
+
+            a{
+                background: $color3;
+                font-weight: 600;
+                font-family: $parrafoGeneral;
+                font-size: 1.1rem;
+                padding: 4px;
+                cursor: pointer;
+                border-radius: 2px;
+            }
+        }
+        .formCantidad{
+            width: 200px;
+            height: auto;
+            padding: 5px;
+            color: $color3;
+            font-family: $tituloGeneral;
+            text-transform: capitalize;
+            font-size: 1.2rem;
+            font-weight: 500;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 10px;
+
+            .labelCantidad{
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                align-content: center;
+                align-items: center;
+                gap: 10px;
+                outline: 0;
+
+                .inputCantidad{
+                    padding: 2px;
+                    background: $color1a;
+                    color: $color3;
+                    font-size: 1.1rem;
+                    font-weight: 600;
+                    text-align: center;
+                    border: 1px solid $color3;
+                    border-radius: 2px;
+                    cursor: pointer;
+
+                    &:focus {
+                        outline: 0;
+                    }
+                }                
+            }
+            button{
+                background: $color3;
+                border: none;
+                border-radius: 2px;
+                font-family: $tituloGeneral;
+                padding: 8px;
+                font-size: 1.1rem;
+                transition: .5s;
+                cursor: pointer;
+                text-transform: capitalize;
+                font-weight: 500;
+                color: $color1a;
+
+                &:hover{
+                    background: $color4;
+                    color: $color6;
+                }
+            }
+        }
+    }
+}

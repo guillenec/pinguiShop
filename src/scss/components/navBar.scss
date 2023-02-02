@@ -1,6 +1,6 @@
 .navBar {
     position: fixed;
-    
+    height: 80px;
     @include anchoGeneral();    
     max-width: 1300px;
 
@@ -13,6 +13,7 @@
     z-index: 2;
 
     .contenedorLogo {
+        position: relative;
         width: auto;
         height: 80px;
         margin-left: 10px;
@@ -45,6 +46,7 @@
     }
 
     .menuAndCar{
+        position: relative;
         width: auto;
         height: 100%;
         display: flex;
@@ -52,6 +54,7 @@
         gap: 10px;
 
         .listMenu {
+            position: relative;
             list-style: none;
             display: flex;
             flex-wrap: nowrap;
@@ -60,11 +63,20 @@
             gap: 10px;
     
             li {
+                position: relative;
+                height: 100%;
                 @include align_mid_flex();
     
-                a {
-                    @include align_mid_grid();
-                    width: 100px;
+                a { 
+                    position: relative;
+                    text-decoration: none;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    align-content: center;
+                    flex-wrap: nowrap;
+                    min-width: 100px;
                     height: 50px;
                     text-align: center;
                     text-decoration: none;
@@ -72,6 +84,7 @@
                     text-transform: capitalize;
                     font-size: 1.2rem;
                     font-weight: 500;
+                    gap: 5px;
     
                     cursor: pointer;
                     transition: all .5s ease;
@@ -101,28 +114,71 @@
                         width: 100%;
                         background: #57cc99;
                     }
+                    &.rutaActiva{
+                        transition: all .5s ease;
+                        background: #57cc99;
+                        color: $color1a;
+                    }
                 }
+                &.listConSubMenu{
+                    position: relative;
+                    width: 120px;
+                    display: flex;
+                    flex-direction: column;
+                    flex-wrap: wrap;
+                    gap: 10px;
+
+                    .subMenuCategoria{
+                        opacity: 0;
+                        transition:opacity .5s;
+                        display: none;
+                    }
+                    &:hover{
+                        .subMenuCategoria{
+                            position: absolute;
+                            opacity: 1;
+                            background: $color1a;
+                            top: 70px;
+                            display: flex;
+                            flex-wrap: wrap;
+                            flex-direction: column;
+                            gap: 10px;
+    
+                            @include notebook(){
+                                top: 0;
+                                left: 120px;
+                            }
+    
+                        }
+                    } 
+                }  
             }
         }
     
         .carrito{
             display: flex;
+            width: 50px;
             flex-wrap: nowrap;
-            justify-content: flex-end;
+            justify-content: center;
             align-items: center;
             margin-right: 10px;
             gap: 10px;
             cursor: pointer;
-    
+
+            a{
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: row;
+                align-content: center;
+                align-items: center;
+                justify-content: center;
+                gap: 5px;
+            }
             a,p{
-                display: block;
-                width: auto;
-                height: 50px;
+                text-decoration: none;
                 font-size: 1.5rem;
                 color: $color4;
-                font-weight: 600;
-    
-                @include align_mid_grid();
+                font-weight: 600;   
             }
         }
     }
@@ -139,7 +195,7 @@
         .menuAndCar{
             position: absolute;
             width: 100%;
-            height: 230px;
+            height: auto;
             top: 80px;
             display: flex;
             flex-direction: column;
@@ -150,10 +206,13 @@
             .listMenu{
                 flex-direction: column;
             }
+            .carrito{
+                justify-content: center;
+            }
         }
 
         &.active {
-            height: 318px;
+            height: 367px;
             transition: .7s;
             border-bottom: solid thin $color4;
         }

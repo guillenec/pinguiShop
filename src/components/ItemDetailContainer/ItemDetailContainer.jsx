@@ -1,17 +1,23 @@
 import { useEffect } from "react"
 import { useState } from "react"
+import { useParams } from "react-router-dom"
 import { getProds, getProducto } from "../../gFetch"
 import Item from "../Item/Item"
+import ItemDetail from "../ItemDetail/ItemDetail"
 import Loading from "../Loading/Loading"
 
 const ItemDetailContainer = () => {
-
+    const {idProducto} = useParams();
+    // console.log(idProducto)
     const [estadoProds, setEstadoProductos ] = useState([])
     const [loading, setLoading] = useState(true)
 
+
     useEffect(() => {
-        getProducto()
+
+        getProducto(Number(idProducto))
         .then((response)=> {
+            console.log(response)
             setEstadoProductos(response) //guardamos el estado 
         })
         .catch((err) => {
@@ -22,11 +28,10 @@ const ItemDetailContainer = () => {
 
     return (
         <>
-            <section>
-                {
-                    loading ? <Loading /> : <Item estadoProd={estadoProds}/>
-                }
-            </section>
+            {
+                loading ? <Loading /> : <ItemDetail objeto={estadoProds} />
+            }
+
         </>
     )
 
