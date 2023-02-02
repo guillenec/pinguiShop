@@ -109,13 +109,21 @@
             width: 90%;
 
             a{
+                text-decoration: none;
                 background: $color3;
-                font-weight: 600;
+                color: $color6;
+                font-weight: 700;
                 font-family: $parrafoGeneral;
                 font-size: 1.1rem;
                 padding: 4px;
                 cursor: pointer;
                 border-radius: 2px;
+                transition: .5s;
+
+                &:hover{
+                    background: $color4;
+                    color: $color6;
+                }
             }
         }
         .formCantidad{

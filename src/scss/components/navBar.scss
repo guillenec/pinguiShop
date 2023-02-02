@@ -1,7 +1,7 @@
 .navBar {
     position: fixed;
     height: 80px;
-    @include anchoGeneral();    
+    @include anchoGeneral();
     max-width: 1300px;
 
     display: flex;
@@ -45,12 +45,13 @@
         }
     }
 
-    .menuAndCar{
+    .menuAndCar {
         position: relative;
         width: auto;
         height: 100%;
         display: flex;
         flex-direction: row;
+        margin-left: auto;
         gap: 10px;
 
         .listMenu {
@@ -61,13 +62,13 @@
             justify-content: flex-end;
             align-items: center;
             gap: 10px;
-    
+
             li {
                 position: relative;
                 height: 100%;
                 @include align_mid_flex();
-    
-                a { 
+
+                a {
                     position: relative;
                     text-decoration: none;
                     display: flex;
@@ -85,7 +86,7 @@
                     font-size: 1.2rem;
                     font-weight: 500;
                     gap: 5px;
-    
+
                     cursor: pointer;
                     transition: all .5s ease;
                     position: relative;
@@ -94,15 +95,15 @@
                     z-index: 0;
                     overflow: hidden;
                     color: $color3;
-    
+
                     &:hover {
                         color: #fff;
-    
+
                         &:after {
                             height: 100%;
                         }
                     }
-    
+
                     &:after {
                         content: "";
                         position: absolute;
@@ -114,13 +115,15 @@
                         width: 100%;
                         background: #57cc99;
                     }
-                    &.rutaActiva{
+
+                    &.rutaActiva {
                         transition: all .5s ease;
                         background: #57cc99;
                         color: $color1a;
                     }
                 }
-                &.listConSubMenu{
+
+                &.listConSubMenu {
                     position: relative;
                     width: 120px;
                     display: flex;
@@ -128,13 +131,14 @@
                     flex-wrap: wrap;
                     gap: 10px;
 
-                    .subMenuCategoria{
+                    .subMenuCategoria {
                         opacity: 0;
-                        transition:opacity .5s;
+                        transition: opacity .5s;
                         display: none;
                     }
-                    &:hover{
-                        .subMenuCategoria{
+
+                    &:hover {
+                        .subMenuCategoria {
                             position: absolute;
                             opacity: 1;
                             background: $color1a;
@@ -143,47 +147,50 @@
                             flex-wrap: wrap;
                             flex-direction: column;
                             gap: 10px;
-    
-                            @include notebook(){
+
+                            @include notebook() {
                                 top: 0;
                                 left: 120px;
                             }
-    
+
                         }
-                    } 
-                }  
+                    }
+                }
             }
         }
-    
-        .carrito{
-            display: flex;
-            width: 50px;
-            flex-wrap: nowrap;
-            justify-content: center;
-            align-items: center;
-            margin-right: 10px;
-            gap: 10px;
-            cursor: pointer;
 
-            a{
-                display: flex;
-                flex-wrap: wrap;
-                flex-direction: row;
-                align-content: center;
-                align-items: center;
-                justify-content: center;
-                gap: 5px;
-            }
-            a,p{
-                text-decoration: none;
-                font-size: 1.5rem;
-                color: $color4;
-                font-weight: 600;   
-            }
+    }
+
+    .carrito {
+        display: flex;
+        width: 50px;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        margin-right: 10px;
+        gap: 10px;
+        cursor: pointer;
+
+        a {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            align-content: center;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        a,
+        p {
+            text-decoration: none;
+            font-size: 1.5rem;
+            color: $color4;
+            font-weight: 600;
         }
     }
 
-    @include notebook(){
+    @include notebook() {
         height: 80px;
         display: flex;
         flex-wrap: wrap;
@@ -192,7 +199,7 @@
         overflow: hidden;
         border-bottom: solid thin $color2;
 
-        .menuAndCar{
+        .menuAndCar {
             position: absolute;
             width: 100%;
             height: auto;
@@ -202,13 +209,16 @@
             align-content: center;
             justify-content: flex-end;
             align-items: center;
-            
-            .listMenu{
+
+            .listMenu {
                 flex-direction: column;
             }
-            .carrito{
-                justify-content: center;
-            }
+
+        }
+
+        .carrito {
+            justify-content: center;
+            margin-left: auto;
         }
 
         &.active {

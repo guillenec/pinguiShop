@@ -30,15 +30,16 @@ const NavBar = () => {
                             <ion-icon name="chevron-down"></ion-icon>
                         </a>
                         <ul className="subMenuCategoria">
-                                <li><NavLink to='/categoria/funkos' className={({ isActive })=> isActive ? 'rutaActiva' : '' }>funkos</NavLink></li>
-                                <li><NavLink to='/categoria/figuras' className={({ isActive })=> isActive ? 'rutaActiva' : '' }>figuras</NavLink></li>
+                                <li><NavLink to='/categoria/funkopop' className={({ isActive })=> isActive ? 'rutaActiva' : '' }>funkos</NavLink></li>
+                                <li><NavLink to='/categoria/figura' className={({ isActive })=> isActive ? 'rutaActiva' : '' }>figuras</NavLink></li>
                         </ul>            
                     </li>
                     <li><NavLink to='/nosotros' className={({ isActive })=> isActive ? 'rutaActiva' : '' }>nosotros</NavLink></li>
                     <li><NavLink to='/contacto' className={({ isActive })=> isActive ? 'rutaActiva' : '' }>contacto</NavLink></li>
                 </ul>
-                    <CartWidget/>
+                    
             </section>
+            <CartWidget/>
             <Toggle prop1={toggleClassCheck} func2={handleClick}/>
         </nav>
         </>
