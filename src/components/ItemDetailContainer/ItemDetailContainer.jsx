@@ -17,7 +17,7 @@ const ItemDetailContainer = () => {
 
         getProducto(Number(idProducto))
         .then((response)=> {
-            console.log(response)
+            // console.log(response)
             setEstadoProductos(response) //guardamos el estado 
         })
         .catch((err) => {

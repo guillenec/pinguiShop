@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Contador from "../Contador/Contador";
 import ItemCount from "../ItemCount/ItemCount";
 
 const CartWidget = () => {
@@ -12,7 +13,10 @@ const CartWidget = () => {
     return (
         <>
         <section className="carrito">
-            <Link to='/cart'><ion-icon name="cart"></ion-icon><p>0</p></Link>
+            <Link to='/cart'>
+                <ion-icon name="cart"></ion-icon>
+                <Contador contador={0}/>
+            </Link>
             {/* <a onClick={hanldeCount}><ion-icon name="cart"></ion-icon></a>
             <ItemCount contador={count}/> */}
         </section> 
