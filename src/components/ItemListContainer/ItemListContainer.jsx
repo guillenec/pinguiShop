@@ -23,7 +23,7 @@ const ItemListContainer = ({ greeting }) => {
             setLoading(true)  //esto nose si esta bien 
             getProds()
             .then((response) => {
-                setProductos(response.filter(producto => producto.tipo === idCategoria))  //actualiza el estado de los productos
+                setProductos(response.filter(producto => producto.tipo === idCategoria || producto.nombre === idCategoria || producto.genero === idCategoria || producto.clave1 === idCategoria || producto.clave2 === idCategoria || producto.clave3 === idCategoria))  //actualiza el estado de los productos
             })
             .catch((err) => {
                 console.log(err.message)

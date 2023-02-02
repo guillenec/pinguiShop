@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const ItemDetail = ({objeto}) => {
 
@@ -51,12 +51,12 @@ const ItemDetail = ({objeto}) => {
                     <p className="categoria"><strong>Disponibles: </strong>{stock}</p>
                     <p className="categoria"><strong>Categorias:</strong></p>
                     <section className="palabraClave">
-                        <a>{nombre}</a>
-                        <a>{genero}</a>
-                        <a>{tipo}</a>
-                        <NavLink to='/categoria'>{cl1}</NavLink>
-                        <a>{cl2}</a>
-                        <a>{cl3}</a>
+                        <Link to={`/categoria/${nombre}`}>{nombre}</Link>
+                        <Link to={`/categoria/${genero}`}>{genero}</Link>
+                        <Link to={`/categoria/${tipo}`}>{tipo}</Link>
+                        <Link to={`/categoria/${cl1}`}>{cl1}</Link>
+                        <Link to={`/categoria/${cl2}`}>{cl2}</Link>
+                        <Link to={`/categoria/${cl3}`}>{cl3}</Link>
                     </section>
 
                     <form className="formCantidad" onSubmit={handleSubmit}>
