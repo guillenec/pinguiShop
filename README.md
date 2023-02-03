@@ -13,7 +13,8 @@
         * a) CartContainer para el carrito.
         * b) Se refactorizo ItemlistContainer > ItemList y Item. 
         * c) Para el detalle de los items ItemDetailContainer y ItemDetail.
-        * d) ItemCount, Se uso un formulario y un input, el stop es el Stock y el default 0. Se Usa el mismo en el componente Detail container ya que me parecio mas sensato en este componente.
+        * d) ItemCount, Se uso un formulario y un input, el stop es el Stock y el default 0. El mismo se usa en el componente DetailContainer ya que me parecio mas adecuado.
+        * e) Toastifay solo para mostrar el elemento capturado capturado.
  
 ## 👍 Espero te guste. 
 Espero sea de tu agrado mi contenido, tratare de tener todo publico siempre... si te sirve mi contenido no dudes en compartirlo, pero referenciame xD.

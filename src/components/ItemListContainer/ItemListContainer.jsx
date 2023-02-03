@@ -9,7 +9,7 @@ import Loading from "../Loading/Loading";
 const ItemListContainer = ({ greeting }) => {
         //valor del estado  //forma de actualizar el estado
     const [productos, setProductos] = useState([]) //estado inicial array vacio
-    const [loading, setLoading] = useState(true) //"" "" true
+    let [loading, setLoading] = useState(true) //"" "" true
     const { idCategoria } = useParams()
     // const fetchMercado = async () => {
     //     const resp = await fetch('https://api.mercadolibre.com/sites/MLA/search?category=MLA1051')
@@ -31,7 +31,8 @@ const ItemListContainer = ({ greeting }) => {
             .finally(() => setLoading(false)) //se ejecuta siempre al final, actualiza el state de loading
         }
         else{
-            setLoading(true)
+            // setLoading(true)
+            setLoading(true) 
             getProds()
             .then((response) => {
                 setProductos(response)  //actualiza el estado de los productos
