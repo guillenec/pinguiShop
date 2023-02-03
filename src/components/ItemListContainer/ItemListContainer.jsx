@@ -47,10 +47,13 @@ const ItemListContainer = ({ greeting }) => {
     //cuando lo llamo al empezar se muestra el array vacio ya que productos al inicio esta vacio
     console.log(idCategoria)
 
+    let saludo = "";
+    (idCategoria) ? saludo = idCategoria : saludo = greeting; 
+
     return (
         <>
             <section className="saludo">
-                <h1>{greeting}</h1>
+                <h1>{saludo}</h1>
             </section>
             <section className="cardsContainer">
                 {

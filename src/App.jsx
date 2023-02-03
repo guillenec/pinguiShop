@@ -15,7 +15,7 @@ import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailCont
 import CartContain from './components/CartContainer/CartContain';
 
 function App() {
-  const saludo = 'bienvenido user' 
+  const saludo = 'productos' 
   return (
     <BrowserRouter>
     <div className="App">
