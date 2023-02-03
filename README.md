@@ -8,12 +8,12 @@
 * Se corresponde a la segunda entrega del proyectop de React de Coderhouse.
 * Posiblemente si integre mas adelante Vite + Tailwind.
 * Se crearon los componentes pedidos: 
-    ** Entrega 1) NavBar, Loading, ItemListContainer, CartWidget, Contador, y Toggle.
-    ** Entrega 2) 
-        *** a) CartContainer para el carrito.
-        *** b) Se refactorizo ItemlistContainer > ItemList y Item. 
-        *** c) Para el detalle de los items ItemDetailContainer y ItemDetail.
-        *** d) ItemCount, Se uso un formulario y un input, el stop es el Stock y el default 0. Se Usa el mismo en el componente Detail container ya que me parecio mas sensato en este componente.
+    * Entrega 1) NavBar, Loading, ItemListContainer, CartWidget, Contador, y Toggle.
+    * Entrega 2) 
+        * a) CartContainer para el carrito.
+        * b) Se refactorizo ItemlistContainer > ItemList y Item. 
+        * c) Para el detalle de los items ItemDetailContainer y ItemDetail.
+        * d) ItemCount, Se uso un formulario y un input, el stop es el Stock y el default 0. Se Usa el mismo en el componente Detail container ya que me parecio mas sensato en este componente.
  
 ## 👍 Espero te guste. 
 Espero sea de tu agrado mi contenido, tratare de tener todo publico siempre... si te sirve mi contenido no dudes en compartirlo, pero referenciame xD.
