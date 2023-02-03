@@ -20,9 +20,22 @@
             * b) /category/:id === /categoria/:idCategoria ==> "<ItemListContainer/>"
             * c) / === / ==> "<ItemListContainer/>"
             * d) /cart ==> "<CartContain/>"
-            * e) y por defecto /
+            * e) y por defecto / 
+
+</br>
+
+# 🛸🛸 Vistazo Detalles
+![🛸🛸 Vistazo Detalles](https://res.cloudinary.com/dpiwmbsog/image/upload/v1675411081/pingui_b8uusz.jpg "titulo")
+
 
 * Tengo que añadir un banner y una seccion para el carrito, pero quiero poder reutilizar ItemCount en ese lugar para poder restar y sumar productos.. de momento solo mostrara el texto "MI CARRITO"
+
+</br>
+
+## 📘 Nota: 
+Quedo a la espera de sugerencias..  🐧🐧🐧 
+
+</br>
 
 ## 👍 Espero te guste. 
 Espero sea de tu agrado mi contenido, tratare de tener todo publico siempre... si te sirve mi contenido no dudes en compartirlo, pero referenciame xD.
