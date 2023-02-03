@@ -21,7 +21,9 @@
             * c) / === / ==> "<ItemListContainer/>"
             * d) /cart ==> "<CartContain/>"
             * e) y por defecto /
- 
+
+* Tengo que añadir un banner y una seccion para el carrito, pero quiero poder reutilizar ItemCount en ese lugar para poder restar y sumar productos.. de momento solo mostrara el texto "MI CARRITO"
+
 ## 👍 Espero te guste. 
 Espero sea de tu agrado mi contenido, tratare de tener todo publico siempre... si te sirve mi contenido no dudes en compartirlo, pero referenciame xD.
 
