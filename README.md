@@ -16,10 +16,10 @@
         * d) ItemCount, Se uso un formulario y un input, el stop es el Stock y el default 0. El mismo se usa en el componente DetailContainer ya que me parecio mas adecuado.
         * e) Toastifay solo para mostrar el elemento capturado capturado.
         * f) rutas: 
-            * a) /item/:id === /detalle/:idProducto ==> "<ItemDetailContainer/>"
-            * b) /category/:id === /categoria/:idCategoria ==> "<ItemListContainer/>"
-            * c) / === / ==> "<ItemListContainer/>"
-            * d) /cart ==> "<CartContain/>"
+            * a) /item/:id === /detalle/:idProducto ==> "<\ItemDetailContainer/>"
+            * b) /category/:id === /categoria/:idCategoria ==> "<\ItemListContainer/>"
+            * c) / === / ==> "<\ItemListContainer/>"
+            * d) /cart ==> "<\CartContain/>"
             * e) y por defecto / 
 
 </br>
