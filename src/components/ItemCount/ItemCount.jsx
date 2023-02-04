@@ -66,18 +66,21 @@ const ItemCount = ({ objeto2 }) => {
   return (
     <>
       <form className="formCantidad" onSubmit={handleSubmit}>
-        <label className="labelCantidad" htmlFor="cantidad">cantidad
-        <a className='restProd' onClick={restProd}><ion-icon name="remove"></ion-icon></a>
-          <input
-            className="inputCantidad"
-            id="cantidad"
-            name="cantidad"
-            type="number"
-            min={1} max={stock}
-            onChange={handleChange}
-            value={cantidadProd}
-          />
-          <a className='sumProd' onClick={sumarProd}><ion-icon name="add"></ion-icon></a>
+        <label className="labelCantidad" htmlFor="cantidad">
+        <p>cantidad</p>
+        <div className="botonesCantidad">
+          <a className='restProd' onClick={restProd}><ion-icon name="remove"></ion-icon></a>
+            <input
+              className="inputCantidad"
+              id="cantidad"
+              name="cantidad"
+              type="number"
+              min={1} max={stock}
+              onChange={handleChange}
+              value={cantidadProd}
+            />
+            <a className='sumProd' onClick={sumarProd}><ion-icon name="add"></ion-icon></a>
+        </div>   
         </label>
         <button type="submit" >comprar</button>
       </form>

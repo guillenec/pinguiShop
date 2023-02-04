@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { getProds } from '../../gFetch'
 import Item from '../Item/Item'
 import ItemCart from '../ItemCart/ItemCart'
@@ -58,8 +59,8 @@ const CartContain = () => {
             {
                 loading ? <Loading /> :
                     (
-                        <section className='cardsContainer'>
-                            <a className='linkComprar'> <ion-icon name="arrow-back-outline"></ion-icon> seguir comprando</a>
+                        <section className='cartContainer'>
+                            <Link to='/' className='linkComprar'> <ion-icon name="arrow-back-outline"></ion-icon> seguir comprando</Link>
                             <section className='containCarrito'>
                                 <h1>Mi carrito</h1>
                                 <section className='carrito'>

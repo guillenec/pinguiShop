@@ -151,6 +151,33 @@
                 gap: 10px;
                 outline: 0;
 
+                p{
+                    color: $color3;
+                    font-family: $tituloGeneral;
+                    text-transform: capitalize;
+                    font-size: 1.2rem;
+                    font-weight: 500;
+                }
+                .botonesCantidad{
+                    height: 100%;
+                    width: auto;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    align-content: center;
+                    justify-content: center;
+                    flex-wrap: nowrap;
+                    gap: 10px;
+
+                    .restProd,.sumProd{
+                        font-size: 1.5rem;
+                        transition: .5s;
+                        &:hover{
+                            color: $color4;
+                        }
+                    }
+                }
+                
                 .inputCantidad{
                     padding: 2px;
                     background: $color1a;

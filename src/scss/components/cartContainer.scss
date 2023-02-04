@@ -1,7 +1,7 @@
-.cardsContainer{
-    min-width: 100vh;
+.cartContainer {
+    width: 100%;
+    min-height: 100vh;
     height: auto;
-    border: solid 1px tomato;
 
     display: flex;
     flex-direction: column;
@@ -10,7 +10,7 @@
     align-items: flex-start;
     gap: 20px;
 
-    .linkComprar{
+    .linkComprar {
         font-family: $tituloGeneral;
         color: $color7;
         display: flex;
@@ -21,34 +21,193 @@
         gap: 10px;
         font-weight: 500;
         font-size: 1rem;
-    }   
-    .containCarrito{
+    }
+
+    .containCarrito {
+        width: 100%;
+        height: auto;
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 20px;
 
-        h1{
+        h1 {
             font-family: $tituloGeneral;
             font-size: 2rem;
             text-transform: capitalize;
             color: $color5;
         }
-        .carrito{
+
+        .carrito {
             width: 100%;
             height: auto;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 15px;
 
-            .cartProducto{
+            .cartProducto {
+                position: relative;
                 width: 80%;
-                height: auto;
-                border: solid 1px #333;
+                height: 150px;
                 display: flex;
                 flex-direction: row;
+                flex-wrap: nowrap;
+                align-content: center;
+                justify-content: flex-start;
+                align-items: center;
                 gap: 10px;
 
-                
+                img {
+                    height: 100%;
+                    aspect-ratio: 2/3;
+                    object-fit: contain;
+                    padding: 5px;
+                    border-radius: 3px;
+                }
+
+                .descripcion {
+                    width: 420px;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: flex-start;
+                    align-content: flex-start;
+                    flex-wrap: nowrap;
+                    gap: 12px;
+
+                    h2 {
+                        color: $color3;
+                        font-weight: 1.2rem;
+                        font-family: $tituloGeneral;
+                        text-transform: capitalize;
+                    }
+
+                    p {
+                        font-family: $parrafoGeneral;
+                        font-size: 1rem;
+                        color: $color5;
+                    }
+
+                    button {
+                        width: 80px;
+                        height: 35px;
+                        background: $color3;
+                        border: none;
+                        border-radius: 2px;
+                        font-family: $tituloGeneral;
+                        font-size: .9rem;
+                        transition: .5s;
+                        cursor: pointer;
+                        text-transform: capitalize;
+                        font-weight: 500;
+                        color: $color1a;
+
+                        &:hover {
+                            background: $color4;
+                            color: $color6;
+                        }
+                    }
+                }
+                .formProds{
+                    height: 100%;
+                    width: 130px;
+                    display: flex;
+
+                    .formCantidad{
+                        width: 250px;
+                        height: auto;
+                        padding: 0px;
+                        color: $color3;
+                        font-family: $tituloGeneral;
+                        text-transform: capitalize;
+                        font-size: 1.2rem;
+                        font-weight: 500;
+                        
+                        display: flex;
+                        flex-direction: row;
+                        flex-wrap: wrap;
+                        gap: 10px;
+                        justify-content: center;
+                        align-items: center;
+                        align-content: center;
+            
+                        .labelCantidad{
+                            width: auto;
+                            height: 50%;
+                            display: flex;
+                            flex-direction: row;
+                            flex-wrap: nowrap;
+                            align-content: center;
+                            align-items: center;
+                            gap: 10px;
+                            outline: 0;
+            
+                            p{
+                                display: none;
+                            }
+                            .botonesCantidad{
+                                height: auto;
+                                width: auto;
+                                display: flex;
+                                flex-direction: row;
+                                align-items: center;
+                                align-content: center;
+                                justify-content: center;
+                                flex-wrap: nowrap;
+                                gap: 10px;
+            
+                                .restProd,.sumProd{
+                                    font-size: 1.5rem;
+                                    transition: .5s;
+                                    &:hover{
+                                        color: $color4;
+                                    }
+                                }
+                            }
+                            
+                            .inputCantidad{
+                                padding: 2px;
+                                background: $color1a;
+                                color: $color3;
+                                font-size: 1.1rem;
+                                font-weight: 600;
+                                text-align: center;
+                                border-radius: 2px;
+                                cursor: pointer;
+            
+                                &::-webkit-inner-spin-button,
+                                &::-webkit-outer-spin-button {
+                                -webkit-appearance: none;
+                                margin: 0;
+                                    }
+            
+                                &:focus {
+                                    outline: 0;
+                                }
+                                
+                            }                
+                        }
+                        button{
+                            width: 80px;
+                            height: 35px;
+                            background: $color3;
+                            border: none;
+                            border-radius: 2px;
+                            font-family: $parrafoGeneral;
+                            font-size: .9rem;
+                            transition: .5s;
+                            cursor: pointer;
+                            text-transform: capitalize;
+                            font-weight: 500;
+                            color: $color1a;
+            
+                            &:hover{
+                                background: $color4;
+                                color: $color6;
+                            }
+                        }
+                    }
+                }
             }
         }
     }
