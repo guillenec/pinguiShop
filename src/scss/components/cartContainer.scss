@@ -1,0 +1,56 @@
+.cardsContainer{
+    min-width: 100vh;
+    height: auto;
+    border: solid 1px tomato;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+
+    .linkComprar{
+        font-family: $tituloGeneral;
+        color: $color7;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: center;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 10px;
+        font-weight: 500;
+        font-size: 1rem;
+    }   
+    .containCarrito{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        h1{
+            font-family: $tituloGeneral;
+            font-size: 2rem;
+            text-transform: capitalize;
+            color: $color5;
+        }
+        .carrito{
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            .cartProducto{
+                width: 80%;
+                height: auto;
+                border: solid 1px #333;
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+
+                
+            }
+        }
+    }
+
+}
