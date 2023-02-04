@@ -5,27 +5,29 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const ItemCount = ({ objeto2 }) => {
 
-  const [cantidadProd, setCantidadProd] = useState({
-    cantidad: 0
-  });
+  const [cantidadProd, setCantidadProd] = useState(0);
 
   const { id: ident, nombre: nombre, descripcion: describe, stock: stock, precio: precio, descuento: descuento, genero: genero, tipo: tipo, imagenA: img1, imagenB: img2, imagenC: img3, imagenD: img4, clave1: cl1, clave2: cl2, clave3: cl3 } = objeto2;
 
   const handleChange = (e) => {
     // const num = e.target.name;
     // const value = e.target.value;
-    const { name, value } = e.target;
+    // console.log(e)
+    const {value} = e.target;
+    // const { name, value } = e.target;
     // console.log(num,value)
+    console.log(value)
+    setCantidadProd(value)
 
-    setCantidadProd((prev) => {
-      return { ...prev, [name]: value }
-    })
+    // setCantidadProd((prev) => {
+    //   return { ...prev, [name]: value }
+    // })
   }
 
   const handleSubmit = (e) => { //
     e.preventDefault()
     // console.log(cantidadProd) //despues puedo remplazarlo
-    notify(cantidadProd.cantidad, nombre)
+    notify(cantidadProd, nombre)
     // return cantidadProd.cantidad
   }
 
@@ -50,10 +52,22 @@ const ItemCount = ({ objeto2 }) => {
     theme: "light",
     });
 
+  const sumarProd = (e) => {
+    // console.log(e)
+    console.log(stock , cantidadProd);
+    (stock <= cantidadProd) ? e.preventDefault() :setCantidadProd(cantidadProd+1) ;
+  }
+
+  const restProd = (e) => {
+    (cantidadProd <= 0) ? e.preventDefault() : setCantidadProd(cantidadProd-1) 
+
+  } 
+
   return (
     <>
       <form className="formCantidad" onSubmit={handleSubmit}>
         <label className="labelCantidad" htmlFor="cantidad">cantidad
+        <a className='restProd' onClick={restProd}><ion-icon name="remove"></ion-icon></a>
           <input
             className="inputCantidad"
             id="cantidad"
@@ -61,8 +75,9 @@ const ItemCount = ({ objeto2 }) => {
             type="number"
             min={1} max={stock}
             onChange={handleChange}
-            value={cantidadProd.cantidad || 0}
+            value={cantidadProd}
           />
+          <a className='sumProd' onClick={sumarProd}><ion-icon name="add"></ion-icon></a>
         </label>
         <button type="submit" >comprar</button>
       </form>

@@ -127,9 +127,9 @@
             }
         }
         .formCantidad{
-            width: 200px;
+            width: 250px;
             height: auto;
-            padding: 5px;
+            padding: 0px;
             color: $color3;
             font-family: $tituloGeneral;
             text-transform: capitalize;
@@ -142,6 +142,7 @@
 
             .labelCantidad{
                 width: 100%;
+                height: 60px;
                 display: flex;
                 flex-direction: row;
                 flex-wrap: nowrap;
@@ -161,9 +162,16 @@
                     border-radius: 2px;
                     cursor: pointer;
 
+                    &::-webkit-inner-spin-button,
+                    &::-webkit-outer-spin-button {
+                    -webkit-appearance: none;
+                    margin: 0;
+                        }
+
                     &:focus {
                         outline: 0;
                     }
+                    
                 }                
             }
             button{
