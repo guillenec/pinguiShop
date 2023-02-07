@@ -1,5 +1,7 @@
+import { useContext } from "react";
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { CartContext } from "../../context/CartContext";
 import Contador from "../Contador/Contador";
 import ItemCount from "../ItemCount/ItemCount";
 
@@ -7,6 +9,10 @@ const ItemDetail = ({objeto}) => {
 
     const {id: ident, nombre: nombre, descripcion: describe, stock: stock, precio: precio, descuento: descuento, genero: genero, tipo: tipo, imagenA: img1, imagenB: img2, imagenC: img3, imagenD: img4, clave1: cl1, clave2: cl2, clave3: cl3} = objeto;
 
+    const { agregarCarrito, cartList } = useContext(CartContext)
+    const onAdd = (cant) => {
+        agregarCarrito( { ...objeto, cantidad:cant } )
+    }
     return (
         <>
             <section className="itemDetailContain">

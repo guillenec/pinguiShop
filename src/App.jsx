@@ -13,35 +13,48 @@ import Toggle from './components/Toggle/Toggle'
 
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer'
 import CartContain from './components/CartContainer/CartContain';
+import { createContext } from 'react';
+import { CartContextProvider } from './context/CartContext';
+
+// creando constante
+
+//
 
 function App() {
-  const saludo = 'productos' 
+  const saludo = 'productos'
+
   return (
+
     <BrowserRouter>
-    <div className="App">
+      <CartContextProvider>
+        <div className="App">
 
-      <header className="header">
-        <NavBar>
-          <Toggle/>
-        </NavBar>
-      </header>
-      
-      <main className="main">
-        <Routes>
-          <Route path='/' element={<ItemListContainer  greeting={saludo}/>} />
-          <Route path='/categoria/:idCategoria' element={<ItemListContainer  greeting={saludo}/>} />  
-  
-          <Route path='/detalle/:idProducto' element={<ItemDetailContainer/>} />
-          <Route path='/cart' element={<CartContain/>} />
+          <header className="header">
+            <NavBar>
+              <Toggle />
+            </NavBar>
+          </header>
 
-          <Route path='*' element= {<Navigate to='/'></Navigate>} />
-        </Routes>
-        
-      </main>
-      <footer className="footer"></footer>
-    </div>
+          <main className="main">
+            <Routes>
+              <Route path='/' element={<ItemListContainer greeting={saludo} />} />
+              <Route path='/categoria/:idCategoria' element={<ItemListContainer greeting={saludo} />} />
+
+              <Route path='/detalle/:idProducto' element={<ItemDetailContainer />} />
+              <Route path='/cart' element={<CartContain />} />
+
+              <Route path='*' element={<Navigate to='/'></Navigate>} />
+            </Routes>
+
+          </main>
+          <footer className="footer"></footer>
+        </div>
+      </CartContextProvider>
+
+
 
     </BrowserRouter>
+
   )
 }
 

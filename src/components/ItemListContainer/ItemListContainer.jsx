@@ -45,7 +45,7 @@ const ItemListContainer = ({ greeting }) => {
     }, [idCategoria]) //permitira que se re-renderisen los productos
 
     //cuando lo llamo al empezar se muestra el array vacio ya que productos al inicio esta vacio
-    console.log(idCategoria)
+    // console.log(idCategoria)
 
     let saludo = "";
     (idCategoria) ? saludo = idCategoria : saludo = greeting; 
