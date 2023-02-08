@@ -10,7 +10,6 @@ const ItemCount = ({ objeto2 }) => {
 
 
   const [cantidadProd, setCantidadProd] = useState(0);
-
   const [inputType, setInputType] = useState('')
 
   const handleInter = () => {
@@ -33,7 +32,7 @@ const ItemCount = ({ objeto2 }) => {
     // })
   }
 
-  const handleSubmit = (e) => { //
+  const onaAdd = (e) => { //
     e.preventDefault();
     e.stopPropagation();
     // console.log(cantidadProd) //despues puedo remplazarlo
@@ -69,7 +68,7 @@ const ItemCount = ({ objeto2 }) => {
 
   return (
     <>
-      <form className="formCantidad" onSubmit={handleSubmit}>
+      <form className="formCantidad" onSubmit={onaAdd}>
         <label className="labelCantidad" htmlFor="cantidad">
           <p>cantidad</p>
           <div className="botonesCantidad">
@@ -86,7 +85,7 @@ const ItemCount = ({ objeto2 }) => {
             <a className='sumProd' onClick={sumarProd}><ion-icon name="add"></ion-icon></a>
           </div>
         </label>
-        <button type="submit" >comprar</button>
+        <button type="submit" >agregar</button>
       </form>
       {
         inputType === 'botonRedirige' && <Redirige/>

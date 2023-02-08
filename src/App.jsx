@@ -17,7 +17,6 @@ import { createContext } from 'react';
 import { CartContextProvider } from './context/CartContext';
 
 // creando constante
-
 //
 
 function App() {
@@ -50,9 +49,6 @@ function App() {
           <footer className="footer"></footer>
         </div>
       </CartContextProvider>
-
-
-
     </BrowserRouter>
 
   )
