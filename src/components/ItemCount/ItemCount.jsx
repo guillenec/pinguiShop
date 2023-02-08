@@ -1,19 +1,28 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
 
 const ItemCount = ({ objeto2 }) => {
 
+  const { id: ident, nombre: nombre, descripcion: describe, stock: stock, precio: precio, descuento: descuento, genero: genero, tipo: tipo, imagenA: img1, imagenB: img2, imagenC: img3, imagenD: img4, clave1: cl1, clave2: cl2, clave3: cl3 } = objeto2;
+
+
   const [cantidadProd, setCantidadProd] = useState(0);
 
-  const { id: ident, nombre: nombre, descripcion: describe, stock: stock, precio: precio, descuento: descuento, genero: genero, tipo: tipo, imagenA: img1, imagenB: img2, imagenC: img3, imagenD: img4, clave1: cl1, clave2: cl2, clave3: cl3 } = objeto2;
+  const [inputType, setInputType] = useState('')
+
+  const handleInter = () => {
+    setInputType('botonRedirige');
+    setCantidadProd(0);
+  }
 
   const handleChange = (e) => {
     // const num = e.target.name;
     // const value = e.target.value;
     // console.log(e)
-    const {value} = e.target;
+    const { value } = e.target;
     // const { name, value } = e.target;
     // console.log(num,value)
     console.log(value)
@@ -25,23 +34,18 @@ const ItemCount = ({ objeto2 }) => {
   }
 
   const handleSubmit = (e) => { //
-    e.preventDefault()
+    e.preventDefault();
+    e.stopPropagation();
     // console.log(cantidadProd) //despues puedo remplazarlo
-    notify(cantidadProd, nombre)
+    notify(cantidadProd, nombre);
+
+    setTimeout(() => {
+      handleInter();
+    }, 5000);
     // return cantidadProd.cantidad
   }
 
-  // const notify = (numer,name) => toast(`🥰🥰 compraste ${numer} ${name} !`,{
-  //   position: "bottom-right",
-  //   autoClose: 3000,
-  //   hideProgressBar: false,
-  //   closeOnClick: true,
-  //   pauseOnHover: false,
-  //   draggable: true,
-  //   progress: undefined,
-  //   theme: "dark",
-  // });
-  const notify = (numer,name) => toast.success(`🥰🥰 compraste ${numer} ${name}`, {
+  const notify = (numer, name) => toast.success(`🥰🥰 compraste ${numer} ${name}`, {
     position: "bottom-right",
     autoClose: 5000,
     hideProgressBar: false,
@@ -50,26 +54,26 @@ const ItemCount = ({ objeto2 }) => {
     draggable: true,
     progress: undefined,
     theme: "light",
-    });
+  });
 
   const sumarProd = (e) => {
     // console.log(e)
-    console.log(stock , cantidadProd);
-    (stock <= cantidadProd) ? e.preventDefault() :setCantidadProd(cantidadProd+1) ;
+    console.log(stock, cantidadProd);
+    (stock <= cantidadProd) ? e.preventDefault() : setCantidadProd(cantidadProd + 1);
   }
 
   const restProd = (e) => {
-    (cantidadProd <= 0) ? e.preventDefault() : setCantidadProd(cantidadProd-1) 
+    (cantidadProd <= 0) ? e.preventDefault() : setCantidadProd(cantidadProd - 1)
 
-  } 
+  }
 
   return (
     <>
       <form className="formCantidad" onSubmit={handleSubmit}>
         <label className="labelCantidad" htmlFor="cantidad">
-        <p>cantidad</p>
-        <div className="botonesCantidad">
-          <a className='restProd' onClick={restProd}><ion-icon name="remove"></ion-icon></a>
+          <p>cantidad</p>
+          <div className="botonesCantidad">
+            <a className='restProd' onClick={restProd}><ion-icon name="remove"></ion-icon></a>
             <input
               className="inputCantidad"
               id="cantidad"
@@ -80,10 +84,13 @@ const ItemCount = ({ objeto2 }) => {
               value={cantidadProd}
             />
             <a className='sumProd' onClick={sumarProd}><ion-icon name="add"></ion-icon></a>
-        </div>   
+          </div>
         </label>
         <button type="submit" >comprar</button>
       </form>
+      {
+        inputType === 'botonRedirige' && <Redirige/>
+      }
 
       <ToastContainer
         position="bottom-right"
@@ -100,4 +107,14 @@ const ItemCount = ({ objeto2 }) => {
     </>
   )
 }
+
+const Redirige = () => {
+  return (
+    <div className='botonRedireccion'>
+      <Link to='/'> seguir comprando </Link>
+      <Link to='/cart' >carrito</Link>
+    </div>
+  )
+}
+
 export default ItemCount
