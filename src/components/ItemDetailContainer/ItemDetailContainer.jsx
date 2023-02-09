@@ -6,6 +6,9 @@ import Item from "../Item/Item"
 import ItemDetail from "../ItemDetail/ItemDetail"
 import Loading from "../Loading/Loading"
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const ItemDetailContainer = () => {
     const {idProducto} = useParams();
     // console.log(idProducto)

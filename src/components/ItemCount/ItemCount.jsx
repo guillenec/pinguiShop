@@ -1,15 +1,11 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
-
-import 'react-toastify/dist/ReactToastify.css';
-
-const ItemCount = ({ objeto2 }) => {
-
-  const { id: ident, nombre: nombre, descripcion: describe, stock: stock, precio: precio, descuento: descuento, genero: genero, tipo: tipo, imagenA: img1, imagenB: img2, imagenC: img3, imagenD: img4, clave1: cl1, clave2: cl2, clave3: cl3 } = objeto2;
 
 
-  const [cantidadProd, setCantidadProd] = useState(0);
+const ItemCount = ({producto, inicial, stock, nombre, onAdd }) => {
+
+  const [cantidadProd, setCantidadProd] = useState(inicial);
+
   const [inputType, setInputType] = useState('')
 
   const handleInter = () => {
@@ -32,11 +28,13 @@ const ItemCount = ({ objeto2 }) => {
     // })
   }
 
-  const onaAdd = (e) => { //
+  const handleOnaAdd = (e) => { //
     e.preventDefault();
     e.stopPropagation();
-    // console.log(cantidadProd) //despues puedo remplazarlo
-    notify(cantidadProd, nombre);
+    onAdd(producto, cantidadProd, nombre)
+
+    // // console.log(cantidadProd) //despues puedo remplazarlo
+    // notify(cantidadProd, nombre);
 
     setTimeout(() => {
       handleInter();
@@ -44,31 +42,19 @@ const ItemCount = ({ objeto2 }) => {
     // return cantidadProd.cantidad
   }
 
-  const notify = (numer, name) => toast.success(`🥰🥰 compraste ${numer} ${name}`, {
-    position: "bottom-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "light",
-  });
-
   const sumarProd = (e) => {
     // console.log(e)
-    console.log(stock, cantidadProd);
+    // console.log(stock, cantidadProd);
     (stock <= cantidadProd) ? e.preventDefault() : setCantidadProd(cantidadProd + 1);
   }
 
   const restProd = (e) => {
     (cantidadProd <= 0) ? e.preventDefault() : setCantidadProd(cantidadProd - 1)
-
   }
 
   return (
     <>
-      <form className="formCantidad" onSubmit={onaAdd}>
+      <form className="formCantidad" onSubmit={handleOnaAdd}>
         <label className="labelCantidad" htmlFor="cantidad">
           <p>cantidad</p>
           <div className="botonesCantidad">
@@ -88,21 +74,9 @@ const ItemCount = ({ objeto2 }) => {
         <button type="submit" >agregar</button>
       </form>
       {
-        inputType === 'botonRedirige' && <Redirige/>
+        inputType === 'botonRedirige' && <Redirige />
       }
 
-      <ToastContainer
-        position="bottom-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
     </>
   )
 }
