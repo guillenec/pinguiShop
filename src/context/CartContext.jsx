@@ -17,11 +17,14 @@ export const CartContextProvider = ({children}) => {
         ] );
     }
 
+    const vaciarCarrito = () => setCartList( [] );
+
     return(
         //proveedor
         <CartContext.Provider value={{
             cartList,
-            agregaAlCarrito
+            agregaAlCarrito,
+            vaciarCarrito
         }}>
             {children}
         </CartContext.Provider>

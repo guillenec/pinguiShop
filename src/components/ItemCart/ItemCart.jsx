@@ -1,21 +1,21 @@
 import React from 'react'
-import ItemCount from '../ItemCount/ItemCount';
 
 const ItemCart = ({ element }) => {
-    const {id:id, nombre:nombre, precio:precio, descripcion:desc, imagenA:img1} = element;
+    const {id:id, nombre:nombre, precio:precio, comprado:comprado, stock:stock, descripcion:describe, imagenA:img1} = element;
 
     return (
         <>
-            <img src={img1} alt={desc} />
+            <img src={img1} alt={describe} />
             <section className='descripcion'>
-                <h2>{nombre}</h2>
-                <p>{desc}</p>
+                <h2>#{id} {nombre}</h2>
+                <p>{describe}</p>
                 <button className='remove'>remove</button>
             </section>
             <section className='formProds'>
-                <ItemCount objeto2={element}/>
+            
             </section>
-            <section className='precio'><p>${precio}</p></section>
+            <section className='precio'><p>${precio*comprado}</p></section>
+
         </>
     )
 }
@@ -23,3 +23,5 @@ const ItemCart = ({ element }) => {
 export default ItemCart
 
 //rafce
+
+//1:38 

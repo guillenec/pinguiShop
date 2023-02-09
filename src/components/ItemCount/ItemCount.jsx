@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 
 
-const ItemCount = ({producto, inicial, stock, nombre, onAdd }) => {
+const ItemCount = ({ producto, inicial, stock, nombre, onAdd }) => {
 
   const [cantidadProd, setCantidadProd] = useState(inicial);
 

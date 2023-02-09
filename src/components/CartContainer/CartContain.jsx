@@ -1,32 +1,10 @@
 import React from 'react'
-import { useState } from 'react'
-import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { getProds } from '../../gFetch'
-import Item from '../Item/Item'
+import { useCartContext } from '../../context/CartContext'
 import ItemCart from '../ItemCart/ItemCart'
-import ItemCount from '../ItemCount/ItemCount'
-import Loading from '../Loading/Loading'
 
-
-
-const CartContain = () => {
-    let [loading, setLoading] = useState(true) //"" "" true
-
-    const [carrito, setProdsCarrito] = useState()
-
-    const prodsComprados = [
-        { "id": 2, "cantidad": 3 },
-        { "id": 6, "cantidad": 2 },
-        { "id": 8, "cantidad": 5 },
-        { "id": 24, "cantidad": 3 },
-        { "id": 26, "cantidad": 2 }
-    ]
-    console.log(carrito)
-
-    useEffect(() => {
-        if (carrito === undefined) {
-            getProds()
+/*
+getProds()
                 .then((response) => {
                     console.log(response)
                     setProdsCarrito(
@@ -45,37 +23,33 @@ const CartContain = () => {
                         })
                     )
                 })
-                .catch((err) => {
-                    console.log(err.message)
-                })
-                .finally(() => setLoading(false))
-        }
+*/
 
-    }, [])
 
-    console.log(carrito)
+const CartContain = () => {
+
+    const { cartList, vaciarCarrito } = useCartContext()
+    console.log(cartList);
+    // console.log(carrito)
     return (
         <>
-            {
-                loading ? <Loading /> :
-                    (
-                        <section className='cartContainer'>
-                            <Link to='/' className='linkComprar'> <ion-icon name="arrow-back-outline"></ion-icon> seguir comprando</Link>
-                            <section className='containCarrito'>
-                                <h1>Mi carrito</h1>
-                                <section className='carrito'>
-                                    {
-                                        carrito.map(elemento => {
-                                            return (<section key={elemento.id} className="cartProducto">
-                                                <ItemCart element={elemento} />
-                                            </section>)
-                                        })
-                                    }
-                                </section>
-                            </section>
-                        </section>
-                    )
-            }
+            <section className='cartContainer'>
+                <Link to='/' className='linkComprar'> <ion-icon name="arrow-back-outline"></ion-icon> seguir comprando</Link>
+                <section className='containCarrito'>
+                    <h1>Mi carrito</h1>
+                    <button className='vaciar' onClick={vaciarCarrito}> vaciar Carrito </button>
+                    <section className='carrito'>
+                        { 
+                            cartList.map(elemento => {
+                                return (<section key={elemento.id} className="cartProducto">
+                                    <ItemCart element={elemento} />
+                                </section>)
+                            })
+                        }
+                    </section>
+                </section>
+            </section>
+
         </>
     )
 }
