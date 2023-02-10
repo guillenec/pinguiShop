@@ -32,7 +32,6 @@ const ItemListContainer = ({ greeting }) => {
         }
         else{
             // setLoading(true)
-            setLoading(true) 
             getProds()
             .then((response) => {
                 setProductos(response)  //actualiza el estado de los productos
@@ -44,12 +43,24 @@ const ItemListContainer = ({ greeting }) => {
         }
     }, [idCategoria]) //permitira que se re-renderisen los productos
 
-    //cuando lo llamo al empezar se muestra el array vacio ya que productos al inicio esta vacio
-    // console.log(idCategoria)
+/* Nota: 
+useEfect (( 
+    //se ejecuta cada que renderiza el componente
+    console.log(codigo a ejecutar)
+)=>{}) SIN PARAETRO == se ejecuta cada vez que renderiza el componente
 
-    // let saludo = "";
-    // (idCategoria) ? saludo = idCategoria : saludo = greeting; 
+useEfect (()=>{
+    //como minimo se ejecuta 1 vez, cuando se monta el componente, la primera vez que renderiza.
+    console.log (codigoEjecutar) 
+},[]) == se ejecurtara al menos una vez
 
+useEfect (()=>{
+    //como minimo se ejecuta 1 vez,cuando se monta el componente, la primera vez que renderiza y cuando se ejecuta la "funcionUno".
+
+    console.log(codigo a ejecutar)
+}[funcionUno]) 
+
+*/
     return (
         <>
             <section className="saludo">
