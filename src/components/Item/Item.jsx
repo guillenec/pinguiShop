@@ -5,10 +5,10 @@ const Item = ({element}) => {
     return (
         // <article key={id} className='card'>
             <div key={id} className="containerContenido">
-                <div className="cardImg">
+                <Link to={`/detalle/${id} `} className="cardImg">
                     <img src={img1} alt={nombre} />
                     <p>${precio}</p>
-                </div>
+                </Link>
                 <section className="cardDescripcion">
                     <h2 className="cardHeader">{nombre}
                     </h2>
@@ -18,7 +18,7 @@ const Item = ({element}) => {
                     <div>
                         <a ><ion-icon name="heart"></ion-icon></a>
                         <a ><ion-icon name="cart"></ion-icon></a>
-                        <Link to={`/detalle/${id} `}><ion-icon name="resize"></ion-icon></Link>
+                        <a ><ion-icon name="wallet"></ion-icon></a>
                     </div>
                 </section>
             </div>

@@ -63,7 +63,7 @@ export const getProds = () => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve(productos)
-        }, 3000);
+        }, 1000);
 
         if (productos.length === 0) {
             reject(new Error('cargando datos ...'))
@@ -75,7 +75,7 @@ export const getProducto = (ident) => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve(productos.find((el)=> el.id === ident))
-        }, 3000);
+        }, 1000);
 
         if (productos.length === 0) {
             reject(new Error('cargando datos ...'))

@@ -37,7 +37,7 @@ const CartContain = () => {
                 <Link to='/' className='linkComprar'> <ion-icon name="arrow-back-outline"></ion-icon> seguir comprando</Link>
                 <section className='containCarrito'>
                     <h1>Mi carrito</h1>
-                    <button className='vaciar' onClick={vaciarCarrito}> vaciar Carrito </button>
+                    <button className='vaciar' onClick={vaciarCarrito}><ion-icon name="trash"></ion-icon> vaciar </button>
                     <section className='carrito'>
                         { 
                             cartList.map(elemento => {

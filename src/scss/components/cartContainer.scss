@@ -11,7 +11,7 @@
 
     .linkComprar {
         font-family: $tituloGeneral;
-        color: $color7;
+        color: $color3;
         display: flex;
         flex-wrap: wrap;
         align-content: center;
@@ -34,6 +34,33 @@
             font-size: 2rem;
             text-transform: capitalize;
             color: $color5;
+        }
+
+        .vaciar {
+            width: 80px;
+            height: 35px;
+            background: $color6;
+            color: $color4;
+
+            border: none;
+            border-radius: 2px;
+            font-family: $tituloGeneral;
+            font-size: 1rem;
+            transition: .5s;
+            cursor: pointer;
+            text-transform: capitalize;
+            font-weight: 500;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            gap: 5px;
+
+            &:hover {
+                background: $color4;
+                color: $color6;
+            }
         }
 
         .carrito {
@@ -107,12 +134,13 @@
                         }
                     }
                 }
-                .formProds{
+
+                .formProds {
                     height: 100%;
                     width: 130px;
                     display: flex;
 
-                    .formCantidad{
+                    .formCantidad {
                         width: 250px;
                         height: auto;
                         padding: 0px;
@@ -121,7 +149,7 @@
                         text-transform: capitalize;
                         font-size: 1.2rem;
                         font-weight: 500;
-                        
+
                         display: flex;
                         flex-direction: row;
                         flex-wrap: wrap;
@@ -129,8 +157,8 @@
                         justify-content: center;
                         align-items: center;
                         align-content: center;
-            
-                        .labelCantidad{
+
+                        .labelCantidad {
                             width: auto;
                             height: 50%;
                             display: flex;
@@ -140,11 +168,12 @@
                             align-items: center;
                             gap: 10px;
                             outline: 0;
-            
-                            p{
+
+                            p {
                                 display: none;
                             }
-                            .botonesCantidad{
+
+                            .botonesCantidad {
                                 height: auto;
                                 width: auto;
                                 display: flex;
@@ -154,17 +183,19 @@
                                 justify-content: center;
                                 flex-wrap: nowrap;
                                 gap: 10px;
-            
-                                .restProd,.sumProd{
+
+                                .restProd,
+                                .sumProd {
                                     font-size: 1.5rem;
                                     transition: .5s;
-                                    &:hover{
+
+                                    &:hover {
                                         color: $color4;
                                     }
                                 }
                             }
-                            
-                            .inputCantidad{
+
+                            .inputCantidad {
                                 padding: 2px;
                                 background: $color1a;
                                 color: $color3;
@@ -173,20 +204,21 @@
                                 text-align: center;
                                 border-radius: 2px;
                                 cursor: pointer;
-            
+
                                 &::-webkit-inner-spin-button,
                                 &::-webkit-outer-spin-button {
-                                -webkit-appearance: none;
-                                margin: 0;
-                                    }
-            
+                                    -webkit-appearance: none;
+                                    margin: 0;
+                                }
+
                                 &:focus {
                                     outline: 0;
                                 }
-                                
-                            }                
+
+                            }
                         }
-                        button{
+
+                        button {
                             width: 80px;
                             height: 35px;
                             background: $color3;
@@ -199,8 +231,8 @@
                             text-transform: capitalize;
                             font-weight: 500;
                             color: $color1a;
-            
-                            &:hover{
+
+                            &:hover {
                                 background: $color4;
                                 color: $color6;
                             }
