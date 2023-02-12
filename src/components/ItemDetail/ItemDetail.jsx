@@ -31,7 +31,6 @@ const ItemDetail = ({ objeto }) => {
         console.log(nombre, cant);
 
         agregaAlCarrito( { ...objeto ,comprado:cant} )
-
         notify(cant, objeto.nombre);
         // agregarCarrito( {...objeto, cantidad:cant} );
         

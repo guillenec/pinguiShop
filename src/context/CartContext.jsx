@@ -1,4 +1,4 @@
-import { createContext, useState, useContext} from "react";
+import { createContext, useState, useContext } from "react";
 
 //Creamos el contexto
 export const CartContext = createContext([])
@@ -7,24 +7,62 @@ export const CartContext = createContext([])
 export const useCartContext = () => useContext(CartContext)
 
 //estados funciones globales
-export const CartContextProvider = ({children}) => {
-    const [ cartList, setCartList ] = useState([]); //productos carrito
+export const CartContextProvider = ({ children }) => {
+    const [cartList, setCartList] = useState([]); //productos carrito
+    const [contadorComprados, setContadorComprados] = useState(0);
 
+    console.log("arriba ",cartList)
     const agregaAlCarrito = (newProducto) => {
-        setCartList( [
-            ...cartList,
-            newProducto
-        ] );
+        //includes me da error
+
+        if(cartList.some(objeto => objeto.id === newProducto.id)){
+            // console.log("++ Entre a productos repetidos: ++ ");
+            setCartList(
+                cartList.map(producto => {
+                    if (producto.id === newProducto.id) {
+                        return {
+                            ...producto,
+                            id: newProducto.id,
+                            stock: producto.stock - producto.comprado - newProducto.comprado,
+                            precio: producto.precio + newProducto.precio,
+                            comprado: producto.comprado + newProducto.comprado
+                        }
+                    } else {
+                        return producto
+                    }
+                })
+            )
+        } else{
+            setCartList([
+                ...cartList,
+                newProducto
+            ])
+        }
+
+        // console.log("Sin Duplas: ",cartList)
+
     }
 
-    const vaciarCarrito = () => setCartList( [] );
+    const vaciarCarrito = () => setCartList([]);
 
-    return(
+    const contador = () => {
+        (cartList.length === 0) ? setContadorComprados(0)
+        : setContadorComprados(
+            cartList.reduce((sum, producto)=> {
+                return sum + producto.comprado;
+            }, 0)
+        )
+        // console.log(" + --- contador: ",contadorComprados)
+    }
+
+    return (
         //proveedor
         <CartContext.Provider value={{
             cartList,
             agregaAlCarrito,
-            vaciarCarrito
+            vaciarCarrito,
+            contador,
+            contadorComprados
         }}>
             {children}
         </CartContext.Provider>

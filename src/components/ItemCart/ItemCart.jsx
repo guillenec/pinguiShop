@@ -14,7 +14,7 @@ const ItemCart = ({ element }) => {
             <section className='formProds'>
             
             </section>
-            <section className='precio'><p>${precio*comprado}</p></section>
+            <section className='precio'><p>${precio}</p></section>
 
         </>
     )
@@ -24,4 +24,3 @@ export default ItemCart
 
 //rafce
 
-//1:38 
