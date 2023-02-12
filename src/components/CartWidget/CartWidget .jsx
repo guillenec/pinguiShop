@@ -1,5 +1,6 @@
 //render de un icono cart, e incluislo dentro de navBar
 
+import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCartContext } from "../../context/CartContext";
@@ -10,9 +11,12 @@ const CartWidget = () => {
     // const hanldeCount = () => {
     //     setCount(count + 1);
     // };
-    const { contador, contadorComprados } = useCartContext()
+    const { cartList, contador, contadorComprados } = useCartContext()
     
-    contador()
+    useEffect(()=>{
+        contador(cartList)
+    }, [cartList])
+
     // console.log(`cartWeidght contador`, contadorComprados)
 
     return (

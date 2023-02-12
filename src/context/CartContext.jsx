@@ -9,7 +9,7 @@ export const useCartContext = () => useContext(CartContext)
 //estados funciones globales
 export const CartContextProvider = ({ children }) => {
     const [cartList, setCartList] = useState([]); //productos carrito
-    const [contadorComprados, setContadorComprados] = useState(0);
+    const [contadorComprados, setContadorComprados] = useState();
 
     console.log("arriba ",cartList)
     const agregaAlCarrito = (newProducto) => {
@@ -45,10 +45,10 @@ export const CartContextProvider = ({ children }) => {
 
     const vaciarCarrito = () => setCartList([]);
 
-    const contador = () => {
-        (cartList.length === 0) ? setContadorComprados(0)
+    const contador = (arrayCart) => {
+        (arrayCart.length === 0) ? setContadorComprados(0)
         : setContadorComprados(
-            cartList.reduce((sum, producto)=> {
+            arrayCart.reduce((sum, producto)=> {
                 return sum + producto.comprado;
             }, 0)
         )
