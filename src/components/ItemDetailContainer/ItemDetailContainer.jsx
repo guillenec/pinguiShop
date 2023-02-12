@@ -15,7 +15,6 @@ const ItemDetailContainer = () => {
     const [estadoProds, setEstadoProductos ] = useState([])
     const [loading, setLoading] = useState(true)
 
-
     useEffect(() => {
 
         getProducto(Number(idProducto))
