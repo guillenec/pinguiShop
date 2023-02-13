@@ -38,13 +38,23 @@
                 }
             }
 
+            
+
             &.activado{
                 animation: beat .7s infinite alternate;
                 transform-origin: center;
-                ion-icon{
-                    color: rgb(255, 51, 51);
+                // ion-icon{
+                //     color: rgb(255, 51, 51);
+                // }
+                @each $name,
+                $color in $colors_buton {
+                    &.#{$name} {
+                        color: $color;
+                        border: solid 3px $color;
+                    }
                 }
             }
+
             @keyframes beat {
                 to { 
                     transform: scale(1.2);

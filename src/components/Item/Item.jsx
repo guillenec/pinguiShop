@@ -1,9 +1,37 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCartContext } from "../../context/CartContext";
+import Toggle from "../Toggle/Toggle";
 
 const Item = ({element}) => {
 
     const { agregaAlCarrito, cartList, contadorComprados } = useCartContext()
+
+    const [activaHeart, setActivaHeart] = useState('')
+    const [activaCart, setActivaCart] = useState('')
+    const [activaWallet, setActivaWallet] = useState('')
+
+
+    const handleActiveHeart = () => {
+        setActivaHeart('activado');
+        setTimeout(() => {
+            setActivaHeart('')
+        }, 5000);
+    }
+    const handleActiveCart = () => {
+        setActivaCart('activado');
+        setTimeout(() => {
+            setActivaCart('')
+        }, 5000);
+    }
+    const handleActiveWallet = () => {
+        setActivaWallet('activado');
+        setTimeout(() => {
+            setActivaWallet('')
+        }, 5000);
+    }
+
+    // const botoneraClassChecked = activaHeart ? 'activado' : '' ;
 
     const cant = 1;
 
@@ -41,9 +69,9 @@ const Item = ({element}) => {
                 </section>
                 <section className="botoneraCard">
                     <div>
-                        <a ><ion-icon name="heart"></ion-icon></a>
-                        <a onClick={onAdd}><ion-icon name="cart"></ion-icon></a>
-                        <a ><ion-icon name="wallet"></ion-icon></a>
+                        <a className={`heart ${activaCart}`} onClick={handleActiveCart}><ion-icon name="heart"></ion-icon></a>
+                        <a className={`cart ${activaHeart}`} onClick={onAdd && handleActiveHeart}><ion-icon name="cart"></ion-icon></a>
+                        <a className={`wallet ${activaWallet}`} onClick={handleActiveWallet}><ion-icon name="wallet"></ion-icon></a>
                     </div>
                 </section>
             </div>      
