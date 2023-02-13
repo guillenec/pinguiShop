@@ -11,7 +11,7 @@ export const CartContextProvider = ({ children }) => {
     const [cartList, setCartList] = useState([]); //productos carrito
     const [contadorComprados, setContadorComprados] = useState();
 
-    console.log("arriba ",cartList)
+    // console.log("arriba ",cartList)
     const agregaAlCarrito = (newProducto) => {
         //includes me da error
 
@@ -23,9 +23,9 @@ export const CartContextProvider = ({ children }) => {
                         return {
                             ...producto,
                             id: newProducto.id,
-                            stock: producto.stock - producto.comprado - newProducto.comprado,
-                            precio: producto.precio + newProducto.precio,
-                            comprado: producto.comprado + newProducto.comprado
+                            stock: producto.stock -= newProducto.comprado,
+                            precio: producto.precio += newProducto.precio,
+                            comprado: producto.comprado += newProducto.comprado
                         }
                     } else {
                         return producto
@@ -35,7 +35,10 @@ export const CartContextProvider = ({ children }) => {
         } else{
             setCartList([
                 ...cartList,
-                newProducto
+                { ...newProducto,
+                    stock: newProducto.stock - newProducto.comprado,
+                    precio: newProducto.precio * newProducto.comprado
+                }
             ])
         }
 

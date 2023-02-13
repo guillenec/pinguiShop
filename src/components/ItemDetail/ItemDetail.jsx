@@ -11,13 +11,20 @@ import { useCartContext } from "../../context/CartContext";
 
 const ItemDetail = ({ objeto }) => {
 
-    const { id: ident, nombre: nombre, descripcion: describe, stock: stock, precio: precio, descuento: descuento, genero: genero, tipo: tipo, imagenA: img1, imagenB: img2, imagenC: img3, imagenD: img4, clave1: cl1, clave2: cl2, clave3: cl3 } = objeto;
+    // const { id: ident, nombre: nombre, descripcion: describe, stock: stock, precio: precio, descuento: descuento, genero: genero, tipo: tipo, imagenA: img1, imagenB: img2, imagenC: img3, imagenD: img4, clave1: cl1, clave2: cl2, clave3: cl3 } = objeto;
 
     const { agregaAlCarrito, cartList } = useCartContext()
 
+    if (cartList.some(elem => elem.id === objeto.id && elem.nombre === objeto.nombre)) {
+        console.log("----  este id se repite ----")
+        const objeto2 = cartList.find(elem => elem.id === objeto.id )
+        console.log(objeto2)
+        objeto = objeto2
+    } 
+
     const notify = (numer, name) => toast.success(`🥰🥰 compraste ${numer} ${name}`, {
         position: "bottom-right",
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -28,9 +35,12 @@ const ItemDetail = ({ objeto }) => {
 
     const onAdd = (objeto, cant) => {
         console.log(objeto);
-        console.log(nombre, cant);
+        console.log(objeto.nombre, cant);
 
-        agregaAlCarrito( { ...objeto ,comprado:cant} )
+        agregaAlCarrito(
+            { ...objeto ,
+                comprado:cant, 
+            } )
         notify(cant, objeto.nombre);
         // agregarCarrito( {...objeto, cantidad:cant} );
         
@@ -40,27 +50,26 @@ const ItemDetail = ({ objeto }) => {
     const { agregaAlCarrito, cartList} = useContext(CartContext)
     console.log("cartList ===>",cartList)
      */
-    console.log("cartList ===>",cartList)
-
+    // console.log("cartList ===>",cartList)
 
     return (
         <>
             <section className="itemDetailContain">
-                <ImgDetalle img1={img1} img2={img2} img3={img3} describe={describe} />
+                <ImgDetalle img1={objeto.imagenA} img2={objeto.imagenB} img3={objeto.imagenC} describe={objeto.descripcion} />
 
                 <section className="detalle">
-                    <h2 className="nombre">#{ident} {nombre}</h2>
-                    <p className="descripcion">{describe}</p>
-                    <h2 className="precio">${precio}</h2>
-                    <p className="categoria"><strong>Disponibles: </strong>{stock}</p>
+                    <h2 className="nombre">#{objeto.id} {objeto.nombre}</h2>
+                    <p className="descripcion">{objeto.descripcion}</p>
+                    <h2 className="precio">${objeto.precio}</h2>
+                    <p className="categoria"><strong>Disponibles: </strong>{objeto.stock}</p>
                     <p className="categoria"><strong>Categorias:</strong></p>
 
                     <CategoriaDetalle objeto={objeto} />
-                    <ItemCount producto={objeto} inicial={0} stock={stock} nombre={nombre} onAdd={onAdd} />
+                    <ItemCount producto={objeto} inicial={0} stock={objeto.stock} nombre={objeto.nombre} onAdd={onAdd} />
 
                     <ToastContainer
                         position="bottom-right"
-                        autoClose={5000}
+                        autoClose={3000}
                         hideProgressBar={false}
                         newestOnTop={false}
                         closeOnClick

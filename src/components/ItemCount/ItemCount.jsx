@@ -31,14 +31,14 @@ const ItemCount = ({ producto, inicial, stock, nombre, onAdd }) => {
   const handleOnaAdd = (e) => { //
     e.preventDefault();
     e.stopPropagation();
-    onAdd(producto, cantidadProd, nombre)
+    onAdd(producto, cantidadProd)
 
     // // console.log(cantidadProd) //despues puedo remplazarlo
     // notify(cantidadProd, nombre);
 
     setTimeout(() => {
       handleInter();
-    }, 5000);
+    }, 2000);
     // return cantidadProd.cantidad
   }
 
