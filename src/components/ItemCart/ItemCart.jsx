@@ -1,7 +1,7 @@
 import React from 'react'
 
 const ItemCart = ({ element }) => {
-    const {id:id, nombre:nombre, precio:precio, comprado:comprado, stock:stock, descripcion:describe, imagenA:img1} = element;
+    const {id:id, nombre:nombre, precio:precio, comprado:comprado, stock:stock, descripcion:describe, imagenA:img1, precioTotal:precioTotal} = element;
 
     return (
         <>
@@ -14,7 +14,7 @@ const ItemCart = ({ element }) => {
             <section className='formProds'>
             
             </section>
-            <section className='precio'><p>${precio}</p></section>
+            <section className='precio'><p>${precioTotal}</p></section>
 
         </>
     )

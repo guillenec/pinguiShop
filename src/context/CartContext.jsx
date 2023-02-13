@@ -24,8 +24,8 @@ export const CartContextProvider = ({ children }) => {
                             ...producto,
                             id: newProducto.id,
                             stock: producto.stock -= newProducto.comprado,
-                            precio: producto.precio += newProducto.precio,
-                            comprado: producto.comprado += newProducto.comprado
+                            comprado: producto.comprado += newProducto.comprado,
+                            precioTotal: producto.comprado * producto.precio   
                         }
                     } else {
                         return producto
@@ -37,7 +37,7 @@ export const CartContextProvider = ({ children }) => {
                 ...cartList,
                 { ...newProducto,
                     stock: newProducto.stock - newProducto.comprado,
-                    precio: newProducto.precio * newProducto.comprado
+                    precioTotal: newProducto.precio * newProducto.comprado
                 }
             ])
         }

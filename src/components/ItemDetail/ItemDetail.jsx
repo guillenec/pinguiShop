@@ -8,6 +8,7 @@ import ImgDetalle from "./ImgDetalle/ImgDetalle";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useCartContext } from "../../context/CartContext";
+import { useEffect } from "react";
 
 const ItemDetail = ({ objeto }) => {
 
@@ -33,13 +34,14 @@ const ItemDetail = ({ objeto }) => {
         theme: "light",
     });
 
-    const onAdd = (objeto, cant) => {
+    const onAdd = (objeto, cant, precioTotal) => {
         console.log(objeto);
-        console.log(objeto.nombre, cant);
+        console.log(objeto.nombre, cant, precioTotal);
 
         agregaAlCarrito(
             { ...objeto ,
-                comprado:cant, 
+                comprado:cant,
+                precioTotal:precioTotal*cant 
             } )
         notify(cant, objeto.nombre);
         // agregarCarrito( {...objeto, cantidad:cant} );
@@ -61,6 +63,7 @@ const ItemDetail = ({ objeto }) => {
                     <h2 className="nombre">#{objeto.id} {objeto.nombre}</h2>
                     <p className="descripcion">{objeto.descripcion}</p>
                     <h2 className="precio">${objeto.precio}</h2>
+                    <h3 className="precioTotal">{objeto.precioTotal}</h3>
                     <p className="categoria"><strong>Disponibles: </strong>{objeto.stock}</p>
                     <p className="categoria"><strong>Categorias:</strong></p>
 

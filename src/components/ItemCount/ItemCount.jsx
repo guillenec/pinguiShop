@@ -31,7 +31,7 @@ const ItemCount = ({ producto, inicial, stock, nombre, onAdd }) => {
   const handleOnaAdd = (e) => { //
     e.preventDefault();
     e.stopPropagation();
-    onAdd(producto, cantidadProd)
+    onAdd(producto, cantidadProd, producto.precio)
 
     // // console.log(cantidadProd) //despues puedo remplazarlo
     // notify(cantidadProd, nombre);
