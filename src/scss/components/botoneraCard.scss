@@ -50,7 +50,10 @@
                 $color in $colors_buton {
                     &.#{$name} {
                         color: $color;
-                        border: solid 3px $color;
+
+                        ion-icon{
+                            color:$color;
+                        }
                     }
                 }
             }
