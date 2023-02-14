@@ -1,5 +1,7 @@
+import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { useCartContext } from "../../context/CartContext";
 import Toggle from "../Toggle/Toggle";
 
@@ -11,43 +13,72 @@ const Item = ({element}) => {
     const [activaCart, setActivaCart] = useState('')
     const [activaWallet, setActivaWallet] = useState('')
 
+    if (cartList.some(elem => (elem.id === element.id && elem.nombre === element.nombre) )) {
+        // console.log("----  este id se repite ----")
+        const objeto2 = cartList.find(elem => elem.id === element.id )
+        // console.log(objeto2)
+        element = objeto2
+    } 
 
     const handleActiveHeart = () => {
         setActivaHeart('activado');
         setTimeout(() => {
             setActivaHeart('')
-        }, 5000);
+        }, 3000);
     }
-    const handleActiveCart = () => {
-        setActivaCart('activado');
+    const handleActiveCart = (val) => {
+        (val === true) ?
+        (setActivaCart('activado'),
         setTimeout(() => {
             setActivaCart('')
-        }, 5000);
+        }, 3000)
+        )
+        : setActivaCart('sinStock')
     }
     const handleActiveWallet = () => {
         setActivaWallet('activado');
         setTimeout(() => {
             setActivaWallet('')
-        }, 5000);
+        }, 3000);
     }
 
-    // const botoneraClassChecked = activaHeart ? 'activado' : '' ;
+    const notify = (numer, name) => toast.success(`🥰🥰 compraste ${numer} ${name}`, {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+    });
 
-    const cant = 1;
+    const errToast = () => toast.error(`😡😡 no hay stock`, {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+    })
+    // const botoneraClassChecked = activaHeart ? 'activado' : '' ;
 
     const onAdd = (e) => {
         e.preventDefault();
-        console.log(contadorComprados)
-        console.log(element.stock)
+        console.log(element.stock, element.comprado)
+            if(element.stock <= element.comprado){
+                handleActiveCart(false)
+                errToast()
+            }
+            else {
+                handleActiveCart(true)
+                agregaAlCarrito(
+                    { ...element ,
+                        comprado:1, 
+                        precioTotal: element.precio * 1
+                    } ) 
+                notify(1,element.nombre)
+            }
+            // handleActiveCart(false)
+            // console.log("fin")
 
-        if ( contadorComprados < element.stock) {
-            console.log("entre")
-            agregaAlCarrito(
-                { ...element ,
-                    comprado:cant, 
-                    precioTotal: element.precio * cant
-                } )   
-        }
         // agregarCarrito( {...objeto, cantidad:cant} );
     }
 
@@ -69,8 +100,8 @@ const Item = ({element}) => {
                 </section>
                 <section className="botoneraCard">
                     <div>
-                        <a className={`heart ${activaCart}`} onClick={handleActiveCart}><ion-icon name="heart"></ion-icon></a>
-                        <a className={`cart ${activaHeart}`} onClick={onAdd && handleActiveHeart}><ion-icon name="cart"></ion-icon></a>
+                        <a className={`heart ${activaHeart}`} onClick={handleActiveHeart}><ion-icon name="heart"></ion-icon></a>
+                        <a className={`cart ${activaCart}`} onClick={onAdd}><ion-icon name="cart"></ion-icon></a>
                         <a className={`wallet ${activaWallet}`} onClick={handleActiveWallet}><ion-icon name="wallet"></ion-icon></a>
                     </div>
                 </section>

@@ -5,8 +5,7 @@ import ItemCount from "../ItemCount/ItemCount";
 import CategoriaDetalle from "./CategoriaDetalle/CategoriaDetalle";
 import ImgDetalle from "./ImgDetalle/ImgDetalle";
 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 import { useCartContext } from "../../context/CartContext";
 import { useEffect } from "react";
 
@@ -33,17 +32,29 @@ const ItemDetail = ({ objeto }) => {
         progress: undefined,
         theme: "light",
     });
+    const errToast = () => toast.error(`😡😡 no hay stock`, {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+    })
 
     const onAdd = (objeto, cant, precioTotal) => {
+        
         console.log(objeto);
         console.log(objeto.nombre, cant, precioTotal);
+        console.log(objeto.stock, objeto.comprado)
 
-        agregaAlCarrito(
-            { ...objeto ,
-                comprado:cant,
-                precioTotal:precioTotal*cant 
-            } )
-        notify(cant, objeto.nombre);
+        if(objeto.stock <= objeto.comprado){
+            errToast()
+        } else {
+            agregaAlCarrito(
+                { ...objeto ,
+                    comprado:cant,
+                    precioTotal:precioTotal*cant 
+                } )
+            notify(cant, objeto.nombre);
+        }
+        
         // agregarCarrito( {...objeto, cantidad:cant} );
         
     }
@@ -64,23 +75,13 @@ const ItemDetail = ({ objeto }) => {
                     <p className="descripcion">{objeto.descripcion}</p>
                     <h2 className="precio">${objeto.precio}</h2>
                     <h3 className="precioTotal">{objeto.precioTotal}</h3>
-                    <p className="categoria"><strong>Disponibles: </strong>{objeto.stock}</p>
+                    <p className="categoria"><strong>Disponibles: </strong>{ objeto.comprado ? (objeto.stock - objeto.comprado) : objeto.stock}</p>
                     <p className="categoria"><strong>Categorias:</strong></p>
 
                     <CategoriaDetalle objeto={objeto} />
-                    <ItemCount producto={objeto} inicial={0} stock={objeto.stock} nombre={objeto.nombre} onAdd={onAdd} />
+                    <ItemCount producto={objeto} inicial={0} stock={ objeto.comprado ? (objeto.stock - objeto.comprado) : objeto.stock} nombre={objeto.nombre} onAdd={onAdd} />
 
-                    <ToastContainer
-                        position="bottom-right"
-                        autoClose={3000}
-                        hideProgressBar={false}
-                        newestOnTop={false}
-                        closeOnClick
-                        rtl={false}
-                        pauseOnFocusLoss
-                        draggable
-                        pauseOnHover
-                        theme="light"/>
+                    
                 </section>
 
             </section>

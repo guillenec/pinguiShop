@@ -16,6 +16,9 @@ import CartContain from './components/CartContainer/CartContain';
 import { createContext } from 'react';
 import { CartContextProvider } from './context/CartContext';
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 // creando constante
 //
 
@@ -48,6 +51,17 @@ function App() {
           </main>
           <footer className="footer"></footer>
         </div>
+        <ToastContainer
+          position="bottom-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light" />
       </CartContextProvider>
     </BrowserRouter>
 

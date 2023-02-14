@@ -23,7 +23,6 @@ export const CartContextProvider = ({ children }) => {
                         return {
                             ...producto,
                             id: newProducto.id,
-                            stock: producto.stock -= newProducto.comprado,
                             comprado: producto.comprado += newProducto.comprado,
                             precioTotal: producto.comprado * producto.precio   
                         }
@@ -36,7 +35,6 @@ export const CartContextProvider = ({ children }) => {
             setCartList([
                 ...cartList,
                 { ...newProducto,
-                    stock: newProducto.stock - newProducto.comprado,
                     precioTotal: newProducto.precio * newProducto.comprado
                 }
             ])
