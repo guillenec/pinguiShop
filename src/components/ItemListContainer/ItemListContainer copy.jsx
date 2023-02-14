@@ -10,7 +10,7 @@ import { collection, getDoc, getDocs, getFirestore, query, where } from 'firebas
 const ItemListContainer = ({ greeting }) => {
         //valor del estado  //forma de actualizar el estado
     const [productos, setProductos] = useState([]) //estado inicial array vacio
-    // const [productos2, setProductos2 ] = useState([])
+    const [productos2, setProductos2 ] = useState([])
     let [loading, setLoading] = useState(true) //"" "" true
     const { idCategoria } = useParams()
     // const fetchMercado = async () => {
@@ -20,30 +20,30 @@ const ItemListContainer = ({ greeting }) => {
     // }
     // fetchMercado()
 
-    // useEffect(() => { //hook
-    //     if (idCategoria) {
-    //         setLoading(true)  //esto nose si esta bien 
-    //         getProds()
-    //         .then((response) => {
-    //             setProductos(response.filter(producto => producto.tipo === idCategoria || producto.nombre === idCategoria || producto.genero === idCategoria || producto.clave1 === idCategoria || producto.clave2 === idCategoria || producto.clave3 === idCategoria))  //actualiza el estado de los productos
-    //         })
-    //         .catch((err) => {
-    //             console.log(err.message)
-    //         })
-    //         .finally(() => setLoading(false)) //se ejecuta siempre al final, actualiza el state de loading
-    //     }
-    //     else{
-    //         // setLoading(true)
-    //         getProds()
-    //         .then((response) => {
-    //             setProductos(response)  //actualiza el estado de los productos
-    //         })
-    //         .catch((err) => {
-    //             console.log(err.message)
-    //         })
-    //         .finally(() => setLoading(false)) //se ejecuta siempre al final, actualiza el state de loading
-    //     }
-    // }, [idCategoria]) //permitira que se re-renderisen los productos
+    useEffect(() => { //hook
+        if (idCategoria) {
+            setLoading(true)  //esto nose si esta bien 
+            getProds()
+            .then((response) => {
+                setProductos(response.filter(producto => producto.tipo === idCategoria || producto.nombre === idCategoria || producto.genero === idCategoria || producto.clave1 === idCategoria || producto.clave2 === idCategoria || producto.clave3 === idCategoria))  //actualiza el estado de los productos
+            })
+            .catch((err) => {
+                console.log(err.message)
+            })
+            .finally(() => setLoading(false)) //se ejecuta siempre al final, actualiza el state de loading
+        }
+        else{
+            // setLoading(true)
+            getProds()
+            .then((response) => {
+                setProductos(response)  //actualiza el estado de los productos
+            })
+            .catch((err) => {
+                console.log(err.message)
+            })
+            .finally(() => setLoading(false)) //se ejecuta siempre al final, actualiza el state de loading
+        }
+    }, [idCategoria]) //permitira que se re-renderisen los productos
 
 //trae un prod
 // useEffect(()=>{
@@ -59,7 +59,7 @@ useEffect(()=>{
     // const queryFilter = query(queryCollections, where('precio','>',2500))
     
     getDocs(queryCollections)
-    .then(response => setProductos( response.docs.map(product => ({id: product.id, ...product.data()}) ) ) )
+    .then(response => setProductos2( response.docs.map(product => ({id: product.id, ...product.data()}) ) ) )
     .catch((err) => {
         console.log(err.message)
     })
