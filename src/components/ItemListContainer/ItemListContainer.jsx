@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useFetcher, useParams } from "react-router-dom";
 import { getProds } from "../../gFetch";
 import ItemList from "../ItemList/ItemList";
 import Loading from "../Loading/Loading";
+import { collection, getDoc, getDocs, getFirestore, query, where } from 'firebase/firestore';
 
 // componente contenedor
 const ItemListContainer = ({ greeting }) => {
         //valor del estado  //forma de actualizar el estado
     const [productos, setProductos] = useState([]) //estado inicial array vacio
+    const [productos2, setProductos2 ] = useState([])
     let [loading, setLoading] = useState(true) //"" "" true
     const { idCategoria } = useParams()
     // const fetchMercado = async () => {
@@ -42,6 +44,27 @@ const ItemListContainer = ({ greeting }) => {
             .finally(() => setLoading(false)) //se ejecuta siempre al final, actualiza el state de loading
         }
     }, [idCategoria]) //permitira que se re-renderisen los productos
+
+//trae un prod
+// useEffect(()=>{
+//     const db = getFirestore()
+//     const query = doc(db, 'productos','KNdvp4swRaIVcucAzfvT')
+//     getDoc(query)
+//     .then(resp => setProducto({id: resp.id, ...resp.data()}))
+// }, [])
+
+useEffect(()=>{
+    const db = getFirestore();
+    const queryCollections = collection(db, 'productos');
+    // const queryFilter = query(queryCollections, where('precio','>',2500))
+    
+    getDocs(queryCollections)
+    .then(response => setProductos2( response.docs.map(product => ({id: product.id, ...product.data()}) ) ) )
+    .catch((err) => {
+        console.log(err.message)
+    })
+    .finally(() => setLoading(false)) 
+},[])
 
 /* Nota: 
 useEfect (( 
