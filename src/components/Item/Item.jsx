@@ -89,7 +89,7 @@ const Item = ({element}) => {
         // <article key={id} className='card'>
         <>
             <div className="containerContenido">
-                <Link to={`/detalle/${id} `} className="cardImg">
+                <Link to={`/detalle/${element.id} `} className="cardImg">
                     <img src={img1} alt={nombre} />
                     <p>${precio}</p>
                 </Link>

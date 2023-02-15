@@ -1,6 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { collection, doc, setDoc } from "firebase/firestore";
+import { getProds } from '../../gFetch';
 
 const FormPushProduct = () => {
+    const productosRef = db.collection('productos');
+
+    const [productos, setProductos] = useState([]) //estado inicial array vacio
+
+
+    useEffect(() => { //hook
+
+        getProds()
+            .then((response) => {
+                setProductos(response)  //actualiza el estado de los productos
+            })
+            .catch((err) => {
+                console.log(err.message)
+            })
+            .finally(() => setLoading(false)) //se ejecuta siempre al final, actualiza el state de loading
+
+    }, [])
+
+    // await productosRef.doc().set({
+    //     nombre: objeto.nombre, descripcion: objeto.descripcion, stock: objeto.stock, precio: objeto.precio, descuento: objeto.precio, genero: objeto.genero, tipo: objeto.tipo, imagenA: objeto.imagenA, imagenB: objeto.imagenB, imagenC: objeto.imagenC, imagenD: objeto.imagenD, clave1: objeto.clave1, clave2: objeto.clave2, clave3: objeto.clave3
+    // })
+
+
     return (
         <div className='containFormPush'>
             <h1>subir Producto</h1>
@@ -9,14 +34,14 @@ const FormPushProduct = () => {
                 <label className='titulo' htmlFor="nombre"><p>Nombre</p>
                     <input type="text" name='nombre' id='nombre' placeholder='nombre' />
                 </label>
-                <label className='textarea' htmlFor="descripcion"><p>descripcion</p> 
+                <label className='textarea' htmlFor="descripcion"><p>descripcion</p>
                     <textarea name="descripcion" id="descripcion" placeholder='descripcion'></textarea>
                 </label>
                 <label className='tipoNumber' htmlFor="stock"><p>stock</p>
-                    <input type="number" name='stock' id='stock' placeholder='stock' min={0}/>
+                    <input type="number" name='stock' id='stock' placeholder='stock' min={0} />
                 </label>
                 <label className='tipoNumber' htmlFor="precio"><p>precio</p>
-                    <input type="number" name='precio' id='precio' placeholder='precio' min={0}/>
+                    <input type="number" name='precio' id='precio' placeholder='precio' min={0} />
                 </label>
                 <label className='tipoNumber' htmlFor="descuento"><p>descuento</p>
                     <input type="number" name='descuento' id='descuento' placeholder='descuento' min={0} />

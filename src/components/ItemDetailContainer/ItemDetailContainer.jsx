@@ -5,25 +5,42 @@ import { getProds, getProducto } from "../../gFetch"
 import Item from "../Item/Item"
 import ItemDetail from "../ItemDetail/ItemDetail"
 import Loading from "../Loading/Loading"
+import { collection, doc, getDoc, getDocs, getFirestore, query, where } from 'firebase/firestore';
 
 const ItemDetailContainer = () => {
-    const {idProducto} = useParams();
+    const { idProducto } = useParams();
     // console.log(idProducto)
-    const [estadoProds, setEstadoProductos ] = useState([])
+    const [estadoProds, setEstadoProductos] = useState([])
     const [loading, setLoading] = useState(true)
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        getProducto(Number(idProducto))
-        .then((response)=> {
-            // console.log(response)
-            setEstadoProductos(response) //guardamos el estado 
-        })
-        .catch((err) => {
-            console.log(err.message)
-        })
-        .finally(() => setLoading(false))
-    }, [])
+    //     getProducto(Number(idProducto))
+    //     .then((response)=> {
+    //         // console.log(response)
+    //         setEstadoProductos(response) //guardamos el estado 
+    //     })
+    //     .catch((err) => {
+    //         console.log(err.message)
+    //     })
+    //     .finally(() => setLoading(false))
+    // }, [])
+
+    console.log("++++++ ESTE ESEL ID: ", idProducto)
+    useEffect(() => { //hook
+
+        const db = getFirestore()
+        const query = doc(db, 'productos', idProducto)
+        getDoc(query)
+            .then(response => setEstadoProductos({ id: response.id, ...response.data() }))
+            .catch((err) => {
+                console.log(err.message)
+            })
+            .finally(() => setLoading(false))
+
+
+    }, []) //permitira que se re-renderisen los productos
+    console.log(estadoProds)
 
     return (
         <>
