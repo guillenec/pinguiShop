@@ -18,6 +18,7 @@ import { CartContextProvider } from './context/CartContext';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import FormPushProduct from './components/FormPushProduct/FormPushProduct';
 
 // creando constante
 //
@@ -45,7 +46,10 @@ function App() {
               <Route path='/detalle/:idProducto' element={<ItemDetailContainer />} />
               <Route path='/cart' element={<CartContain />} />
 
+              <Route path='/formProduct' element={<FormPushProduct />} />
+
               <Route path='*' element={<Navigate to='/'></Navigate>} />
+              
             </Routes>
 
           </main>
