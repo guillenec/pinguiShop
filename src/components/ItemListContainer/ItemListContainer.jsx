@@ -50,7 +50,7 @@ const ItemListContainer = ({ greeting }) => {
         if (idCategoria) {
             const db = getFirestore()
             const queryColection = collection(db, 'productos')
-            const queryFiltrado = query(queryColection, where('tipo', '==', idCategoria || 'nombre', '==', idCategoria || 'genero', '==', idCategoria || 'clave1', '==', idCategoria || 'clave2', '==', idCategoria || 'clave3', '==', idCategoria))
+            const queryFiltrado = query(queryColection, where('tipo', '==', idCategoria))
 
             getDocs(queryFiltrado)
                 .then(response => setProductos(response.docs.map(element => (

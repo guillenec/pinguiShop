@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 
 const CategoriaDetalle = ({objeto}) => {
+    console.log("Entraste A DETALLE",objeto)
+    
     const { nombre: nombre, genero: genero, tipo: tipo, clave1: cl1, clave2: cl2, clave3: cl3 } = objeto;
     return (
         <>
