@@ -25,10 +25,16 @@ const FormPushProduct = () => {
     //     nombre: objeto.nombre, descripcion: objeto.descripcion, stock: objeto.stock, precio: objeto.precio, descuento: objeto.precio, genero: objeto.genero, tipo: objeto.tipo, imagenA: objeto.imagenA, imagenB: objeto.imagenB, imagenC: objeto.imagenC, imagenD: objeto.imagenD, clave1: objeto.clave1, clave2: objeto.clave2, clave3: objeto.clave3
     // })
 
+    console.log("Estos son todos los productos: ",productos)
+
+    const cargaDeDatos = () => {
+        console.log("cargando datos")
+    }
 
     return (
         <div className='containFormPush'>
             <h1>subir Producto</h1>
+            <button className='vaciar' onClick={cargaDeDatos}><ion-icon name="card-outline"></ion-icon> comprar </button>
 
             <form action="">
                 <label className='titulo' htmlFor="nombre"><p>Nombre</p>

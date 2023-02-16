@@ -1,3 +1,4 @@
+import { addDoc, collection, getFirestore } from 'firebase/firestore'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useCartContext } from '../../context/CartContext'
@@ -26,10 +27,32 @@ getProds()
 */
 
 
+
 const CartContain = () => {
 
     const { cartList, vaciarCarrito } = useCartContext()
     console.log(cartList);
+
+    
+
+    const comprar = () => {
+        const userCompra = {nombre:'pepito gammer', telefono:'2944396888', email:'pepitogamer@gmail.com'}
+
+        const cartReal = {
+            buyer: { nombre:userCompra.nombre, telefono:userCompra.telefono, email:userCompra.email }, 
+            items: cartList.map((elem => ({id:elem.id, titulo:elem.nombre, precio:elem.precioTotal }) )),
+            total: cartList.reduce((acumulador, element) => acumulador + element.precioTotal, 0)
+        }
+        
+
+        const db = getFirestore()
+        const ordenColeccion = collection(db, 'ordenesDeCompra')
+
+        addDoc(ordenColeccion, cartReal)
+        .then(resp => console.log(resp))
+
+        console.log("++ -- Carrito +Usuario: ",cartReal)
+    }
     // console.log(carrito)
     return (
         <>
@@ -38,6 +61,8 @@ const CartContain = () => {
                 <section className='containCarrito'>
                     <h1>Mi carrito</h1>
                     <button className='vaciar' onClick={vaciarCarrito}><ion-icon name="trash"></ion-icon> vaciar </button>
+                    <button className='vaciar' onClick={comprar}><ion-icon name="card-outline"></ion-icon> comprar </button>
+
                     <section className='carrito'>
                         { 
                             cartList.map(elemento => {
