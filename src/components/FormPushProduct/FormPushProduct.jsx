@@ -9,9 +9,12 @@ const FormPushProduct = () => {
 
         getProds()
             .then((response) => {
-                const sinId = response.map(({id, ...sinId}) => sinId)
-                
-                setProductos(sinId)  //actualiza el estado de los productos
+                const respuestaSinId = response.map(({id,...element}) => {
+                    const nuevoElemento = {claves:[element.clave1, element.clave2, element.clave3,element.nombre,element.tipo, element.genero],...element }
+                    return nuevoElemento
+                })
+                console.log(respuestaSinId)
+                setProductos(respuestaSinId)  //actualiza el estado de los productos
             })
             .catch((err) => {
                 console.log(err.message)
@@ -26,25 +29,111 @@ const FormPushProduct = () => {
 
         productos.forEach(element => {
             addDoc(coleccion, element)
-            .then(response => console.log(`prod Subido numero ${element.id}`, response))
-            .catch((err) => {
-                console.log(err.message)
-            })
-            .finally(() => console.log(`Fin subida prod: #${element.id} ${element.nombre}`))
+                .then(response => console.log(`prod Subido numero ${element.id}`, response))
+                .catch((err) => {
+                    console.log(err.message)
+                })
+                .finally(() => console.log(`Fin subida prod: #${element.id} ${element.nombre}`))
         });
 
+    }
+
+    async function handleCargaCities() {
+        const db = getFirestore()
+        const citiesRef = collection(db, "ciudades");
+
+        await setDoc(doc(citiesRef, "SF"), {
+            name: "San Francisco", state: "CA", country: "USA",
+            capital: false, population: 860000,
+            regions: ["west_coast", "norcal"]
+        });
+        await setDoc(doc(citiesRef, "LA"), {
+            name: "Los Angeles", state: "CA", country: "USA",
+            capital: false, population: 3900000,
+            regions: ["west_coast", "socal"]
+        });
+        await setDoc(doc(citiesRef, "DC"), {
+            name: "Washington, D.C.", state: null, country: "USA",
+            capital: true, population: 680000,
+            regions: ["east_coast"]
+        });
+        await setDoc(doc(citiesRef, "TOK"), {
+            name: "Tokyo", state: null, country: "Japan",
+            capital: true, population: 9000000,
+            regions: ["kanto", "honshu"]
+        });
+        await setDoc(doc(citiesRef, "BJ"), {
+            name: "Beijing", state: null, country: "China",
+            capital: true, population: 21500000,
+            regions: ["jingjinji", "hebei"]
+        });
+    }
+
+    async function handleCargaCities2() {
+        const db = getFirestore()
+        const citiesRef = collection(db, "ciudades2");
+
+        await Promise.all([
+            addDoc(collection(citiesRef, 'SF', 'landmarks'), {
+                name: 'Golden Gate Bridge',
+                type: 'bridge'
+            }),
+            addDoc(collection(citiesRef, 'SF', 'landmarks'), {
+                name: 'Legion of Honor',
+                type: 'museum'
+            }),
+            addDoc(collection(citiesRef, 'LA', 'landmarks'), {
+                name: 'Griffith Park',
+                type: 'park'
+            }),
+            addDoc(collection(citiesRef, 'LA', 'landmarks'), {
+                name: 'The Getty',
+                type: 'museum'
+            }),
+            addDoc(collection(citiesRef, 'DC', 'landmarks'), {
+                name: 'Lincoln Memorial',
+                type: 'memorial'
+            }),
+            addDoc(collection(citiesRef, 'DC', 'landmarks'), {
+                name: 'National Air and Space Museum',
+                type: 'museum'
+            }),
+            addDoc(collection(citiesRef, 'TOK', 'landmarks'), {
+                name: 'Ueno Park',
+                type: 'park'
+            }),
+            addDoc(collection(citiesRef, 'TOK', 'landmarks'), {
+                name: 'National Museum of Nature and Science',
+                type: 'museum'
+            }),
+            addDoc(collection(citiesRef, 'BJ', 'landmarks'), {
+                name: 'Jingshan Park',
+                type: 'park'
+            }),
+            addDoc(collection(citiesRef, 'BJ', 'landmarks'), {
+                name: 'Beijing Ancient Observatory',
+                type: 'museum'
+            })
+        ]);
     }
 
     // await productosRef.doc().set({
     //     nombre: objeto.nombre, descripcion: objeto.descripcion, stock: objeto.stock, precio: objeto.precio, descuento: objeto.precio, genero: objeto.genero, tipo: objeto.tipo, imagenA: objeto.imagenA, imagenB: objeto.imagenB, imagenC: objeto.imagenC, imagenD: objeto.imagenD, clave1: objeto.clave1, clave2: objeto.clave2, clave3: objeto.clave3
     // })
 
-    console.log("Estos son todos los productos: ",productos)
+    console.log("Estos son todos los productos: ", productos)
 
     return (
         <div className='containFormPush'>
             <h1>subir Producto</h1>
             <button className='subirProds' onClick={cargaDeDatos}><ion-icon name="card-outline"></ion-icon> subir productos </button>
+            
+            <br></br>
+            <button className='subirProds' onClick={handleCargaCities}><ion-icon name="card-outline"></ion-icon> subir ciudades </button>
+            
+            <br></br>
+            <button className='subirProds' onClick={handleCargaCities2}><ion-icon name="card-outline"></ion-icon> subir ciudades 2</button>
+
 
             <form action="">
                 <label className='titulo' htmlFor="nombre"><p>Nombre</p>

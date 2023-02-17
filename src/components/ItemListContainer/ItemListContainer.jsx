@@ -4,7 +4,7 @@ import { useFetcher, useParams } from "react-router-dom";
 import { getProds } from "../../gFetch";
 import ItemList from "../ItemList/ItemList";
 import Loading from "../Loading/Loading";
-import { collection, doc, getDoc, getDocs, getFirestore, query, where } from 'firebase/firestore';
+import { collection, doc, getDoc, getDocs, getFirestore, orderBy, query, where } from 'firebase/firestore';
 
 // componente contenedor
 const ItemListContainer = ({ greeting }) => {
@@ -50,7 +50,7 @@ const ItemListContainer = ({ greeting }) => {
         if (idCategoria) {
             const db = getFirestore()
             const queryColection = collection(db, 'productos')
-            const queryFiltrado = query(queryColection, where('tipo', '==', idCategoria))
+            const queryFiltrado = query(queryColection,where('claves', 'array-contains-any', [idCategoria] ))
 
             getDocs(queryFiltrado)
                 .then(response => setProductos(response.docs.map(element => (
@@ -65,7 +65,8 @@ const ItemListContainer = ({ greeting }) => {
         } else {
             const db = getFirestore()
             const queryColeccion = collection(db, 'productos')
-            getDocs(queryColeccion)
+            const ordenadas = query(queryColeccion, orderBy("nombre", "asc")) // de esta forma los ordeno ascendentemente
+            getDocs(ordenadas)
                 .then(response => setProductos(response.docs.map(element => (
                     { id: element.id, ...element.data() }
                 ))))
