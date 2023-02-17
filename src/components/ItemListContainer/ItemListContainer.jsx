@@ -59,7 +59,7 @@ const ItemListContainer = ({ greeting }) => {
                 .catch((err) => {
                     console.log(err.message)
                 })
-                .finally(() => setLoading(false)) //se ejecuta siempre al final, actualiza el state de loading
+                .finally(() => setLoading(false)) 
 
 
         } else {
