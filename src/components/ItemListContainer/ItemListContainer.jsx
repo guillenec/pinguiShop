@@ -46,6 +46,7 @@ const ItemListContainer = ({ greeting }) => {
     //     }
     // }, [idCategoria]) //permitira que se re-renderisen los productos
 
+
     useEffect(() => { //hook
         if (idCategoria) {
             const db = getFirestore()
@@ -117,6 +118,7 @@ const ItemListContainer = ({ greeting }) => {
     }[funcionUno]) 
     
     */
+    
     return (
         <>
             <section className="saludo">

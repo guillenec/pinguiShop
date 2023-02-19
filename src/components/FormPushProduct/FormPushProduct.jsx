@@ -10,7 +10,7 @@ const FormPushProduct = () => {
         getProds()
             .then((response) => {
                 const respuestaSinId = response.map(({id,...element}) => {
-                    const nuevoElemento = {claves:[element.clave1, element.clave2, element.clave3,element.nombre,element.tipo, element.genero],...element }
+                    const nuevoElemento = {claves:[element.clave1, element.clave2, element.clave3,element.nombre,element.tipo, element.genero],fechaSubida:Date(),...element }
                     return nuevoElemento
                 })
                 console.log(respuestaSinId)
@@ -72,7 +72,6 @@ const FormPushProduct = () => {
     async function handleCargaCities2() {
         const db = getFirestore()
         const citiesRef = collection(db, "ciudades2");
-
         await Promise.all([
             addDoc(collection(citiesRef, 'SF', 'landmarks'), {
                 name: 'Golden Gate Bridge',
@@ -117,11 +116,17 @@ const FormPushProduct = () => {
         ]);
     }
 
+
     // await productosRef.doc().set({
     //     nombre: objeto.nombre, descripcion: objeto.descripcion, stock: objeto.stock, precio: objeto.precio, descuento: objeto.precio, genero: objeto.genero, tipo: objeto.tipo, imagenA: objeto.imagenA, imagenB: objeto.imagenB, imagenC: objeto.imagenC, imagenD: objeto.imagenD, clave1: objeto.clave1, clave2: objeto.clave2, clave3: objeto.clave3
     // })
-
+    const dato123 = new Date()
     console.log("Estos son todos los productos: ", productos)
+    // localStorage.setItem('productosStorage', JSON.stringify(productos))
+    // const recuperoProdsStorage = JSON.parse(localStorage.getItem('productosStorage'))
+
+    console.log(`Esta es la fecha creacion: ${dato123.getDate()}`)
+//Midudev 1:21 https://youtu.be/t5TZB1KimfU
 
     return (
         <div className='containFormPush'>
