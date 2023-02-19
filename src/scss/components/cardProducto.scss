@@ -80,25 +80,35 @@
             
             .cardDescripcion{
                 position: absolute;
-                bottom: -120px;
+                bottom: -150px;
                 left: 0;
                 width: 100%;
-                height: 120px;
+                height: 140px;
                 padding: 10px;
-                @include align_mid_grid();
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-content: center;
+                align-items: center;
                 gap: 10px;
                 text-align: center;
 
-                background: rgba( 105, 240, 133, 0.65 );
+                background: rgba(73, 61, 141, 0.527);
                 box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
                 backdrop-filter: blur( 0px );
                 -webkit-backdrop-filter: blur( 0px );
                 border: 1px solid rgba( 255, 255, 255, 0.18 );
-
+                overflow: hidden;
+                overflow-y: auto;
                 transition: .7s ease-out;
 
+                cursor: pointer;
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+
                 &:hover{
-                    background: rgba( 105, 240, 133, 0.7 );
+                    background: rgba(52, 46, 86, 0.938);
                     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
                     backdrop-filter: blur( 5.5px );
                     -webkit-backdrop-filter: blur( 5.5px );
@@ -107,17 +117,17 @@
                 
                 
                 h2{
-                    color: $color6;
+                    color: $color3;
                     font-family: $tituloGeneral;
                     text-transform: capitalize;
-                    font-size: 2rem;
-                    font-weight: 800;
+                    font-size: 1.5rem;
+                    font-weight: 600;
                 }
                 p{
-                    color: $color6;
+                    color: $color2;
                     font-family: $parrafoGeneral;
                     font-size: 1rem;
-                    font-weight: 700;
+                    font-weight: 400;
                 }
                 
             }

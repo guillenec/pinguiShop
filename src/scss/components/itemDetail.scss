@@ -1,32 +1,55 @@
-.itemDetailContain{
+.itemDetailContain {
     position: relative;
     width: 100%;
-    height: 500px;
+    height: 600px;
     display: flex;
-    gap: 10px; 
+    gap: 10px;
 
-    .containerImgs{
+    @include tablets() {
+        height: 900px;
+        flex-direction: column;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: nowrap;
+        gap: 20px;
+    }
+
+    .containerImgs {
         width: 50%;
         height: 100%;
-        %hereding_mid{
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: nowrap;
+
+        %hereding_mid {
             aspect-ratio: 1/1;
             object-fit: contain;
         }
-        .img1, .img2, .img3{
+
+        .img1,
+        .img2,
+        .img3 {
             display: flex;
             justify-content: center;
             align-items: center;
         }
+
         .img1 {
             width: 100%;
             height: 80%;
-            
-            img{
+
+            img {
                 height: 80%;
                 @extend %hereding_mid;
             }
         }
-        .imgSecundary{
+
+        .imgSecundary {
             width: 100%;
             height: 20%;
             display: flex;
@@ -34,53 +57,137 @@
             justify-content: center;
             gap: 20px;
 
-            .img2 { 
+            .img1, .img2{
+                padding: 15px;
+            }
+
+            .img2 {
                 height: 100%;
-                img{
+
+                img {
                     height: 70%;
-                    @extend %hereding_mid;  
+                    @extend %hereding_mid;
                 }
             }
-            .img3 { 
-                height: 100%;            
-                img{
+
+            .img3 {
+                height: 100%;
+
+                img {
                     height: 70%;
-                    @extend %hereding_mid;  
+                    @extend %hereding_mid;
                 }
             }
         }
-        
+
 
     }
 
-    .detalle { 
+    @include tablets() {
+        .containerImgs {
+            width: 100%;
+            height: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            align-content: center;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            gap: 5px;
+
+            %hereding_mid {
+                aspect-ratio: 1/1;
+                object-fit: contain;
+            }
+
+            .img1 {
+                width: 100%;
+                height: 70%;
+
+                img {
+                    @extend %hereding_mid;
+                }
+            }
+
+            .imgSecundary {
+                width: 30%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                gap: 20px;
+
+                .img2 {
+                    height: 150px;
+                    width: 100%;
+
+                    img {
+                        @extend %hereding_mid;
+                    }
+                }
+
+                .img3 {
+                    height: 150px;
+                    width: 100%;
+
+                    img {
+                        width: 70%;
+                        @extend %hereding_mid;
+                    }
+                }
+            }
+
+        }
+    }
+
+    .detalle {
+        width: 50%;
+        height: 100%;
         display: flex;
         flex-direction: column;
         align-content: flex-start;
         justify-content: center;
         align-items: flex-start;
-        gap: 1.3rem;
+        gap: 10px;
 
-        .nombre{
+        .nombre {
             font-family: $tituloGeneral;
             text-transform: uppercase;
             font-size: 2rem;
             color: $color3;
             font-weight: 500;
+
+            @include notebook() {
+                font-size: 1.5rem;
+            }
         }
-        .descripcion{
+
+        .descripcion {
             font-family: $parrafoGeneral;
             font-size: 1rem;
             color: $color5;
             font-weight: 600;
+
+            @include notebook() {
+                font-size: 1rem;
+            }
         }
+
         .precio {
             font-family: $parrafoGeneral;
             font-size: 1.8rem;
             color: $color4;
             font-weight: 700;
+
+            @include notebook() {
+                font-size: 1.4rem;
+            }
         }
-        .categoria{
+
+        .categoria {
             color: $color3;
             font-family: $parrafoGeneral;
             text-transform: capitalize;
@@ -90,16 +197,17 @@
             align-items: center;
             gap: 10px;
 
-            strong{
+            strong {
                 font-family: $tituloGeneral;
                 text-transform: capitalize;
                 font-size: 1rem;
                 color: $color5;
                 font-weight: 500
             }
-            
+
         }
-        .palabraClave{
+
+        .palabraClave {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
@@ -108,7 +216,7 @@
             gap: 10px;
             width: 90%;
 
-            a{
+            a {
                 text-decoration: none;
                 background: $color3;
                 color: $color6;
@@ -120,13 +228,19 @@
                 border-radius: 2px;
                 transition: .5s;
 
-                &:hover{
+                @include notebook() {
+                    font-size: 1rem;
+                    padding: 4px;
+                }
+
+                &:hover {
                     background: $color4;
                     color: $color6;
                 }
             }
         }
-        .formCantidad{
+
+        .formCantidad {
             width: 250px;
             height: auto;
             padding: 0px;
@@ -140,7 +254,12 @@
             flex-wrap: wrap;
             gap: 10px;
 
-            .labelCantidad{
+            @include notebook() {
+                font-size: 1rem;
+
+            }
+
+            .labelCantidad {
                 width: 100%;
                 height: 60px;
                 display: flex;
@@ -151,14 +270,20 @@
                 gap: 10px;
                 outline: 0;
 
-                p{
+                p {
                     color: $color3;
                     font-family: $tituloGeneral;
                     text-transform: capitalize;
                     font-size: 1.2rem;
                     font-weight: 500;
+
+                    @include notebook() {
+                        font-size: 1rem;
+
+                    }
                 }
-                .botonesCantidad{
+
+                .botonesCantidad {
                     height: 100%;
                     width: auto;
                     display: flex;
@@ -169,16 +294,22 @@
                     flex-wrap: nowrap;
                     gap: 10px;
 
-                    .restProd,.sumProd{
+                    .restProd,
+                    .sumProd {
                         font-size: 1.5rem;
                         transition: .5s;
-                        &:hover{
+
+                        @include notebook() {
+                            font-size: 1rem;
+                        }
+
+                        &:hover {
                             color: $color4;
                         }
                     }
                 }
-                
-                .inputCantidad{
+
+                .inputCantidad {
                     padding: 2px;
                     background: $color1a;
                     color: $color3;
@@ -189,19 +320,24 @@
                     border-radius: 2px;
                     cursor: pointer;
 
+                    @include notebook() {
+                        font-size: 1rem;
+                    }
+
                     &::-webkit-inner-spin-button,
                     &::-webkit-outer-spin-button {
-                    -webkit-appearance: none;
-                    margin: 0;
-                        }
+                        -webkit-appearance: none;
+                        margin: 0;
+                    }
 
                     &:focus {
                         outline: 0;
                     }
-                    
-                }                
+
+                }
             }
-            button{
+
+            button {
                 background: $color3;
                 border: none;
                 border-radius: 2px;
@@ -214,36 +350,150 @@
                 font-weight: 500;
                 color: $color1a;
 
-                &:hover{
+                @include notebook() {
+                    font-size: 1rem;
+                }
+
+                &:hover {
                     background: $color4;
                     color: $color6;
                 }
             }
         }
-        .botonRedireccion{
+
+        .botonRedireccion {
             width: 100%;
-            height: 50px;
+            height: auto;
             display: flex;
             gap: 10px;
-            a{
+
+            a {
                 text-decoration: none;
-                    background: $color3;
-                    border: none;
-                    border-radius: 2px;
-                    font-family: $tituloGeneral;
-                    padding: 8px;
-                    font-size: 1.1rem;
-                    transition: .5s;
-                    cursor: pointer;
-                    text-transform: capitalize;
-                    font-weight: 500;
-                    color: $color1a;
-    
-                    &:hover{
-                        background: $color4;
-                        color: $color6;
-                    }
+                background: $color3;
+                border: none;
+                border-radius: 2px;
+                font-family: $tituloGeneral;
+                padding: 8px;
+                font-size: 1.1rem;
+                transition: .5s;
+                cursor: pointer;
+                text-transform: capitalize;
+                font-weight: 500;
+                color: $color1a;
+
+                @include notebook() {
+                    font-size: 1rem;
+                }
+
+                &:hover {
+                    background: $color4;
+                    color: $color6;
+                }
             }
         }
+    }
+
+    @include tablets() {
+        .detalle {
+            height: 50%;
+            width: 98%;
+            display: flex;
+            gap: 8px;
+
+            .nombre {
+                display: block;
+                font-size: 1.5rem;
+            }
+
+            .descripcion {
+                font-size: .9rem;
+                font-weight: 500;
+                height: 60px;
+                overflow: hidden;
+                overflow-y: auto;
+
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+            }
+
+            .precio {
+                font-size: 1.4rem;
+                font-weight: 600;
+            }
+
+            .categoria {
+                font-size: .9rem;
+
+                strong {
+                    font-size: .9rem;
+                    font-weight: 500
+                }
+
+            }
+
+            .palabraClave {
+                gap: 10px;
+                width: 100%;
+
+                a {
+                    font-size: .9rem;
+                }
+            }
+
+            .formCantidad {
+                width: 250px;
+                font-size: 1rem;
+
+
+                .labelCantidad {
+
+                    p {
+                        font-size: .9rem;
+                    }
+
+                    .botonesCantidad {
+                        font-size: 1rem;
+                        font-weight: 500;
+
+                        .restProd,
+                        .sumProd {
+                            font-size: 1rem;
+                            transition: .5s;
+
+                            &:hover {
+                                color: $color4;
+                            }
+                        }
+                    }
+
+                    .inputCantidad {
+                        font-size: 1rem;
+                        font-weight: 500;
+                    }
+                }
+
+                button {
+                    padding: 4px;
+                    font-size: .9rem;
+                }
+            }
+
+            .botonRedireccion {
+                width: 100%;
+                display: flex;
+                gap: 10px;
+
+                a {
+
+                    padding: 4px;
+                    font-size: .9rem;
+                    transition: .5s;
+
+                }
+            }
+        }
+
+
     }
 }
