@@ -17,10 +17,10 @@ const ItemDetail = ({ objeto }) => {
 
     if (cartList.some(elem => elem.id === objeto.id && elem.nombre === objeto.nombre)) {
         console.log("----  este id se repite ----")
-        const objeto2 = cartList.find(elem => elem.id === objeto.id )
+        const objeto2 = cartList.find(elem => elem.id === objeto.id)
         console.log(objeto2)
         objeto = objeto2
-    } 
+    }
 
     const notify = (numer, name) => toast.success(`🥰🥰 compraste ${numer} ${name}`, {
         position: "bottom-right",
@@ -39,24 +39,25 @@ const ItemDetail = ({ objeto }) => {
     })
 
     const onAdd = (objeto, cant, precioTotal) => {
-        
+
         console.log(objeto);
         console.log(objeto.nombre, cant, precioTotal);
         console.log(objeto.stock, objeto.comprado)
 
-        if(objeto.stock <= objeto.comprado){
+        if (objeto.stock <= objeto.comprado) {
             errToast()
         } else {
             agregaAlCarrito(
-                { ...objeto ,
-                    comprado:cant,
-                    precioTotal:precioTotal*cant 
-                } )
+                {
+                    ...objeto,
+                    comprado: cant,
+                    precioTotal: precioTotal * cant
+                })
             notify(cant, objeto.nombre);
         }
-        
+
         // agregarCarrito( {...objeto, cantidad:cant} );
-        
+
     }
 
     /*
@@ -68,20 +69,20 @@ const ItemDetail = ({ objeto }) => {
     return (
         <>
             <section className="itemDetailContain">
-                <ImgDetalle img1={objeto.imagenA} img2={objeto.imagenB} img3={objeto.imagenC} describe={objeto.descripcion} />
+                <ImgDetalle objeto={objeto} describe={objeto.descripcion} />
 
                 <section className="detalle">
                     <h2 className="nombre">#{objeto.id} {objeto.nombre}</h2>
                     <p className="descripcion">{objeto.descripcion}</p>
                     <h2 className="precio">${objeto.precio}</h2>
                     <h3 className="precioTotal">{objeto.precioTotal}</h3>
-                    <p className="categoria"><strong>Disponibles: </strong>{ objeto.comprado ? (objeto.stock - objeto.comprado) : objeto.stock}</p>
+                    <p className="categoria"><strong>Disponibles: </strong>{objeto.comprado ? (objeto.stock - objeto.comprado) : objeto.stock}</p>
                     <p className="categoria"><strong>Categorias:</strong></p>
 
                     <CategoriaDetalle objeto={objeto} />
-                    <ItemCount producto={objeto} inicial={0} stock={ objeto.comprado ? (objeto.stock - objeto.comprado) : objeto.stock} nombre={objeto.nombre} onAdd={onAdd} />
+                    <ItemCount producto={objeto} inicial={0} stock={objeto.comprado ? (objeto.stock - objeto.comprado) : objeto.stock} nombre={objeto.nombre} onAdd={onAdd} />
 
-                    
+
                 </section>
 
             </section>
