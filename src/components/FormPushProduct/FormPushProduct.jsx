@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { addDoc, collection, doc, getFirestore, setDoc } from "firebase/firestore";
 import { getProds } from '../../gFetch';
 
+//formulario que permite pusear todos los elementos a firebase
 const FormPushProduct = () => {
     const [productos, setProductos] = useState([]) //estado inicial array vacio
 

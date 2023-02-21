@@ -127,8 +127,6 @@ const productos = [
     { "id": 108, "nombre": "Aqua", "descripcion": "Sega konosuba: God's Blessing on This Wonderful World!:: Figura Aqua Premium", "stock": 5, "precio": 9000, "descuento": 10, "genero": "tv y serie", "tipo": "funkopop", "imagenA": "https://res.cloudinary.com/dpiwmbsog/image/upload/v1676953262/imgs/funkos/figuras-konosuba/Aqua1_jjvx4m.png", "imagenB": "https://res.cloudinary.com/dpiwmbsog/image/upload/v1676953261/imgs/funkos/figuras-konosuba/Aqua2_tg066a.png", "imagenC": "https://res.cloudinary.com/dpiwmbsog/image/upload/v1676953261/imgs/funkos/figuras-konosuba/Aqua4_me7f5p.png", "imagenD": "https://res.cloudinary.com/dpiwmbsog/image/upload/v1676953259/imgs/funkos/figuras-konosuba/Aqua3_uobkde.png","imagenE":"", "clave1": "figura", "clave2": "konosuba", "clave3": "anime" },
     { "id": 109, "nombre": "Kazuma", "descripcion": "KonoSuba: God's Blessing on This Wonderful World!: Figura de PVC de Kazuma Pop Up Parade", "stock": 5, "precio": 9000, "descuento": 10, "genero": "tv y serie", "tipo": "funkopop", "imagenA": "https://res.cloudinary.com/dpiwmbsog/image/upload/v1676953256/imgs/funkos/figuras-konosuba/Kazuma1_t1iqum.png", "imagenB": "https://res.cloudinary.com/dpiwmbsog/image/upload/v1676953261/imgs/funkos/figuras-konosuba/Kazuma2_m83yuh.jpg", "imagenC": "https://res.cloudinary.com/dpiwmbsog/image/upload/v1676953254/imgs/funkos/figuras-konosuba/Kazuma4_ocrcgx.jpg", "imagenD": "https://res.cloudinary.com/dpiwmbsog/image/upload/v1676953254/imgs/funkos/figuras-konosuba/Kazuma5_r3cglr.jpg","imagenE":"", "clave1": "figura", "clave2": "konosuba", "clave3": "anime" },
 
-
-    
 ]
 //#endregion
 
