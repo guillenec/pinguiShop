@@ -27,10 +27,9 @@ getProds()
 */
 
 
-
 const CartContain = () => {
 
-    const { cartList, vaciarCarrito, operaSobreCart } = useCartContext()
+    const { cartList, vaciarCarrito, operaSobreCart, eliminarProducto } = useCartContext()
     console.log(cartList);
 
     const comprar = () => {
@@ -51,6 +50,13 @@ const CartContain = () => {
 
         console.log("++ -- Carrito +Usuario: ",cartReal)
     }
+    const sumRestaProducto = (objeto,operador) => {
+        operaSobreCart(objeto, operador)
+    }
+
+    const dropProduct = (identificador) => {
+        eliminarProducto(identificador)
+    }
     // console.log(carrito)
     return (
         <>
@@ -65,7 +71,7 @@ const CartContain = () => {
                         { 
                             cartList.map(elemento => {
                                 return (<section key={elemento.id} className="cartProducto">
-                                    <ItemCart element={elemento} operaSobreCart={operaSobreCart}/>
+                                    <ItemCart element={elemento} operaSobreCart={sumRestaProducto} dropProduct={dropProduct}/>
                                 </section>)
                             })
                         }

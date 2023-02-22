@@ -86,6 +86,11 @@ export const CartContextProvider = ({ children }) => {
 
     const vaciarCarrito = () => setCartList([]);
 
+    const eliminarProducto = (identificador) =>{
+        const nuevoCart = cartList.filter((obj) => obj.id !== identificador ) 
+        setCartList(nuevoCart)
+    }
+
     const contador = (arrayCart) => {
         (arrayCart.length === 0) ? setContadorComprados(0)
         : setContadorComprados(
@@ -105,6 +110,7 @@ export const CartContextProvider = ({ children }) => {
             contador,
             contadorComprados,
             operaSobreCart,
+            eliminarProducto,
         }}>
             {children}
         </CartContext.Provider>
