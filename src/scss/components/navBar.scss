@@ -2,7 +2,7 @@
     position: fixed;
     height: 80px;
     @include anchoGeneral();
-    max-width: 1300px;
+    max-width: 100%;
 
     display: flex;
     align-content: center;
@@ -163,6 +163,7 @@
 
     .carrito {
         display: flex;
+        height: 80px;
         width: 50px;
         flex-wrap: nowrap;
         justify-content: center;
@@ -186,6 +187,35 @@
             text-decoration: none;
             font-size: 1.5rem;
             color: $color4;
+            font-weight: 600;
+        }
+    }
+
+    .likeWidget{
+        width: 35px;
+        height: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+
+        a {
+            display: flex;
+            flex-wrap: nowrap;
+            flex-direction: row;
+            align-content: center;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        a,
+        p {
+            text-decoration: none;
+            font-size: 1.5rem;
+            color: $color8;
             font-weight: 600;
         }
     }
@@ -220,7 +250,6 @@
             justify-content: center;
             margin-left: auto;
         }
-
         &.active {
             height: 367px;
             transition: .7s;

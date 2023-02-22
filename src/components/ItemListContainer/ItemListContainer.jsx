@@ -77,7 +77,7 @@ const ItemListContainer = ({ greeting }) => {
                 .finally(() => setLoading(false))
         }
     }, [idCategoria]) //permitira que se re-renderisen los productos
-    console.log(productos)
+    // console.log(productos)
 
     //trae un prod
     // useEffect(()=>{

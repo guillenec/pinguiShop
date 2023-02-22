@@ -22,8 +22,8 @@
 }
 
 @mixin anchoGeneral(){
-    width: 85%;
-    max-width: 1300px;
+    width: 90%;
+    max-width: 1700px;
     margin: auto;
 
     @media screen and (max-width: $xl){
@@ -35,7 +35,7 @@
     @media screen and (max-width: $md){
         width: 98%;
     }
-    @media screen and (max-width: $sm){
+    @media (max-width: $sm) {
         width: 100%;
     }
 }

@@ -29,29 +29,26 @@ getProds()
 
 const CartContain = () => {
 
-    const { cartList, vaciarCarrito, operaSobreCart, eliminarProducto } = useCartContext()
+    const { cartList, vaciarCarrito, eliminarProducto} = useCartContext()
     console.log(cartList);
 
     const comprar = () => {
-        const userCompra = {nombre:'pepito gammer', telefono:'2944396888', email:'pepitogamer@gmail.com'}
+        const userCompra = { nombre: 'pepito gammer', telefono: '2944396888', email: 'pepitogamer@gmail.com' }
 
         const cartReal = {
-            buyer: { nombre:userCompra.nombre, telefono:userCompra.telefono, email:userCompra.email }, 
-            items: cartList.map((elem => ({id:elem.id, titulo:elem.nombre, precio:elem.precioTotal }) )),
+            buyer: { nombre: userCompra.nombre, telefono: userCompra.telefono, email: userCompra.email },
+            items: cartList.map((elem => ({ id: elem.id, titulo: elem.nombre, precio: elem.precioTotal }))),
             total: cartList.reduce((acumulador, element) => acumulador + element.precioTotal, 0)
         }
-        
+
 
         const db = getFirestore()
         const ordenColeccion = collection(db, 'ordenesDeCompra')
 
         addDoc(ordenColeccion, cartReal)
-        .then(resp => console.log(resp))
+            .then(resp => console.log(resp))
 
-        console.log("++ -- Carrito +Usuario: ",cartReal)
-    }
-    const sumRestaProducto = (objeto,operador) => {
-        operaSobreCart(objeto, operador)
+        console.log("++ -- Carrito +Usuario: ", cartReal)
     }
 
     const dropProduct = (identificador) => {
@@ -62,21 +59,26 @@ const CartContain = () => {
         <>
             <section className='cartContainer'>
                 <Link to='/' className='linkComprar'> <ion-icon name="arrow-back-outline"></ion-icon> seguir comprando</Link>
-                <section className='containCarrito'>
-                    <h1>Mi carrito</h1>
-                    <button className='vaciar' onClick={vaciarCarrito}><ion-icon name="trash"></ion-icon> vaciar </button>
-                    <button className='vaciar' onClick={comprar}><ion-icon name="card-outline"></ion-icon> comprar </button>
+                {
+                    cartList.length == 0 ? <section className='cartVacio'><h2>cart vacio</h2></section>
+                        :
+                        <section className='containCarrito'>
+                            <h1>Mi carrito</h1>
+                            <button className='vaciar' onClick={vaciarCarrito}><ion-icon name="trash"></ion-icon> vaciar </button>
+                            <button className='vaciar' onClick={comprar}><ion-icon name="card-outline"></ion-icon> comprar </button>
 
-                    <section className='carrito'>
-                        { 
-                            cartList.map(elemento => {
-                                return (<section key={elemento.id} className="cartProducto">
-                                    <ItemCart element={elemento} operaSobreCart={sumRestaProducto} dropProduct={dropProduct}/>
-                                </section>)
-                            })
-                        }
-                    </section>
-                </section>
+                            <section className='carrito'>
+                                {
+                                    cartList.map(elemento => {
+                                        return (<section key={elemento.id} className="cartProducto">
+                                            <ItemCart element={elemento} dropProduct={dropProduct} />
+                                        </section>)
+                                    })
+                                }
+                            </section>
+                        </section>
+                }
+
             </section>
 
         </>

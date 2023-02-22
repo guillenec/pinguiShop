@@ -44,6 +44,8 @@ function App() {
               <Route path='/categoria/:idCategoria' element={<ItemListContainer greeting={saludo} />} />
 
               <Route path='/detalle/:idProducto' element={<ItemDetailContainer />} />
+              
+              <Route path='/like'  />
               <Route path='/cart' element={<CartContain />} />
 
               <Route path='/formProduct' element={<FormPushProduct />} />

@@ -242,4 +242,20 @@
         }
     }
 
+    .cartVacio{
+        width: 100%;
+        height: calc(100vh - 200px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+
+        h2{
+            font-family: $tituloGeneral;
+            text-transform: capitalize;
+            font-size: 2rem;
+            color: $color3;
+        }
+    }
+
 }

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import CartWidget from "../CartWidget/CartWidget "
+import LikeWidget from "../LikeWidget/LikeWidget";
 import Toggle from "../Toggle/Toggle"
 
 //objetivo : crear el menú e-comerce de tu proyecto
@@ -39,6 +40,7 @@ const NavBar = () => {
                 </ul>
                     
             </section>
+            <LikeWidget/>
             <CartWidget/>
             <Toggle prop1={toggleClassCheck} func2={handleClick}/>
         </nav>

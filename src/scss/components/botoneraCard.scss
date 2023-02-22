@@ -56,6 +56,18 @@
                     }
                 }
             }
+            &.like{
+                @each $name,
+                $color in $colors_buton {
+                    &.#{$name} {
+                        color: $color;
+
+                        ion-icon{
+                            color:$color;
+                        }
+                    }
+                }
+            }
             &.sinStock{
                 position: relative;                
                 border: solid 1px red;
