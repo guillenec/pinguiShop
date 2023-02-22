@@ -39,7 +39,47 @@ export const CartContextProvider = ({ children }) => {
                 }
             ])
         }
+        // console.log("Sin Duplas: ",cartList)
+    }
 
+    const operaSobreCart = (newProducto, operador) => {
+        //includes me da error
+        if (operador === "resta" ) {
+            if(cartList.some(objeto => objeto.id === newProducto.id)){
+                // console.log("++ Entre a productos repetidos: ++ ");
+                setCartList(
+                    cartList.map(producto => {
+                        if (producto.id === newProducto.id) {
+                            return {
+                                ...producto,
+                                id: newProducto.id,
+                                comprado: producto.comprado -= newProducto.comprado,
+                                precioTotal: producto.comprado * producto.precio   
+                            }
+                        }
+                    })
+                )
+            } 
+        }else if(operador === "suma"){
+            if(cartList.some(objeto => objeto.id === newProducto.id)){
+                // console.log("++ Entre a productos repetidos: ++ ");
+                setCartList(
+                    cartList.map(producto => {
+                        if (producto.id === newProducto.id) {
+                            return {
+                                ...producto,
+                                id: newProducto.id,
+                                comprado: producto.comprado += newProducto.comprado,
+                                precioTotal: producto.comprado * producto.precio   
+                            }
+                        }
+                    })
+                )
+            } 
+        }
+        else{
+            console.log("no sumo ni resto nada")
+        }
         // console.log("Sin Duplas: ",cartList)
 
     }
@@ -63,7 +103,8 @@ export const CartContextProvider = ({ children }) => {
             agregaAlCarrito,
             vaciarCarrito,
             contador,
-            contadorComprados
+            contadorComprados,
+            operaSobreCart,
         }}>
             {children}
         </CartContext.Provider>
