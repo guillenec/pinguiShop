@@ -1,6 +1,6 @@
 <div background="#f3f7fe">
 
-# Webshop React Vite coderhouse
+# PinguiShop
 
 <p align="center" ><img width="90%" src="https://res.cloudinary.com/dpiwmbsog/image/upload/v1675053436/Captura_desde_2023-01-30_01-36-55_zbiv35.png" alt="banner stack guille"></p>
     

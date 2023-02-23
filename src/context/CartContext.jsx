@@ -74,7 +74,7 @@ export const CartContextProvider = ({ children }) => {
             setMeGusta([
                 ...meGusta,
                 {   id: newProducto.id,
-                    imagenA: newProducto.imagenB,
+                    imagenA: newProducto.imagenA,
                     nombre: newProducto.nombre,
                     descripcion: newProducto.descripcion,
                     precio: newProducto.precio,
