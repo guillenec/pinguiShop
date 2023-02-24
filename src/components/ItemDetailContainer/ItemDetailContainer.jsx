@@ -1,8 +1,6 @@
 import { useEffect } from "react"
 import { useState } from "react"
 import { useParams } from "react-router-dom"
-import { getProds, getProducto } from "../../gFetch"
-import Item from "../Item/Item"
 import ItemDetail from "../ItemDetail/ItemDetail"
 import Loading from "../Loading/Loading"
 import { collection, doc, getDoc, getDocs, getFirestore, query, where } from 'firebase/firestore';

@@ -7,20 +7,50 @@ import Toggle from "../Toggle/Toggle";
 
 const Item = ({ element }) => {
 
-    const { agregaAlCarrito, agregaAMeGusta, meGusta, cartList, contadorComprados } = useCartContext()
+    const { agregaAlCarrito, agregaAMeGusta, meGusta, cartList } = useCartContext()
 
     const [activaHeart, setActivaHeart] = useState(false)
     const [activaCart, setActivaCart] = useState('')
     const [activaWallet, setActivaWallet] = useState('')
     const [valorHeart, setValorHeart] = useState('')
+    const [valorActiveCart, setValorActivoCart] = useState('')
+
     // const [activaEstado, setActivaEstado] = useState(false)
 
-    if (cartList.some(elem => (elem.id === element.id && elem.nombre === element.nombre))) {
-        // console.log("----  este id se repite ----")
-        const objeto2 = cartList.find(elem => elem.id === element.id)
-        // console.log(objeto2)
-        element = objeto2
-    }
+    useEffect(() => {
+        if (cartList.some(elem => (elem.id === element.id && elem.nombre === element.nombre))) {
+            // console.log("----  este id se repite ----")
+            const objeto2 = cartList.find(elem => elem.id === element.id)
+            // console.log(objeto2)
+            element = objeto2
+            if (activaHeart === true) {
+                setTimeout(() => {
+                    setValorActivoCart('like')
+                }, 3000)
+            }else{
+                setTimeout(() => {
+                    setValorActivoCart('')
+                }, 3000)
+            }
+            
+        }
+    }, [cartList])
+
+    useEffect(() => {
+        if (meGusta.length !== 0 && meGusta.some(el => (el.id === element.id))) {
+            if (activaHeart === false) {
+                setActivaHeart(true);
+                setValorHeart('activado');
+                setTimeout(() => {
+                    setValorHeart('like')
+                }, 3000);
+            }
+            
+        }else {
+            setActivaHeart(false);
+            setValorHeart('');
+        }
+    }, [meGusta])
 
     // const handleActiveHeart = () => {
     //     setActivaHeart('activado');
@@ -37,6 +67,7 @@ const Item = ({ element }) => {
             )
             : setActivaCart('sinStock')
     }
+
     const handleActiveWallet = () => {
         setActivaWallet('activado');
         setTimeout(() => {
@@ -84,21 +115,12 @@ const Item = ({ element }) => {
 
         // agregarCarrito( {...objeto, cantidad:cant} );
     }
-    
+
     const onAddMeGusta = () => {
         agregaAMeGusta(element);
-        setActivaHeart(!activaHeart);
-        console.log(activaHeart)
-        if(activaHeart === false){
-            setValorHeart('activado')
-            setTimeout(() => {
-                setValorHeart('like')
-            }, 4000);
-        }else { setValorHeart('') }
-        // ( activaEstado == true) ? setActivaHeart("activado") : setActivaHeart("");
     }
 
-    console.log("Me gusta ==== ",meGusta)
+    // console.log("Me gusta ==== ", meGusta)
 
     const { id: id, nombre: nombre, precio: precio, descripcion: desc, imagenA: img1 } = element;
     return (
@@ -117,7 +139,7 @@ const Item = ({ element }) => {
                 <section className="botoneraCard">
                     <div>
                         <a className={`heart ${valorHeart}`} onClick={onAddMeGusta}><ion-icon name="heart"></ion-icon></a>
-                        <a className={`cart ${activaCart}`} onClick={onAdd}><ion-icon name="cart"></ion-icon></a>
+                        <a className={`cart ${activaCart} ${valorActiveCart}`} onClick={onAdd}><ion-icon name="cart"></ion-icon></a>
                         <a className={`wallet ${activaWallet}`} onClick={handleActiveWallet}><ion-icon name="wallet"></ion-icon></a>
                     </div>
                 </section>

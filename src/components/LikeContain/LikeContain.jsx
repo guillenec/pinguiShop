@@ -6,7 +6,8 @@ import ItemLike from '../ItemLike/ItemLike';
 const LikeContain = () => {
 
     const { meGusta } = useCartContext()
-    console.log("mE gusta ::: ",meGusta)
+    // console.log("mE gusta ::: ",meGusta)
+    
     return (
         <section className='likeContainer'>
             <Link to='/' className='linkComprar'> <ion-icon name="arrow-back-outline"></ion-icon>ir a todos los productos</Link>
@@ -15,11 +16,11 @@ const LikeContain = () => {
                     :
                     <section className='containLikes'>
                         <h1>Me Gustan</h1>
-                        <section className='carrito'>
+                        <section className='like'>
                             {
                                 meGusta.map(elemento => {
-                                    return (<section key={elemento.id} className="cartProducto">
-                                        <ItemLike objeto={elemento}/>
+                                    return (<section key={elemento.id} className="elementLike">
+                                        <ItemLike  objeto={elemento}/>
                                     </section>)
                                 })
                             }

@@ -280,6 +280,12 @@
                     .sumProd {
                         font-size: 1.5rem;
                         transition: .5s;
+                        display: flex;
+                        align-items: center;
+                        align-content: center;
+                        justify-content: center;
+                        padding: 5px;
+
 
                         @include notebook() {
                             font-size: 1rem;
@@ -288,6 +294,11 @@
                         &:hover {
                             color: $color4;
                         }
+                    }
+                    p{
+                        font-size: 1.2rem;
+                        padding: 5px;
+
                     }
                 }
 

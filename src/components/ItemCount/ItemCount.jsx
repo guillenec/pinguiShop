@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 
 
-const ItemCount = ({ producto, inicial, stock, nombre, onAdd }) => {
+const ItemCount = ({ producto, inicial, stock, onAdd }) => {
 
   const [cantidadProd, setCantidadProd] = useState(inicial);
 
@@ -59,15 +59,7 @@ const ItemCount = ({ producto, inicial, stock, nombre, onAdd }) => {
           <p>cantidad</p>
           <div className="botonesCantidad">
             <a className='restProd' onClick={restProd}><ion-icon name="remove"></ion-icon></a>
-            <input
-              className="inputCantidad"
-              id="cantidad"
-              name="cantidad"
-              type="number"
-              min={1} max={stock}
-              onChange={handleChange}
-              value={cantidadProd}
-            />
+            <p>{cantidadProd}</p>
             <a className='sumProd' onClick={sumarProd}><ion-icon name="add"></ion-icon></a>
           </div>
         </label>

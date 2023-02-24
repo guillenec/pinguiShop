@@ -40,9 +40,9 @@ const ItemDetail = ({ objeto }) => {
 
     const onAdd = (objeto, cant, precioTotal) => {
 
-        console.log(objeto);
-        console.log(objeto.nombre, cant, precioTotal);
-        console.log(objeto.stock, objeto.comprado)
+        // console.log(objeto);
+        // console.log(objeto.nombre, cant, precioTotal);
+        // console.log(objeto.stock, objeto.comprado)
 
         if (objeto.stock <= objeto.comprado) {
             errToast()
@@ -72,7 +72,7 @@ const ItemDetail = ({ objeto }) => {
                 <ImgDetalle objeto={objeto} describe={objeto.descripcion} />
 
                 <section className="detalle">
-                    <h2 className="nombre">#{objeto.id} {objeto.nombre}</h2>
+                    <h2 className="nombre"># {objeto.nombre}</h2>
                     <p className="descripcion">{objeto.descripcion}</p>
                     <h2 className="precio">${objeto.precio}</h2>
                     <h3 className="precioTotal">{objeto.precioTotal}</h3>
@@ -80,7 +80,7 @@ const ItemDetail = ({ objeto }) => {
                     <p className="categoria"><strong>Categorias:</strong></p>
 
                     <CategoriaDetalle objeto={objeto} />
-                    <ItemCount producto={objeto} inicial={0} stock={objeto.comprado ? (objeto.stock - objeto.comprado) : objeto.stock} nombre={objeto.nombre} onAdd={onAdd} />
+                    <ItemCount producto={objeto} inicial={1} stock={objeto.comprado ? (objeto.stock - objeto.comprado) : objeto.stock} onAdd={onAdd} />
 
 
                 </section>

@@ -78,6 +78,7 @@ export const CartContextProvider = ({ children }) => {
                     nombre: newProducto.nombre,
                     descripcion: newProducto.descripcion,
                     precio: newProducto.precio,
+                    ...newProducto,
                 }
             ])
         }
