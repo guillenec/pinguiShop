@@ -1,8 +1,8 @@
 import React from 'react'
 import Slider from "react-slick";
 
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+// import "./slick.scss";
+// import "./slick-theme.scss";
 
 const SimpleSlider = ( {objeto} ) => {
     console.log("Slider")
@@ -15,13 +15,12 @@ const SimpleSlider = ( {objeto} ) => {
         slidesToScroll: 1,
         autoplay:true,
         cssEase: "linear",
-        autoplaySpeed: 10000,
+        autoplaySpeed: 14000,
     }
 
 
     return (
         <div className='containSlider'>
-            <h2>Slider autoplay</h2>
             <Slider {...settings}>
                 <div className='slider pokemon'>
                     <h3>1 Pokemon</h3>
