@@ -1,20 +1,21 @@
 import React from 'react'
 import Slider from "react-slick";
 
-const SimpleSlider = ({objeto}) => {
-    console.log("Slider")
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
+const SimpleSlider = ( {objeto} ) => {
+    console.log("Slider")
 
     const settings = {
         dots: true,
         infinite: true,
-        speed: 500,
+        speed: 2000,
         slidesToShow: 1,
         slidesToScroll: 1,
-        autoplay: true,
-        speed: 3000,
-        autoplaySpeed: 3000,
-        cssEase: "linear"
+        autoplay:true,
+        cssEase: "linear",
+        autoplaySpeed: 10000,
     }
 
 
@@ -22,17 +23,17 @@ const SimpleSlider = ({objeto}) => {
         <div className='containSlider'>
             <h2>Slider autoplay</h2>
             <Slider {...settings}>
-                <div>
-                    <h3></h3>
+                <div className='slider pokemon'>
+                    <h3>1 Pokemon</h3>
                 </div>
-                <div>
-                    <h3>2</h3>
+                <div className='slider onePunch'>
+                    <h3>2 One punch</h3>
                 </div>
-                <div>
-                    <h3>3</h3>
+                <div className='slider mandalorian'> 
+                    <h3>3 The mandalorian</h3>
                 </div>
-                <div>
-                    <h3>4</h3>
+                <div className='slider onePiece'>
+                    <h3>4 One Piece</h3>
                 </div>
                 <div>
                     <h3>5</h3>
