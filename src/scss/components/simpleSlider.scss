@@ -7,6 +7,10 @@
         height: 600px;
         display: flex;
         flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
         gap: 10px;
 
         .slick-list{
@@ -20,27 +24,46 @@
                 height: 100%;
                 height: 100%;
                 background: $color3;
+
+                .slick-slide{
+                    height: 100%;
+                    width: 100%;
+                    padding: 10px;
+
+                    div{
+                        width: 100%;
+                        height: 100%;
+                        padding: 10px;
+                        background: rgb(235, 167, 155);
+
+                        .sliderCaja{
+                            height: 100%;
+                            width: 100%;
+                            overflow: hidden;
+                            &.pokemon{
+                                background: rgb(230, 51, 51);
+                            }
+                            &.onePunch{
+                                background: rgb(204, 192, 23);
+                            }
+                            &.mandalorian{
+                                background: silver;
+                            }
+                            &.onePiece{
+                                color: rgb(79, 47, 219);
+                            }
+                            img{
+                                height: 100%;
+                                aspect-ratio: 21 / 9;
+                            }
+                        }
+                    }
+
+                }
+                
             }
         }
-        .pokemon{
-            background: rgb(230, 51, 51);
-            height: 100%;
-        }
-        .onePunch{
-            background: rgb(204, 192, 23);
-            height: 400px;
-
-        }
-        .mandalorian{
-            background: silver;
-            height: 400px;
-
-        }
-        .onePiece{
-            color: rgb(79, 47, 219);
-            height: 400px;
-
-        }
+        
     }
 
     button{
@@ -55,16 +78,22 @@
         }
     }
     .slick-dots{
-        display: block;
         position: relative;
         background-color: aliceblue;
         height: 10%;
-        display: flex;
+        width: 100%;
+        display: flex !important;
         justify-content: center;
         align-items: center;
         align-content: center;
         bottom: 0;
+
         li{
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
 
             button {
                 
@@ -75,6 +104,8 @@
                     content: "";
                     width: 10px;
                     height: 10px;
+                    top: calc(50% - 5px);
+                    left: calc(50% - 5px);
                     background: $color3;
                     color: $color4;
                     border-radius: 50%;
