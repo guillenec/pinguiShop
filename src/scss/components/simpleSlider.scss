@@ -1,22 +1,30 @@
 .containSlider{
     width: 100%;
-    height: 500px;
+    height: 600px;
     overflow: hidden;
 
     .slick-slider{
-        height: 400px;
+        height: 600px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
 
         .slick-list{
             width: 100%;
-            height: 100%;
+            height: 90%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
             .slick-track{
+                height: 100%;
                 height: 100%;
                 background: $color3;
             }
         }
         .pokemon{
             background: rgb(230, 51, 51);
-            height: 400px;
+            height: 100%;
         }
         .onePunch{
             background: rgb(204, 192, 23);
@@ -47,7 +55,15 @@
         }
     }
     .slick-dots{
+        display: block;
         position: relative;
+        background-color: aliceblue;
+        height: 10%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        bottom: 0;
         li{
 
             button {

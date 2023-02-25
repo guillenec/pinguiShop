@@ -121,7 +121,10 @@ const ItemListContainer = ({ greeting }) => {
     
     return (
         <>
-            <SimpleSlider objeto={productos}/>
+        {
+            (idCategoria) ? "" : <SimpleSlider objeto={productos}/>
+        }
+            
             <section className="saludo">
                 <h1>{idCategoria ? idCategoria : greeting}</h1>
             </section>
