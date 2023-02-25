@@ -5,8 +5,8 @@ import { getProds } from "../../gFetch";
 import ItemList from "../ItemList/ItemList";
 import Loading from "../Loading/Loading";
 import { collection, doc, getDoc, getDocs, getFirestore, orderBy, query, where } from 'firebase/firestore';
+import SimpleSlider from "../SimpleSlider/SimpleSlider";
 
-// componente contenedor
 const ItemListContainer = ({ greeting }) => {
     //valor del estado  //forma de actualizar el estado
     const [productos, setProductos] = useState([]) //estado inicial array vacio
@@ -121,6 +121,7 @@ const ItemListContainer = ({ greeting }) => {
     
     return (
         <>
+            <SimpleSlider objeto={productos}/>
             <section className="saludo">
                 <h1>{idCategoria ? idCategoria : greeting}</h1>
             </section>

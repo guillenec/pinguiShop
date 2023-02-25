@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 
 import './App.scss'
+
 import NavBar from './components/NavBar/NavBar'
 import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import Toggle from './components/Toggle/Toggle'
