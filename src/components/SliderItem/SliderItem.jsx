@@ -10,6 +10,8 @@ function SliderItem({ allProds, banner }) {
 
     }, [])
 
+    const prodsBanner = allProds.filter((element) => banner.nombre === element.clave2 || banner.nombre === element.nombre || element.clave3 === banner.nombre)
+        console.log(prodsBanner)
     return (
         <>
             <div className='sliderCaja dragonBall' style={{ backgroundColor: predominantColor }}>
