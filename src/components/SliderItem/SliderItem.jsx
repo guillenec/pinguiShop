@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom';
 // import Vibrant from 'node-vibrant';
 // import axios from 'axios';
 
@@ -20,7 +21,7 @@ function SliderItem({ allProds, banner }) {
 
     return (
         <>
-            <div className='sliderCaja dragonBall' style={{ background: predominantColor }}>
+            <Link to={`/categoria/${banner.nombre}`} className='sliderCaja dragonBall' style={{ background: predominantColor }}>
                 <img src={banner.imagen} alt={banner.imgDescribe} />
                 <section className='contenidoSlider'>
                     <div className='titulos'>
@@ -40,8 +41,7 @@ function SliderItem({ allProds, banner }) {
                         }
                     </section>
                 </section>
-
-            </div>
+            </Link>
         </>
     )
 }

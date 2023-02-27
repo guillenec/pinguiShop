@@ -93,6 +93,7 @@
                                 align-content: center;
                                 justify-content: center;
                                 align-items: center;
+                                gap: 10px;
 
                                 @include notebook(){
                                     width: 100%;
@@ -111,6 +112,7 @@
                                     justify-content: center;
                                     align-content: center;
                                     flex-wrap: nowrap;
+                                    overflow: hidden;
                                     gap: 10px;
                                     
                                     @include notebook(){
@@ -136,7 +138,8 @@
 
                                 .minisCard {
                                     width: 100%;
-                                    height: calc(100% - 220px);
+                                    height: calc(100% - 200px);
+                                    padding: 5px;
                                     overflow: hidden;
                                     display: flex;
                                     flex-direction: row;
@@ -144,7 +147,7 @@
                                     justify-content: center;
                                     align-items: center;
                                     align-content: center;
-                                    gap: 10px;
+                                    gap: 5px;
 
                                     @include notebook(){
                                         width: 60%;
@@ -152,8 +155,8 @@
                                     } 
 
                                     .cardBanner {
-                                        height: 140px;
-                                        width: 110px;
+                                        height: 120px;
+                                        width: 150px;
                                         display: flex;
                                         align-items: center;
                                         justify-content: center;
@@ -161,7 +164,7 @@
 
                                         @include notebook(){
                                             height: 100px;
-                                            width: 120px;
+                                            width: 100px;
                                         }
 
                                         img {

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { useFetcher, useParams } from "react-router-dom";
-import { getProds } from "../../gFetch";
 import ItemList from "../ItemList/ItemList";
 import Loading from "../Loading/Loading";
 import { collection, doc, getDoc, getDocs, getFirestore, orderBy, query, where } from 'firebase/firestore';
@@ -48,10 +47,11 @@ const ItemListContainer = ({ greeting }) => {
 
 
     useEffect(() => { //hook
+        setLoading(true)
         if (idCategoria) {
             const db = getFirestore()
             const queryColection = collection(db, 'productos')
-            const queryFiltrado = query(queryColection,where('claves', 'array-contains-any', [idCategoria] ))
+            const queryFiltrado = query(queryColection, where('claves', 'array-contains-any', [idCategoria]))
 
             getDocs(queryFiltrado)
                 .then(response => setProductos(response.docs.map(element => (
@@ -60,7 +60,7 @@ const ItemListContainer = ({ greeting }) => {
                 .catch((err) => {
                     console.log(err.message)
                 })
-                .finally(() => setLoading(false)) 
+                .finally(() => setLoading(false))
 
 
         } else {
@@ -118,13 +118,13 @@ const ItemListContainer = ({ greeting }) => {
     }[funcionUno]) 
     
     */
-    
+
     return (
         <>
-        {
-            (idCategoria) ? "" : <SimpleSlider objeto={productos}/>
-        }
-            
+            {
+                (idCategoria) ? "" : <SimpleSlider objeto={productos} />
+            }
+
             <section className="saludo">
                 <h1>{idCategoria ? idCategoria : greeting}</h1>
             </section>
