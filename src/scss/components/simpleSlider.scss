@@ -46,6 +46,8 @@
                             overflow: hidden;
                             gap: 10px;
 
+                            text-decoration: none;
+
                             @include notebook(){
                                 display: flex !important;
                                 flex-direction: column;
