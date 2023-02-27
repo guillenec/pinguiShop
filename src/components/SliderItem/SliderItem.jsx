@@ -21,12 +21,23 @@ function SliderItem({ allProds, banner }) {
     return (
         <>
             <div className='sliderCaja dragonBall' style={{ background: predominantColor }}>
-                <img src={banner.imagen} alt={banner.descripcion} />
+                <img src={banner.imagen} alt={banner.imgDescribe} />
                 <section className='contenidoSlider'>
+                    <div className='titulos'>
+                        <h2>funkos coleccio {banner.nombre}</h2>
+                        <p>{banner.descripcion}</p>
+                    </div>
 
-                    <h3>funkos coleccio {banner.nombre}</h3>
                     <section className='minisCard'>
-
+                        {
+                            prodsBanner.map((el) => {
+                                return (
+                                    <div key={el.id} className='cardBanner'>
+                                        <img src={el.imagenA} alt={el.descripcion} />
+                                    </div>
+                                )
+                            })
+                        }
                     </section>
                 </section>
 
@@ -37,3 +48,4 @@ function SliderItem({ allProds, banner }) {
 
 export default SliderItem
 
+//Nota .. con f2 puedo cambiar el nombre de un elemento en too el documento

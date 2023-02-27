@@ -1,9 +1,9 @@
-.containSlider{
+.containSlider {
     width: 100%;
     height: 700px;
     overflow: hidden;
 
-    .slick-slider{
+    .slick-slider {
         height: 100%;
         display: flex;
         flex-direction: column;
@@ -13,27 +13,27 @@
         align-content: center;
         gap: 10px;
 
-        .slick-list{
+        .slick-list {
             width: 100%;
             height: 90%;
             display: flex;
             flex-direction: column;
             gap: 10px;
 
-            .slick-track{
+            .slick-track {
                 height: 100%;
                 height: 100%;
                 background: $color3;
 
-                .slick-slide{
+                .slick-slide {
                     height: 100%;
                     width: 100%;
 
-                    div{
+                    div {
                         width: 100%;
                         height: 100%;
 
-                        .sliderCaja{
+                        .sliderCaja {
                             height: 100%;
                             width: 100%;
                             padding: 5px;
@@ -45,6 +45,11 @@
                             align-items: center;
                             overflow: hidden;
                             gap: 10px;
+
+                            @include notebook(){
+                                display: flex !important;
+                                flex-direction: column;
+                            } 
 
                             // &.dragonBall{
                             //     background: #EA6E14;
@@ -64,34 +69,138 @@
                             // &.badBatch{
                             //     background: #cc5454;
                             // }
-                            img{
+
+                            img {
                                 width: 70%;
                                 height: 100%;
                                 aspect-ratio: 21 / 9;
                                 object-fit: cover;
+                                
+                                @include notebook(){
+                                    width: 100%;
+                                    height: 60%;
+                                } 
+                                
+                            }
+
+                            .contenidoSlider {
+                                width: 30%;
+                                height: 100%;
+                                padding: 10px;
+                                display: flex;
+                                flex-direction: column;
+                                flex-wrap: nowrap;
+                                align-content: center;
+                                justify-content: center;
+                                align-items: center;
+
+                                @include notebook(){
+                                    width: 100%;
+                                    height: 40%;
+                                    display: flex;
+                                    flex-direction: row;
+                                } 
+
+                                .titulos {
+                                    width: 100%;
+                                    height: 150px;
+                                    display: flex;
+                                    flex-direction: column;
+                                    align-items: center;
+                                    text-align: center;
+                                    justify-content: center;
+                                    align-content: center;
+                                    flex-wrap: nowrap;
+                                    gap: 10px;
+                                    
+                                    @include notebook(){
+                                        width: 40%;
+                                        height: 100%;
+                                    } 
+
+                                    h2 {
+                                        font-family: $tituloGeneral;
+                                        text-transform: capitalize;
+                                        color: $color3;
+                                        font-weight: 600;
+                                        font-size: 1.7rem;
+                                    }
+
+                                    p {
+                                        font-family: $parrafoGeneral;
+                                        font-size: 1rem;
+                                        font-weight: 600;
+                                        color: $color2;
+                                    }
+                                }
+
+                                .minisCard {
+                                    width: 100%;
+                                    height: calc(100% - 220px);
+                                    overflow: hidden;
+                                    display: flex;
+                                    flex-direction: row;
+                                    flex-wrap: wrap;
+                                    justify-content: center;
+                                    align-items: center;
+                                    align-content: center;
+                                    gap: 10px;
+
+                                    @include notebook(){
+                                        width: 60%;
+                                        height: 100%;
+                                    } 
+
+                                    .cardBanner {
+                                        height: 140px;
+                                        width: 110px;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        align-content: center;
+
+                                        @include notebook(){
+                                            height: 100px;
+                                            width: 120px;
+                                        }
+
+                                        img {
+                                            width: 100%;
+                                            aspect-ratio: 1 / 1;
+                                            object-fit: contain;
+                                            
+                                            @include notebook(){
+                                                height: 100%;
+                                                object-fit: contain;
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
 
                 }
-                
+
             }
         }
-        
+
     }
 
-    button{
+    button {
         display: none;
         height: auto;
         width: auto;
-        &::before{
+
+        &::before {
             font-size: 30px;
             font-family: $tituloGeneral;
             font-weight: 700;
             color: $color3;
         }
     }
-    .slick-dots{
+
+    .slick-dots {
         position: relative;
         height: 10%;
         width: 100%;
@@ -101,7 +210,7 @@
         align-content: center;
         bottom: 0;
 
-        li{
+        li {
             height: 100%;
             display: flex;
             justify-content: center;
@@ -109,7 +218,7 @@
             align-content: center;
 
             button {
-                
+
                 &::before {
                     position: absolute;
                     top: 0;
@@ -135,7 +244,7 @@
 
             &.slick-active button:before {
                 background: $color4;
-        
+
             }
         }
     }
