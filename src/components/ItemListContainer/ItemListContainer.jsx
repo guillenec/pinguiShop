@@ -5,6 +5,7 @@ import ItemList from "../ItemList/ItemList";
 import Loading from "../Loading/Loading";
 import { collection, doc, getDoc, getDocs, getFirestore, orderBy, query, where } from 'firebase/firestore';
 import SimpleSlider from "../SimpleSlider/SimpleSlider";
+import UserComponent from "../UserComponent/UserComponent";
 
 const ItemListContainer = ({ greeting }) => {
     //valor del estado  //forma de actualizar el estado
@@ -13,38 +14,6 @@ const ItemListContainer = ({ greeting }) => {
 
     let [loading, setLoading] = useState(true) //"" "" true
     const { idCategoria } = useParams()
-    // const fetchMercado = async () => {
-    //     const resp = await fetch('https://api.mercadolibre.com/sites/MLA/search?category=MLA1051')
-    //     const respParse = await resp.json()
-    //     console.log(respParse)
-    // }
-    // fetchMercado()
-
-    // useEffect(() => { //hook
-    //     if (idCategoria) {
-    //         setLoading(true)  //esto nose si esta bien 
-    //         getProds()
-    //         .then((response) => {
-    //             setProductos(response.filter(producto => producto.tipo === idCategoria || producto.nombre === idCategoria || producto.genero === idCategoria || producto.clave1 === idCategoria || producto.clave2 === idCategoria || producto.clave3 === idCategoria))  //actualiza el estado de los productos
-    //         })
-    //         .catch((err) => {
-    //             console.log(err.message)
-    //         })
-    //         .finally(() => setLoading(false)) //se ejecuta siempre al final, actualiza el state de loading
-    //     }
-    //     else{
-    //         // setLoading(true)
-    //         getProds()
-    //         .then((response) => {
-    //             setProductos(response)  //actualiza el estado de los productos
-    //         })
-    //         .catch((err) => {
-    //             console.log(err.message)
-    //         })
-    //         .finally(() => setLoading(false)) //se ejecuta siempre al final, actualiza el state de loading
-    //     }
-    // }, [idCategoria]) //permitira que se re-renderisen los productos
-
 
     useEffect(() => { //hook
         setLoading(true)
@@ -79,27 +48,6 @@ const ItemListContainer = ({ greeting }) => {
     }, [idCategoria]) //permitira que se re-renderisen los productos
     // console.log(productos)
 
-    //trae un prod
-    // useEffect(()=>{
-    //     const db = getFirestore()
-    //     const query = doc(db, 'productos','KNdvp4swRaIVcucAzfvT')
-    //     getDoc(query)
-    //     .then(resp => setProducto({id: resp.id, ...resp.data()}))
-    // }, [])
-
-    // useEffect(()=>{
-    //     const db = getFirestore();
-    //     const queryCollections = collection(db, 'productos');
-    //     // const queryFilter = query(queryCollections, where('precio','>',2500))
-
-    //     getDocs(queryCollections)
-    //     .then(response => setProductos( response.docs.map(product => ({id: product.id, ...product.data()}) ) ) )
-    //     .catch((err) => {
-    //         console.log(err.message)
-    //     })
-    //     .finally(() => setLoading(false)) 
-    // },[])
-
     /* Nota: 
     useEfect (( 
         //se ejecuta cada que renderiza el componente
@@ -128,12 +76,16 @@ const ItemListContainer = ({ greeting }) => {
             <section className="saludo">
                 <h1>{idCategoria ? idCategoria : greeting}</h1>
             </section>
+
+            <UserComponent user={false}/>
+
             <section className="cardsContainer">
                 {
                     loading ? <Loading />
                         : <ItemList arregloProds={productos} />
                 }
             </section>
+
         </>
     )
 }

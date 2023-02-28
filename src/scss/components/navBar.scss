@@ -1,225 +1,302 @@
 .navBar {
     position: fixed;
-    height: 80px;
+    height: 140px;
     @include anchoGeneral();
     max-width: 100%;
 
     display: flex;
+    flex-direction: column;
     align-content: center;
     justify-content: space-between;
     align-items: center;
-    gap: 10px;
+    gap: 5px;
     background: $color1a;
+    padding-bottom: 10px;
     z-index: 2;
 
-    .contenedorLogo {
-        position: relative;
-        width: auto;
+    .menuSuperior {
+        width: 100%;
         height: 80px;
-        margin-left: 10px;
-        background: $color1a;
-        @include align_mid_flex();
+        display: flex;
+        display: flex;
+        align-content: center;
+        justify-content: space-between;
+        align-items: center;
         gap: 10px;
+        background: $color1a;
+        z-index: 2;
 
-        .logotipo {
-            display: block;
-            width: 60px;
-            height: 60px;
-            background: $color3;
-            padding: 5px;
-            border-radius: 50%;
+        .contenedorLogo {
+            position: relative;
+            width: auto;
+            height: 80px;
+            margin-left: 10px;
+            background: $color1a;
+            @include align_mid_flex();
+            gap: 10px;
 
-            img {
-                width: 100%;
-                height: 100%;
-                object-fit: contain;
+            .logotipo {
+                display: block;
+                width: 60px;
+                height: 60px;
+                background: $color3;
+                padding: 5px;
+                border-radius: 50%;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                }
+            }
+
+            span {
+                font-family: $tituloGeneral;
+                font-size: 1.2rem;
+                text-transform: capitalize;
+                color: $color3;
+                font-weight: 600;
             }
         }
 
-        span {
-            font-family: $tituloGeneral;
-            font-size: 1.2rem;
-            text-transform: capitalize;
-            color: $color3;
-            font-weight: 600;
-        }
-    }
-
-    .menuAndCar {
-        position: relative;
-        width: auto;
-        height: 100%;
-        display: flex;
-        flex-direction: row;
-        margin-left: auto;
-        gap: 10px;
-
-        .listMenu {
+        .menuAndCar {
             position: relative;
-            list-style: none;
+            width: auto;
+            height: 100%;
             display: flex;
-            flex-wrap: nowrap;
-            justify-content: flex-end;
-            align-items: center;
+            flex-direction: row;
+            margin-left: auto;
             gap: 10px;
 
-            li {
+            .listMenu {
                 position: relative;
-                height: 100%;
-                @include align_mid_flex();
+                list-style: none;
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: flex-end;
+                align-items: center;
+                gap: 10px;
 
-                a {
+                li {
                     position: relative;
-                    text-decoration: none;
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: center;
-                    align-items: center;
-                    align-content: center;
-                    flex-wrap: nowrap;
-                    min-width: 100px;
-                    width: 120px;
-                    height: 50px;
-                    text-align: center;
-                    text-decoration: none;
-                    font-family: $tituloGeneral;
-                    text-transform: capitalize;
-                    font-size: 1.2rem;
-                    font-weight: 500;
-                    gap: 5px;
+                    height: 100%;
+                    @include align_mid_flex();
 
-                    cursor: pointer;
-                    transition: all .5s ease;
-                    position: relative;
-                    outline: none;
-                    border-radius: 2px;
-                    z-index: 0;
-                    overflow: hidden;
-                    color: $color3;
+                    a {
+                        position: relative;
+                        text-decoration: none;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+                        align-items: center;
+                        align-content: center;
+                        flex-wrap: nowrap;
+                        min-width: 100px;
+                        width: 120px;
+                        height: 50px;
+                        text-align: center;
+                        text-decoration: none;
+                        font-family: $tituloGeneral;
+                        text-transform: capitalize;
+                        font-size: 1.2rem;
+                        font-weight: 500;
+                        gap: 5px;
 
-                    &:hover {
-                        color: #fff;
+                        cursor: pointer;
+                        transition: all .5s ease;
+                        position: relative;
+                        outline: none;
+                        border-radius: 2px;
+                        z-index: 0;
+                        overflow: hidden;
+                        color: $color3;
+
+                        &:hover {
+                            color: #fff;
+
+                            &:after {
+                                height: 100%;
+                            }
+                        }
 
                         &:after {
-                            height: 100%;
+                            content: "";
+                            position: absolute;
+                            z-index: -1;
+                            transition: all .5s ease;
+                            left: 0;
+                            bottom: 0;
+                            height: 0;
+                            width: 100%;
+                            background: #57cc99;
+                        }
+
+                        &.rutaActiva {
+                            transition: all .5s ease;
+                            background: #57cc99;
+                            color: $color1a;
                         }
                     }
 
-                    &:after {
-                        content: "";
-                        position: absolute;
-                        z-index: -1;
-                        transition: all .5s ease;
-                        left: 0;
-                        bottom: 0;
-                        height: 0;
-                        width: 100%;
-                        background: #57cc99;
-                    }
+                    &.listConSubMenu {
+                        position: relative;
+                        width: 120px;
+                        display: flex;
+                        flex-direction: column;
+                        flex-wrap: wrap;
+                        gap: 10px;
 
-                    &.rutaActiva {
-                        transition: all .5s ease;
-                        background: #57cc99;
-                        color: $color1a;
+                        .subMenuCategoria {
+                            opacity: 0;
+                            transition: opacity .5s;
+                            display: none;
+                        }
+
+                        &:hover {
+                            .subMenuCategoria {
+                                position: absolute;
+                                opacity: 1;
+                                background: $color1a;
+                                top: 70px;
+                                display: flex;
+                                flex-wrap: wrap;
+                                flex-direction: column;
+                                gap: 10px;
+
+                                @include notebook() {
+                                    top: 0;
+                                    left: 122px;
+                                }
+
+                            }
+                        }
                     }
                 }
+            }
 
-                &.listConSubMenu {
+        }
+    }
+
+
+    .subMenuPrincipal {
+        width: 100%;
+        height: 40px;
+        // background: white;
+        display: flex;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-content: center;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 5px;
+
+        .carrito {
+            display: flex;
+            height: 40px;
+            width: 50px;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+            gap: 10px;
+            cursor: pointer;
+
+            a {
+                display: flex;
+                flex-wrap: nowrap;
+                flex-direction: row;
+                align-content: center;
+                align-items: center;
+                justify-content: center;
+                gap: 5px;
+            }
+
+            a,
+            p {
+                text-decoration: none;
+                font-size: 1.5rem;
+                color: $color4;
+                font-weight: 600;
+            }
+        }
+
+        .likeWidget {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+
+            a {
+                display: flex;
+                flex-wrap: nowrap;
+                flex-direction: row;
+                align-content: center;
+                align-items: center;
+                justify-content: center;
+                gap: 5px;
+                text-decoration: none;
+                font-size: 1.5rem;
+                color: $color8;
+                font-weight: 600;
+            }
+        }
+
+        .userLogin {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+
+            a.userCountLog {
+                display: flex;
+                flex-wrap: nowrap;
+                flex-direction: row;
+                align-content: center;
+                align-items: center;
+                justify-content: center;
+                gap: 5px;
+                text-decoration: none;
+                font-size: 1.5rem;
+                color: $color3;
+                font-weight: 600;
+                overflow: hidden;
+
+                &.active {
                     position: relative;
-                    width: 120px;
-                    display: flex;
-                    flex-direction: column;
-                    flex-wrap: wrap;
-                    gap: 10px;
+                    width: 98%;
+                    height: 98%;
+                    border-radius: 50%;
+                    border: solid 3px $color3;
 
-                    .subMenuCategoria {
-                        opacity: 0;
-                        transition: opacity .5s;
+                    ion-icon {
                         display: none;
                     }
 
-                    &:hover {
-                        .subMenuCategoria {
-                            position: absolute;
-                            opacity: 1;
-                            background: $color1a;
-                            top: 70px;
-                            display: flex;
-                            flex-wrap: wrap;
-                            flex-direction: column;
-                            gap: 10px;
-
-                            @include notebook() {
-                                top: 0;
-                                left: 122px;
-                            }
-
-                        }
+                    img {
+                        width: 100%;
+                        aspect-ratio: 1 / 1;
+                        object-fit: cover;
                     }
+
+
+
                 }
             }
+
+
         }
 
     }
 
-    .carrito {
-        display: flex;
-        height: 80px;
-        width: 50px;
-        flex-wrap: nowrap;
-        justify-content: center;
-        align-items: center;
-        margin-right: 10px;
-        gap: 10px;
-        cursor: pointer;
-
-        a {
-            display: flex;
-            flex-wrap: nowrap;
-            flex-direction: row;
-            align-content: center;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-        }
-
-        a,
-        p {
-            text-decoration: none;
-            font-size: 1.5rem;
-            color: $color4;
-            font-weight: 600;
-        }
-    }
-
-    .likeWidget{
-        width: 35px;
-        height: 80px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        align-items: center;
-        gap: 10px;
-        cursor: pointer;
-
-        a {
-            display: flex;
-            flex-wrap: nowrap;
-            flex-direction: row;
-            align-content: center;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-        }
-
-        a,
-        p {
-            text-decoration: none;
-            font-size: 1.5rem;
-            color: $color8;
-            font-weight: 600;
-        }
-    }
 
     @include notebook() {
         height: 80px;
@@ -251,6 +328,7 @@
             justify-content: center;
             margin-left: auto;
         }
+
         &.active {
             height: 367px;
             transition: .7s;

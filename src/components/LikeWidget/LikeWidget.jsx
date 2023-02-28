@@ -5,7 +5,7 @@ const LikeWidget = () => {
     return (
         <>
             <section className='likeWidget'>
-                <NavLink to='/like'>
+                <NavLink to='/like' className={({ isActive })=> isActive ? 'activaModal' : '' }>
                     <ion-icon name="heart-sharp"></ion-icon>
                 </NavLink>
             </section>
