@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import CartWidget from "../CartWidget/CartWidget "
 import LikeWidget from "../LikeWidget/LikeWidget";
+import PanelRoot from "../PanelRoot/PanelRoot";
 import Toggle from "../Toggle/Toggle";
 import UserWidget from "../UserWidget/UserWidget";
 
@@ -14,6 +15,8 @@ const NavBar = () => {
     }
 
     const toggleClassCheck = toggleState ? 'active' : '';
+
+    const userLogin = "root"
 
     return (
         <>
@@ -46,6 +49,7 @@ const NavBar = () => {
                 </section>
 
                 <section className="subMenuPrincipal">
+                { userLogin === "root" && <PanelRoot/>}
                     <UserWidget />
                     <LikeWidget />
                     <CartWidget />
