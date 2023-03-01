@@ -17,7 +17,7 @@ function SliderItem({ allProds, banner }) {
     }, [])
 
     const prodsBanner = allProds.filter((element) => banner.nombre === element.clave2 && element.clave3 === "coleccion").slice(0, 5);
-    console.log(prodsBanner)
+    // console.log(prodsBanner)
 
     return (
         <>

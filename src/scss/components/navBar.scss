@@ -318,7 +318,14 @@
                 color: $color5;
                 font-weight: 600;
                 overflow: hidden;
+                transition: .5s;
+
+                &.active{
+                    color: red;
+                }
             }
+
+            
         }
 
     }
@@ -362,4 +369,93 @@
         }
     }
 
+}
+
+.subPaneles{
+    width: auto;
+    height: auto;
+    position: fixed;
+    gap: 10px;
+    padding: 10px;
+    background-color: tomato;
+    border-radius: 2px;
+    z-index: 2;
+    display: flex;
+    top: 140px;
+
+    .login{
+        width: 300px;
+        height: 350px;
+        border-radius: 2px;
+        top: 140px;
+        right: 100px;
+        background:$color6;
+        border: solid 2px $color3;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        gap: 1rem;
+        z-index: 2;
+        opacity: 0;
+        transition: .5s;
+    
+        &.visible{
+            opacity: 1;
+        }
+    }
+    .panelSetting{
+        width: 300px;
+        height: 350px;
+        border-radius: 2px;
+        top: 140px;
+        background:$color6;
+        border: solid 2px $color3;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        z-index: 2;
+        opacity: 0;
+        gap: 1rem;
+        transform: .7s;
+
+        h2{
+            font-family: $tituloGeneral;
+            color: $color2;
+        }
+        .panels{
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            gap: 8px;
+            
+            a{
+                text-decoration: none;
+                width: auto;
+                height: auto;
+                padding: 5px;
+                display: flex;
+                justify-content: flex-start;
+                align-content: center;
+                align-items: center;
+                gap: 5px;
+                font-family: $parrafoGeneral;
+                color: $color2;
+                font-size: 1.1rem;
+                text-transform: capitalize;
+    
+                ion-icon{
+                    color: $color4;
+                }
+            }
+        }
+        &.visible{
+            opacity: 1;
+            transition: .5s;
+        }
+    }
 }

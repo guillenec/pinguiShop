@@ -1,14 +1,18 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { useCartContext } from "../../context/CartContext";
 import CartWidget from "../CartWidget/CartWidget "
 import LikeWidget from "../LikeWidget/LikeWidget";
+import PanelLogin from "../PanelLogin/PanelLogin";
 import PanelRoot from "../PanelRoot/PanelRoot";
+import PanelSettings from "../PanelSettings/PanelSettings";
 import Toggle from "../Toggle/Toggle";
 import UserWidget from "../UserWidget/UserWidget";
 
 //objetivo : crear el menú e-comerce de tu proyecto
 const NavBar = () => {
     const [toggleState, setToggleState] = useState(false)
+    const { panelRoot, login } = useCartContext();
 
     function handleClick() {
         setToggleState(toggleState => !toggleState);
@@ -16,6 +20,7 @@ const NavBar = () => {
 
     const toggleClassCheck = toggleState ? 'active' : '';
 
+    //a ver cvomo lo hago
     const userLogin = "root"
 
     return (
@@ -49,13 +54,20 @@ const NavBar = () => {
                 </section>
 
                 <section className="subMenuPrincipal">
-                { userLogin === "root" && <PanelRoot/>}
+                    {userLogin === "root" && <PanelRoot />}
                     <UserWidget />
                     <LikeWidget />
                     <CartWidget />
                 </section>
 
             </nav>
+            {
+                panelRoot || login ? (<div className="subPaneles">
+                {panelRoot ? (<PanelSettings />) : null}
+                {login ? (<PanelLogin />) : null}
+            </div>) : null
+            }
+            
         </>
     )
 }

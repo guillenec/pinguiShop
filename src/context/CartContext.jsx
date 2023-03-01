@@ -10,8 +10,8 @@ export const useCartContext = () => useContext(CartContext)
 export const CartContextProvider = ({ children }) => {
     const [cartList, setCartList] = useState([]); //productos carrito
     const [ meGusta, setMeGusta ] = useState([])
-    const [contadorComprados, setContadorComprados] = useState();
-
+    const [contadorComprados, setContadorComprados] = useState(false);
+    const [ login, setLogin ] = useState(false)
     // console.log("arriba ",cartList)
     const agregaAlCarrito = (newProducto) => {
         //includes me da error
@@ -85,6 +85,15 @@ export const CartContextProvider = ({ children }) => {
         // console.log("Sin Duplas: ",cartList)
     }
 
+    const [panelRoot, setPanelRoot] = useState(false);
+
+    const handlePanelRooot = (val) => {
+        setPanelRoot(val)
+    }
+    const handleLoginarse = (val) => {
+        setLogin(val)
+    }
+
     return (
         //proveedor
         <CartContext.Provider value={{
@@ -96,6 +105,10 @@ export const CartContextProvider = ({ children }) => {
             contador,
             contadorComprados,
             eliminarProducto,
+            panelRoot,
+            handlePanelRooot,
+            login,
+            handleLoginarse,
         }}>
             {children}
         </CartContext.Provider>

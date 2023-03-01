@@ -53,9 +53,8 @@ function App() {
               <Route path='/formProduct' element={<FormPushProduct />} />
 
               <Route path='*' element={<Navigate to='/'></Navigate>} />
-              
+        
             </Routes>
-
           </main>
           <footer className="footer"></footer>
         </div>
