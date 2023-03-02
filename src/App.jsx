@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import {
   BrowserRouter,
   Route,
@@ -14,7 +13,6 @@ import Toggle from './components/Toggle/Toggle'
 
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer'
 import CartContain from './components/CartContainer/CartContain';
-import { createContext } from 'react';
 import { CartContextProvider } from './context/CartContext';
 
 import { ToastContainer } from 'react-toastify';

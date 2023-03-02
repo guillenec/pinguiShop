@@ -1,4 +1,5 @@
 import { createContext, useState, useContext } from "react";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 //Creamos el contexto
 export const CartContext = createContext([])
@@ -12,6 +13,8 @@ export const CartContextProvider = ({ children }) => {
     const [ meGusta, setMeGusta ] = useState([])
     const [contadorComprados, setContadorComprados] = useState(false);
     const [ login, setLogin ] = useState(false)
+    const [panelRoot, setPanelRoot] = useState(false);
+
     // console.log("arriba ",cartList)
     const agregaAlCarrito = (newProducto) => {
         //includes me da error
@@ -85,8 +88,6 @@ export const CartContextProvider = ({ children }) => {
         // console.log("Sin Duplas: ",cartList)
     }
 
-    const [panelRoot, setPanelRoot] = useState(false);
-
     const handlePanelRooot = (val) => {
         setPanelRoot(val)
     }
@@ -98,6 +99,7 @@ export const CartContextProvider = ({ children }) => {
     const user = {
         login:true,
     }
+    
 
     return (
         //proveedor
