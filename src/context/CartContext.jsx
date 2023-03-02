@@ -1,6 +1,5 @@
 import { createContext, useContext, useState } from "react";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-
 //Creamos el contexto
 export const CartContext = createContext([])
 
@@ -97,8 +96,9 @@ export const CartContextProvider = ({ children }) => {
     }
 
     //Seccion de prueba para autenticar usuario
-    const signup = (email, password) => {
-        console.log(email, password)
+    const signUp = (email, password) => {
+        const auth = getAuth();
+        return  createUserWithEmailAndPassword(auth, email, password)
     }
 
 
@@ -117,7 +117,7 @@ export const CartContextProvider = ({ children }) => {
             handlePanelRooot,
             login,
             handleLoginarse,
-            signup,
+            signUp,
         }}>
             {children}
         </CartContext.Provider>
