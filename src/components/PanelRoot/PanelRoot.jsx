@@ -8,7 +8,8 @@ const PanelRoot = () => {
   const [valor, setValor] = useState(false)
   const [claseAct, setClaseAct] = useState('')
 
-  const handleActive = () => {
+  const handleActive = (e) => {
+    e.preventDefault()
     setValor(!valor)
     
     // ${(valor) ? 'active' : '' }
@@ -27,7 +28,7 @@ const PanelRoot = () => {
   return (
     <>
       <section className='panelRoot'>
-        <Link to={'/'} className={`panelConfig ${claseAct}`} onClick={handleActive}>
+        <Link to={''} className={`panelConfig ${claseAct}`} onClick={handleActive}>
           <ion-icon name="construct-sharp"></ion-icon>
         </Link>
       </section>

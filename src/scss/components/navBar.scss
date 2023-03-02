@@ -295,7 +295,7 @@
 
         }
 
-        .panelRoot{
+        .panelRoot {
             width: 40px;
             height: 40px;
             display: flex;
@@ -320,12 +320,12 @@
                 overflow: hidden;
                 transition: .5s;
 
-                &.active{
+                &.active {
                     color: red;
                 }
             }
 
-            
+
         }
 
     }
@@ -371,46 +371,170 @@
 
 }
 
-.subPaneles{
+.subPaneles {
     width: auto;
     height: auto;
     position: fixed;
     gap: 10px;
     padding: 10px;
-    background-color: tomato;
+    background-color: $color6;
     border-radius: 2px;
     z-index: 2;
     display: flex;
     top: 140px;
 
-    .login{
+    .login {
         width: 300px;
-        height: 350px;
+        height: auto;
         border-radius: 2px;
         top: 140px;
         right: 100px;
-        background:$color6;
+        background: $color6;
         border: solid 2px $color3;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         align-content: center;
-        gap: 1rem;
+        gap: 10px;
         z-index: 2;
         opacity: 0;
         transition: .5s;
-    
-        &.visible{
+        padding: 10px;
+
+        .formLogin {
+            width: 100%;
+            height: auto;
+            padding: 10px;
+            background-color: $color3;
+            border-radius: 2px;
+            display: flex;
+            flex-wrap: nowrap;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            align-content: center;
+            gap: 10px;
+
+            h2 {
+                font-family: $tituloGeneral;
+                text-transform: capitalize;
+            }
+
+            input {
+                font-family: $parrafoGeneral;
+                font-weight: 600;
+                color: $color1a;
+                font-size: 1rem;
+                padding: 5px 10px;
+                border: solid 2px $color1a;
+                border-radius: 2px;
+                outline: none;
+
+                &::placeholder {
+                    font-family: $parrafoGeneral;
+                    color: $color5;
+                    text-transform: capitalize;
+                }
+            }
+
+            .entrar {
+                font-family: $tituloGeneral;
+                font-weight: 500;
+                font-size: 1rem;
+                color: $color4;
+                background: $color6;
+                text-transform: capitalize;
+                padding: 8px 12px;
+                border-radius: 2px;
+                transition: .5s;
+                outline: none;
+                border: none;
+
+                &:hover {
+                    color: $color6;
+                    background: $color4;
+                }
+            }
+        }
+
+        .formRegister {
+            width: 100%;
+            height: auto;
+            padding: 10px;
+            background-color: $color3;
+            border-radius: 2px;
+            display: flex;
+            flex-wrap: nowrap;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            align-content: center;
+            gap: 10px;
+
+            h2 {
+                font-family: $tituloGeneral;
+                text-transform: capitalize;
+            }
+
+            input {
+                font-family: $parrafoGeneral;
+                font-weight: 600;
+                color: $color1a;
+                font-size: 1rem;
+                padding: 5px 10px;
+                border: solid 2px $color1a;
+                border-radius: 2px;
+                outline: none;
+
+                &::placeholder {
+                    font-family: $parrafoGeneral;
+                    color: $color5;
+                    text-transform: capitalize;
+                }
+            }
+
+            .entrar {
+                font-family: $tituloGeneral;
+                font-weight: 500;
+                font-size: 1rem;
+                color: $color4;
+                background: $color6;
+                text-transform: capitalize;
+                padding: 8px 12px;
+                border-radius: 2px;
+                transition: .5s;
+                outline: none;
+                border: none;
+
+                &:hover {
+                    color: $color6;
+                    background: $color4;
+                }
+            }
+        }
+
+        a {
+            font-family: $parrafoGeneral;
+            text-transform: capitalize;
+
+            color: $color3;
+            font-size: .9rem;
+            text-decoration: none;
+        }
+
+
+        &.visible {
             opacity: 1;
         }
     }
-    .panelSetting{
+
+    .panelSetting {
         width: 300px;
         height: 350px;
         border-radius: 2px;
         top: 140px;
-        background:$color6;
+        background: $color6;
         border: solid 2px $color3;
         display: flex;
         flex-direction: column;
@@ -422,18 +546,19 @@
         gap: 1rem;
         transform: .7s;
 
-        h2{
+        h2 {
             font-family: $tituloGeneral;
             color: $color2;
         }
-        .panels{
+
+        .panels {
             width: 90%;
             display: flex;
             flex-direction: column;
             text-decoration: none;
             gap: 8px;
-            
-            a{
+
+            a {
                 text-decoration: none;
                 width: auto;
                 height: auto;
@@ -447,13 +572,14 @@
                 color: $color2;
                 font-size: 1.1rem;
                 text-transform: capitalize;
-    
-                ion-icon{
+
+                ion-icon {
                     color: $color4;
                 }
             }
         }
-        &.visible{
+
+        &.visible {
             opacity: 1;
             transition: .5s;
         }

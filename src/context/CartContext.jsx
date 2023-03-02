@@ -94,6 +94,11 @@ export const CartContextProvider = ({ children }) => {
         setLogin(val)
     }
 
+    //Seccion de prueba para autenticar usuario
+    const user = {
+        login:true,
+    }
+
     return (
         //proveedor
         <CartContext.Provider value={{
@@ -109,6 +114,7 @@ export const CartContextProvider = ({ children }) => {
             handlePanelRooot,
             login,
             handleLoginarse,
+            user,
         }}>
             {children}
         </CartContext.Provider>

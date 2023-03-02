@@ -20,7 +20,7 @@ const NavBar = () => {
 
     const toggleClassCheck = toggleState ? 'active' : '';
 
-    //a ver cvomo lo hago
+    //a ver cvomo lo hago, un mini panel para el admin
     const userLogin = "root"
 
     return (

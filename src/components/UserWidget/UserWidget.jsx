@@ -7,7 +7,8 @@ const UserWidget = () => {
   const [valor, setValor] = useState(false)
   const [claseAct, setClaseAct] = useState('')
 
-  const handleActive = () => {
+  const handleActive = (e) => {
+    e.preventDefault()
     setValor(!valor)
   }
 
