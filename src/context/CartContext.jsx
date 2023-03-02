@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 //Creamos el contexto
@@ -9,11 +9,11 @@ export const useCartContext = () => useContext(CartContext)
 
 //estados funciones globales
 export const CartContextProvider = ({ children }) => {
-    const [cartList, setCartList] = useState([]); //productos carrito
-    const [ meGusta, setMeGusta ] = useState([])
-    const [contadorComprados, setContadorComprados] = useState(false);
-    const [ login, setLogin ] = useState(false)
-    const [panelRoot, setPanelRoot] = useState(false);
+    const [cartList, setCartList] = useState([]) //productos carrito
+    const [meGusta, setMeGusta] = useState([])
+    const [contadorComprados, setContadorComprados] = useState(false)
+    const [login, setLogin] = useState(false)
+    const [panelRoot, setPanelRoot] = useState(false)
 
     // console.log("arriba ",cartList)
     const agregaAlCarrito = (newProducto) => {
@@ -72,11 +72,12 @@ export const CartContextProvider = ({ children }) => {
         if (meGusta.some(objeto => objeto.id === newProducto.id)) {
             // const nuevoMeGusta = meGusta.filter((obj) => obj.id !== newProducto.id)
             setMeGusta(meGusta.filter((obj) => obj.id !== newProducto.id))
-        
+
         } else {
             setMeGusta([
                 ...meGusta,
-                {   id: newProducto.id,
+                {
+                    id: newProducto.id,
                     imagenA: newProducto.imagenA,
                     nombre: newProducto.nombre,
                     descripcion: newProducto.descripcion,
@@ -96,10 +97,10 @@ export const CartContextProvider = ({ children }) => {
     }
 
     //Seccion de prueba para autenticar usuario
-    const user = {
-        login:true,
+    const signup = (email, password) => {
+        console.log(email, password)
     }
-    
+
 
     return (
         //proveedor
@@ -116,7 +117,7 @@ export const CartContextProvider = ({ children }) => {
             handlePanelRooot,
             login,
             handleLoginarse,
-            user,
+            signup,
         }}>
             {children}
         </CartContext.Provider>

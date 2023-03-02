@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useCartContext } from '../../context/CartContext'
-import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const FormLogin = () => {
 

@@ -4,7 +4,6 @@ import { useCartContext } from '../../context/CartContext'
 const FormRegister = () => {
 
   const {signUp} = useCartContext()
-
   const [user, setUser] = useState({
     email:'',
     password:''
@@ -26,7 +25,7 @@ const FormRegister = () => {
     <form className='formRegister' action="" onSubmit={handlesubmit}>
       <h2>😎 register</h2>
       <input type="text" name='nombre' id='nombre' placeholder='nombre' onChange={handleChange} required />
-      <input type="password" name="pasword" id="pasword" placeholder='password' onChange={handleChange} required />
+      <input type="password" name="password" id="password" placeholder='password' onChange={handleChange} required />
       <input type="email" name="email" id="email" placeholder='email' onChange={handleChange} required />
       <input type="number" name="edad" id="edad" onChange={handleChange} placeholder='edad' min={18} max={100} />
 
