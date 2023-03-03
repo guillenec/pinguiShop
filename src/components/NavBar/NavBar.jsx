@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { useCartContext } from "../../context/CartContext";
 import CartWidget from "../CartWidget/CartWidget "
 import LikeWidget from "../LikeWidget/LikeWidget";
+import Logout from "../Logout/Logout";
 import PanelLogin from "../PanelLogin/PanelLogin";
 import PanelRoot from "../PanelRoot/PanelRoot";
 import PanelSettings from "../PanelSettings/PanelSettings";
@@ -64,6 +65,7 @@ const NavBar = () => {
 
                 <section className="subMenuPrincipal">
                     {user === "root@gmail.com" && <PanelRoot />}
+                    <Logout />
                     <UserWidget />
                     <LikeWidget />
                     <CartWidget />

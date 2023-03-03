@@ -189,20 +189,112 @@
         align-content: center;
         justify-content: flex-end;
         align-items: center;
-        gap: 5px;
+        gap: 15px;
 
-        .carrito {
-            display: flex;
+        // .carrito {
+        //     display: flex;
+        //     height: 40px;
+        //     width: 50px;
+        //     flex-wrap: nowrap;
+        //     justify-content: center;
+        //     align-items: center;
+        //     margin-right: 10px;
+        //     gap: 10px;
+        //     cursor: pointer;
+
+        //     a {
+        //         display: flex;
+        //         flex-wrap: nowrap;
+        //         flex-direction: row;
+        //         align-content: center;
+        //         align-items: center;
+        //         justify-content: center;
+        //         gap: 5px;
+        //     }
+
+        //     a,
+        //     p {
+        //         text-decoration: none;
+        //         font-size: 1.5rem;
+        //         color: $color4;
+        //         font-weight: 600;
+        //     }
+        // }
+
+        // .likeWidget {
+        //     width: 40px;
+        //     height: 40px;
+        //     display: flex;
+        //     justify-content: center;
+        //     align-items: center;
+        //     align-items: center;
+        //     gap: 10px;
+        //     cursor: pointer;
+
+        //     a {
+        //         display: flex;
+        //         flex-wrap: nowrap;
+        //         flex-direction: row;
+        //         align-content: center;
+        //         align-items: center;
+        //         justify-content: center;
+        //         gap: 5px;
+        //         text-decoration: none;
+        //         font-size: 1.5rem;
+        //         color: $color8;
+        //         font-weight: 600;
+        //     }
+        // }
+
+        // .userLogin {
+        //     width: 40px;
+        //     height: 40px;
+        //     display: flex;
+        //     justify-content: center;
+        //     align-items: center;
+        //     align-items: center;
+        //     gap: 10px;
+        //     cursor: pointer;
+
+        //     a.userCountLog {
+        //         display: flex;
+        //         flex-wrap: nowrap;
+        //         flex-direction: row;
+        //         align-content: center;
+        //         align-items: center;
+        //         justify-content: center;
+        //         gap: 5px;
+        //         text-decoration: none;
+        //         font-size: 1.5rem;
+        //         color: $color3;
+        //         font-weight: 600;
+        //         overflow: hidden;
+
+        //         img {
+        //             width: 90%;
+        //             aspect-ratio: 1 / 1;
+        //             border-radius: 50%;
+        //             object-fit: cover;
+        //             border: 3px solid $color5;
+        //         }
+
+        //     }
+        // }
+        .carrito ,
+        .likeWidget,
+        .userLogin,
+        .panelRoot,
+        .logout{
+            width: auto;
             height: 40px;
-            width: 50px;
-            flex-wrap: nowrap;
+            display: flex;
             justify-content: center;
             align-items: center;
-            margin-right: 10px;
+            align-items: center;
             gap: 10px;
             cursor: pointer;
 
-            a {
+            a{
                 display: flex;
                 flex-wrap: nowrap;
                 flex-direction: row;
@@ -210,123 +302,61 @@
                 align-items: center;
                 justify-content: center;
                 gap: 5px;
-            }
-
-            a,
-            p {
                 text-decoration: none;
-                font-size: 1.5rem;
-                color: $color4;
-                font-weight: 600;
-            }
-        }
-
-        .likeWidget {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-
-            a {
-                display: flex;
-                flex-wrap: nowrap;
-                flex-direction: row;
-                align-content: center;
-                align-items: center;
-                justify-content: center;
-                gap: 5px;
-                text-decoration: none;
-                font-size: 1.5rem;
-                color: $color8;
-                font-weight: 600;
-            }
-        }
-
-        .userLogin {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-
-            a.userCountLog {
-                display: flex;
-                flex-wrap: nowrap;
-                flex-direction: row;
-                align-content: center;
-                align-items: center;
-                justify-content: center;
-                gap: 5px;
-                text-decoration: none;
-                font-size: 1.5rem;
-                color: $color3;
+                color: $color5;
                 font-weight: 600;
                 overflow: hidden;
+                font-size: 1.8rem;
 
-                &.active {
-                    position: relative;
-                    width: 98%;
-                    height: 98%;
-                    border-radius: 50%;
-                    border: solid 3px $color3;
-
-                    ion-icon {
-                        display: none;
-                    }
-
-                    img {
-                        width: 100%;
-                        aspect-ratio: 1 / 1;
-                        object-fit: cover;
-                    }
-
-
-
-                }
             }
-
-
-        }
-
-        .panelRoot {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-
-            a.panelConfig {
-                display: flex;
-                flex-wrap: nowrap;
-                flex-direction: row;
-                align-content: center;
-                align-items: center;
-                justify-content: center;
-                gap: 5px;
+            p{
                 text-decoration: none;
                 font-size: 1.5rem;
                 color: $color5;
                 font-weight: 600;
-                overflow: hidden;
-                transition: .5s;
-
-                &.active {
-                    color: red;
-                }
             }
 
-
+            img {
+                width: 30px;
+                aspect-ratio: 1 / 1;
+                border-radius: 50%;
+                object-fit: cover;
+                border: 3px solid $color5;
+            }
         }
+
+        // .panelRoot {
+        //     width: 40px;
+        //     height: 40px;
+        //     display: flex;
+        //     justify-content: center;
+        //     align-items: center;
+        //     align-items: center;
+        //     gap: 10px;
+        //     cursor: pointer;
+
+        //     a.panelConfig {
+        //         display: flex;
+        //         flex-wrap: nowrap;
+        //         flex-direction: row;
+        //         align-content: center;
+        //         align-items: center;
+        //         justify-content: center;
+        //         gap: 5px;
+        //         text-decoration: none;
+        //         font-size: 1.5rem;
+        //         color: $color5;
+        //         font-weight: 600;
+        //         overflow: hidden;
+        //         transition: .5s;
+
+        //         &.active {
+        //             color: red;
+        //         }
+        //     }
+
+
+        // }
 
     }
 

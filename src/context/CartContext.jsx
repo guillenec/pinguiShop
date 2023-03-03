@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
 
 import { toast } from "react-toastify"
 import { auth } from "../firebase/config";
@@ -100,27 +100,36 @@ export const CartContextProvider = ({ children }) => {
         setLogin(val)
     }
 
-    //Manejo de usuarios
-    //Seccion de prueba para autenticar usuario
+    //#region - Manejo de usuarios:
+    // https://firebase.google.com/docs/auth/web/password-auth?hl=es-419
+    //permite autenticar usuario
     const signUp = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password)
     }
-
+    //permite ingresar, logiar un user
     const loginForm = (email, password) => {
-
         return signInWithEmailAndPassword(auth, email, password)
     }
-    
-    useEffect(()=>{
-        // console.log('auth provider loader')
-        onAuthStateChanged(auth,currentUser => {
+    const logOut = () => {
+        signOut(auth).then(() => {
+            notify("🙋 cerrando sesion!!!")
+        }).catch((error) => {
+            // An error happened.
+            console.log(error)
+        }).finally(()=> {
+            notify("🖐 bye!!!")
+        })
+    }
+    useEffect(() => {
+        //control delusuario activo
+        onAuthStateChanged(auth, currentUser => {
             console.log(currentUser)
             setUser(currentUser)
         })
+    }, [])
+    //#endregion
 
-    },[])
-
-    /* ++ Toastify ++  */
+    //#region - Toastify 
     const notify = (value) => toast.success(`🥰🥰 ${value} `, {
         position: "bottom-right",
         autoClose: 3000,
@@ -137,6 +146,7 @@ export const CartContextProvider = ({ children }) => {
         autoClose: 3000,
         hideProgressBar: false,
     })
+    //#endregion
 
     return (
         //proveedor
@@ -158,6 +168,7 @@ export const CartContextProvider = ({ children }) => {
             errToast,
             loginForm,
             user,
+            logOut,
         }}>
             {children}
         </CartContext.Provider>
