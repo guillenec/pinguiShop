@@ -8,7 +8,7 @@ const ItemCart = ({ element, dropProduct }) => {
     
     const { nombre: nombre,  stock: stock, descripcion: describe, imagenA: img1, precioTotal: precioTotal } = element;
 
-    console.log("ELEMENT PARAM: ", element)
+    // console.log("ELEMENT PARAM: ", element)
 
 
     const sumaProd = (e) => {
@@ -22,7 +22,7 @@ const ItemCart = ({ element, dropProduct }) => {
     }
 
     const restaProd = (e) => {
-        console.log("*********** *********", element);
+        // console.log("*********** *********", element);
         (element.comprado <= 0) ? dropProduct(element.id) :
         //     operaSobreCart(identificador, "resta")
         agregaAlCarrito(

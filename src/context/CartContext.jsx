@@ -17,6 +17,7 @@ export const CartContextProvider = ({ children }) => {
     const [contadorComprados, setContadorComprados] = useState(false)
     const [login, setLogin] = useState(false)
     const [panelRoot, setPanelRoot] = useState(false)
+    const [user, setUser] = useState(null)
 
     // console.log("arriba ",cartList)
     const agregaAlCarrito = (newProducto) => {
@@ -111,10 +112,10 @@ export const CartContextProvider = ({ children }) => {
     }
     
     useEffect(()=>{
-
-        console.log('auth provider loader')
+        // console.log('auth provider loader')
         onAuthStateChanged(auth,currentUser => {
             console.log(currentUser)
+            setUser(currentUser)
         })
 
     },[])
@@ -156,6 +157,7 @@ export const CartContextProvider = ({ children }) => {
             notify,
             errToast,
             loginForm,
+            user,
         }}>
             {children}
         </CartContext.Provider>

@@ -1,54 +1,40 @@
 import { addDoc, collection, getFirestore } from 'firebase/firestore'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useCartContext } from '../../context/CartContext'
 import ItemCart from '../ItemCart/ItemCart'
 
-/*
-getProds()
-                .then((response) => {
-                    console.log(response)
-                    setProdsCarrito(
-                        prodsComprados.map(pComprado => {
-                            const producto = response.find(p => p.id === pComprado.id);
-                            return {
-                                id: pComprado.id,
-                                nombre: producto.nombre,
-                                cantidad: pComprado.cantidad,
-                                descripcion: producto.descripcion,
-                                stock: producto.stock,
-                                precio: producto.precio,
-                                descuento: producto.descuento,
-                                imagenA: producto.imagenA
-                            }
-                        })
-                    )
-                })
-*/
-
-
 const CartContain = () => {
 
-    const { cartList, vaciarCarrito, eliminarProducto} = useCartContext()
-    console.log(cartList);
+    const { cartList, vaciarCarrito, eliminarProducto, user } = useCartContext()
+    const [seccion, setSeccion] = useState(false)
+    // console.log(cartList);
+    console.log(user)
+
+    useEffect(() => {
+        user == null || user == undefined ? console.log("no hay user loguiado") : console.log("Usuario loguiado: " + user.email)
+
+    }, [user])
 
     const comprar = () => {
-        const userCompra = { nombre: 'pepito gammer', telefono: '2944396888', email: 'pepitogamer@gmail.com' }
+        if (user == null || user == undefined) {
+            setSeccion(true)
+        } else {
+            setSeccion(false)
+            const ordenCmpra = {
+                buyer: { email: user.email, uid: user.uid },
+                items: cartList.map((elem => ({ id: elem.id, titulo: elem.nombre, precio: elem.precioTotal }))),
+                total: cartList.reduce((acumulador, element) => acumulador + element.precioTotal, 0)
+            }
 
-        const cartReal = {
-            buyer: { nombre: userCompra.nombre, telefono: userCompra.telefono, email: userCompra.email },
-            items: cartList.map((elem => ({ id: elem.id, titulo: elem.nombre, precio: elem.precioTotal }))),
-            total: cartList.reduce((acumulador, element) => acumulador + element.precioTotal, 0)
+
+            const db = getFirestore()
+            const ordenColeccion = collection(db, 'ordenesDeCompra')
+
+            addDoc(ordenColeccion, ordenCmpra)
+                .then(resp => console.log(resp))
         }
-
-
-        const db = getFirestore()
-        const ordenColeccion = collection(db, 'ordenesDeCompra')
-
-        addDoc(ordenColeccion, cartReal)
-            .then(resp => console.log(resp))
-
-        console.log("++ -- Carrito +Usuario: ", cartReal)
+        // console.log("++ -- Carrito +Usuario: ", cartReal)
     }
 
     const dropProduct = (identificador) => {
@@ -64,9 +50,12 @@ const CartContain = () => {
                         :
                         <section className='containCarrito'>
                             <h1>Mi carrito</h1>
-                            <button className='vaciar' onClick={vaciarCarrito}><ion-icon name="trash"></ion-icon> vaciar </button>
-                            <button className='vaciar' onClick={comprar}><ion-icon name="card-outline"></ion-icon> comprar </button>
+                            <section class="botonraCompra">
+                                <button className='vaciar' onClick={vaciarCarrito}><ion-icon name="trash"></ion-icon> vaciar </button>
+                                <button className='vaciar' onClick={comprar}><ion-icon name="card-outline"></ion-icon> comprar </button>
 
+                                {(seccion == true) ? <h2 className='userNoLogin'>Debe loguiarse para poder comprar!!!</h2> : null}
+                            </section>
                             <section className='carrito'>
                                 {
                                     cartList.map(elemento => {

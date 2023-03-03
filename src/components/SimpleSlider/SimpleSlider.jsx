@@ -5,7 +5,7 @@ import SliderItem from '../SliderItem/SliderItem';
 // import "./slick-theme.scss";
 
 const SimpleSlider = ({ objeto }) => {
-    console.log("Slider")
+    // console.log("Slider")
 
     const elementsBanner = [
         { "id": 1, "nombre": "the mandalorian","imgDescribe":"the mandalorian logo", "descripcion": "Figuras de la coleccion de Star Wars The Black Series, Toy Figura de la serie The Mandalorian de 6 pulgadas.", "palabraClave": "the mandalorian", "imagen": "https://res.cloudinary.com/dpiwmbsog/image/upload/v1677364416/imgs/slider/mandalorian3_deualz.jpg", "color": "#000000", "gradiente": "" },

@@ -14,7 +14,7 @@ const NavBar = () => {
     const [toggleState, setToggleState] = useState(false)
     const [renderLogin, setRenderLogin] = useState(null)
     const [renderPanelRoot, setRenderPanelRoot] = useState(null)
-    const { panelRoot, login } = useCartContext()
+    const { panelRoot, login, user } = useCartContext()
 
     function handleClick() {
         setToggleState(toggleState => !toggleState);
@@ -31,7 +31,6 @@ const NavBar = () => {
 
     },[panelRoot])
     //a ver cvomo lo hago, un mini panel para el admin
-    const userLogin = "root"
 
     return (
         <>
@@ -64,7 +63,7 @@ const NavBar = () => {
                 </section>
 
                 <section className="subMenuPrincipal">
-                    {userLogin === "root" && <PanelRoot />}
+                    {user === "root@gmail.com" && <PanelRoot />}
                     <UserWidget />
                     <LikeWidget />
                     <CartWidget />

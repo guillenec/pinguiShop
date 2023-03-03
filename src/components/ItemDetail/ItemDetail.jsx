@@ -4,45 +4,22 @@
 import ItemCount from "../ItemCount/ItemCount";
 import CategoriaDetalle from "./CategoriaDetalle/CategoriaDetalle";
 import ImgDetalle from "./ImgDetalle/ImgDetalle";
-
-import { toast } from 'react-toastify';
 import { useCartContext } from "../../context/CartContext";
 
 const ItemDetail = ({ objeto }) => {
-
-    const { agregaAlCarrito, cartList } = useCartContext()
+    const { agregaAlCarrito, cartList ,notify, errToast} = useCartContext()
 
     if (cartList.some(elem => elem.id === objeto.id && elem.nombre === objeto.nombre)) {
-        console.log("----  este id se repite ----")
+        //este id se repite 
         const objeto2 = cartList.find(elem => elem.id === objeto.id)
-        console.log(objeto2)
         objeto = objeto2
     }
 
-    const notify = (numer, name) => toast.success(`🥰🥰 compraste ${numer} ${name}`, {
-        position: "bottom-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-    });
-    const errToast = () => toast.error(`😡😡 no hay stock`, {
-        position: "bottom-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-    })
 
     const onAdd = (objeto, cant, precioTotal) => {
 
-        // console.log(objeto);
-        // console.log(objeto.nombre, cant, precioTotal);
-        // console.log(objeto.stock, objeto.comprado)
-
         if (objeto.stock <= objeto.comprado) {
-            errToast()
+            errToast('😡😡 no hay stock')
         } else {
             agregaAlCarrito(
                 {
@@ -50,18 +27,12 @@ const ItemDetail = ({ objeto }) => {
                     comprado: cant,
                     precioTotal: precioTotal * cant
                 })
-            notify(cant, objeto.nombre);
+            notify(`🥰🥰 compraste ${cant} ${objeto.nombre}`);
         }
 
         // agregarCarrito( {...objeto, cantidad:cant} );
 
     }
-
-    /*
-    const { agregaAlCarrito, cartList} = useContext(CartContext)
-    console.log("cartList ===>",cartList)
-     */
-    // console.log("cartList ===>",cartList)
 
     return (
         <>

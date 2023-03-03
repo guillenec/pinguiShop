@@ -1,12 +1,11 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
 import { useCartContext } from "../../context/CartContext";
 
 const Item = ({ element }) => {
 
-    const { agregaAlCarrito, agregaAMeGusta, meGusta, cartList } = useCartContext()
+    const { agregaAlCarrito, agregaAMeGusta, meGusta, cartList, notify, errToast } = useCartContext()
 
     const [activaHeart, setActivaHeart] = useState(false)
     const [activaCart, setActivaCart] = useState('')
@@ -51,12 +50,7 @@ const Item = ({ element }) => {
         }
     }, [meGusta])
 
-    // const handleActiveHeart = () => {
-    //     setActivaHeart('activado');
-    //     setTimeout(() => {
-    //         setActivaHeart('')
-    //     }, 3000);
-    // }
+
     const handleActiveCart = (val) => {
         (val === true) ?
             (setActivaCart('activado'),
@@ -74,30 +68,12 @@ const Item = ({ element }) => {
         }, 3000);
     }
 
-    const notify = (numer, name) => toast.success(`🥰🥰 compraste ${numer} ${name}`, {
-        position: "bottom-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-    });
-
-    const errToast = () => toast.error(`😡😡 no hay stock`, {
-        position: "bottom-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-    })
     // const botoneraClassChecked = activaHeart ? 'activado' : '' ;
-
     const onAdd = (e) => {
         e.preventDefault();
-        console.log(element.stock, element.comprado)
         if (element.stock <= element.comprado) {
             handleActiveCart(false)
-            errToast()
+            errToast('😡😡 no hay stock`')
         }
         else {
             handleActiveCart(true)
@@ -107,12 +83,9 @@ const Item = ({ element }) => {
                     comprado: 1,
                     precioTotal: element.precio * 1
                 })
-            notify(1, element.nombre)
+            notify(`🥰🥰 compraste 1 ${element.nombre}`)
         }
-        // handleActiveCart(false)
-        // console.log("fin")
 
-        // agregarCarrito( {...objeto, cantidad:cant} );
     }
 
     const onAddMeGusta = () => {
@@ -123,7 +96,6 @@ const Item = ({ element }) => {
 
     const { id: id, nombre: nombre, precio: precio, descripcion: desc, imagenA: img1 } = element;
     return (
-        // <article key={id} className='card'>
         <>
             <div className="containerContenido">
                 <Link to={`/detalle/${element.id} `} className="cardImg">
