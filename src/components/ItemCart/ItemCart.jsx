@@ -1,13 +1,12 @@
 import React from 'react'
-import { useState } from 'react';
 import { useCartContext } from '../../context/CartContext';
 
 const ItemCart = ({ element, dropProduct }) => {
 
-    const { agregaAlCarrito, cartList, contadorComprados } = useCartContext()
+    const { agregaAlCarrito } = useCartContext()
 
     
-    const { id: id, nombre: nombre, precio: precio, comprado: comprado, stock: stock, descripcion: describe, imagenA: img1, precioTotal: precioTotal } = element;
+    const { nombre: nombre,  stock: stock, descripcion: describe, imagenA: img1, precioTotal: precioTotal } = element;
 
     console.log("ELEMENT PARAM: ", element)
 

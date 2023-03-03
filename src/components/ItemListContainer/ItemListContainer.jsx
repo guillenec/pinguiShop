@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import { useFetcher, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import ItemList from "../ItemList/ItemList";
 import Loading from "../Loading/Loading";
-import { collection, doc, getDoc, getDocs, getFirestore, orderBy, query, where } from 'firebase/firestore';
+import { collection, getDocs, getFirestore, orderBy, query, where } from 'firebase/firestore';
 import SimpleSlider from "../SimpleSlider/SimpleSlider";
 import UserComponent from "../UserComponent/UserComponent";
 

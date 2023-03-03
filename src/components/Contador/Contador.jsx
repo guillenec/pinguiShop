@@ -1,5 +1,4 @@
 import React from 'react'
-import { useCartContext } from '../../context/CartContext'
 
 const Contador = ({contador}) => {
     return (

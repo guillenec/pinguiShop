@@ -18,7 +18,7 @@ const PanelLogin = () => {
   }
 
   useEffect(() => {
-    setTextForm(valor ? 'login' : 'register')
+    setTextForm(valor ? 'ir a login' : 'ir a register')
 
   }, [valor])
 

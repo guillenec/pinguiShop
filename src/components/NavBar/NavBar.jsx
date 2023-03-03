@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useCartContext } from "../../context/CartContext";
 import CartWidget from "../CartWidget/CartWidget "
@@ -12,7 +12,9 @@ import UserWidget from "../UserWidget/UserWidget";
 //objetivo : crear el menú e-comerce de tu proyecto
 const NavBar = () => {
     const [toggleState, setToggleState] = useState(false)
-    const { panelRoot, login } = useCartContext();
+    const [renderLogin, setRenderLogin] = useState(null)
+    const [renderPanelRoot, setRenderPanelRoot] = useState(null)
+    const { panelRoot, login } = useCartContext()
 
     function handleClick() {
         setToggleState(toggleState => !toggleState);
@@ -20,6 +22,14 @@ const NavBar = () => {
 
     const toggleClassCheck = toggleState ? 'active' : '';
 
+    useEffect(() => {
+        setRenderLogin(!login ? null : <PanelLogin />)
+    },[login])
+
+    useEffect(() => {
+        setRenderPanelRoot(!panelRoot ? null : <PanelSettings /> )
+
+    },[panelRoot])
     //a ver cvomo lo hago, un mini panel para el admin
     const userLogin = "root"
 
@@ -63,8 +73,8 @@ const NavBar = () => {
             </nav>
             {
                 panelRoot || login ? (<div className="subPaneles">
-                {panelRoot ? (<PanelSettings />) : null}
-                {login ? (<PanelLogin />) : null}
+                {renderPanelRoot}
+                {renderLogin} 
             </div>) : null
             }
             

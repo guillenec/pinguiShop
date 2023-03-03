@@ -3,7 +3,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useCartContext } from "../../context/CartContext";
-import Toggle from "../Toggle/Toggle";
 
 const Item = ({ element }) => {
 

@@ -1,18 +1,35 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { toast } from "react-toastify"
 import { useCartContext } from '../../context/CartContext'
 
 const FormLogin = () => {
-
-  const {signUp} = useCartContext()
+  const {loginForm, login, handleLoginarse ,notify, errToast} = useCartContext()
 
   const [user, setUser] = useState({
     email:'',
     password:''
   })
 
-  const handlesubmit = (e) => {
-    e.preventDefault()
-    signUp(user.email, user.password)
+  const navigate = useNavigate()
+
+  // const navigate = useNavigate()
+
+  const handlesubmit = async (e) => {
+    e.preventDefault(); 
+    try {
+      await loginForm(user.email, user.password)
+      navigate('/') 
+    }
+    catch(error){
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        error.code === 'auth/email-already-in-use' && errToast("❌ el correo ya fue registrado") || error.code === 'auth/weak-password' &&  errToast("❌ como minimo ursar 6 caracteres para el password") 
+        || errToast(error.message)
+
+        console.log(errorCode)
+        console.log(errorMessage)
+      }
   }
 
   const handleChange = ({target:{name,value}}) => {

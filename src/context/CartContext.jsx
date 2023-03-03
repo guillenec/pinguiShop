@@ -1,5 +1,8 @@
 import { createContext, useContext, useState } from "react";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+
+import { toast } from "react-toastify"
+
 //Creamos el contexto
 export const CartContext = createContext([])
 
@@ -95,12 +98,35 @@ export const CartContextProvider = ({ children }) => {
         setLogin(val)
     }
 
+    //Manejo de usuarios
     //Seccion de prueba para autenticar usuario
     const signUp = (email, password) => {
         const auth = getAuth();
-        return  createUserWithEmailAndPassword(auth, email, password)
+        return createUserWithEmailAndPassword(auth, email, password)
     }
 
+    const loginForm = (email, password) => {
+        const auth = getAuth();
+        return signInWithEmailAndPassword(auth, email, password)
+    }
+    
+    /* ++ Toastify ++  */
+    const notify = (value) => toast.success(`🥰🥰 ${value} `, {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+    });
+
+    const errToast = (value) => toast.error(`😡😡 ${value}`, {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+    })
 
     return (
         //proveedor
@@ -118,6 +144,9 @@ export const CartContextProvider = ({ children }) => {
             login,
             handleLoginarse,
             signUp,
+            notify,
+            errToast,
+            loginForm,
         }}>
             {children}
         </CartContext.Provider>

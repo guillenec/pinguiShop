@@ -1,4 +1,3 @@
-import { useContext, useState } from "react"
 
 const Toggle = ({prop1,func2}) => {
     return (

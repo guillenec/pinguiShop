@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react'
 import { useCartContext } from '../../context/CartContext'
 
 const ItemLike = ({ objeto }) => {

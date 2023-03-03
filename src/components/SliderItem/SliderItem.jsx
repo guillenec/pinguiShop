@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom';
 
 function SliderItem({ allProds, banner }) {
     const [predominantColor, setPredominantColor] = useState('#3E4098');
-    const [gradiente, setgradiente] = useState("null")
-
 
     useEffect(() => {
         setPredominantColor(banner.color);
