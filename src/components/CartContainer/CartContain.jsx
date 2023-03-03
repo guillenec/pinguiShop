@@ -50,7 +50,7 @@ const CartContain = () => {
                         :
                         <section className='containCarrito'>
                             <h1>Mi carrito</h1>
-                            <section class="botonraCompra">
+                            <section className="botonraCompra">
                                 <button className='vaciar' onClick={vaciarCarrito}><ion-icon name="trash"></ion-icon> vaciar </button>
                                 <button className='vaciar' onClick={comprar}><ion-icon name="card-outline"></ion-icon> comprar </button>
 

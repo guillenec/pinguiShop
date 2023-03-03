@@ -46,7 +46,7 @@ const ItemCart = ({ element, dropProduct }) => {
                 <div className='contImagen'>
                     <img src={img1} alt={describe} />
                 </div>
-
+                <div className='containDescripcion'>
                 <section className='descripcion'>
                     <h2>🥰 {nombre}</h2>
                     <p>{describe}</p>
@@ -60,6 +60,8 @@ const ItemCart = ({ element, dropProduct }) => {
                     </div>
                 </section>
                 <section className='precio'><p>${precioTotal}</p></section>
+                </div>
+                
             </section>
         </>
     )
