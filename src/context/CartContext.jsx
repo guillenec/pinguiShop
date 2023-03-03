@@ -1,7 +1,8 @@
-import { createContext, useContext, useState } from "react";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { createContext, useContext, useEffect, useState } from "react";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 
 import { toast } from "react-toastify"
+import { auth } from "../firebase/config";
 
 //Creamos el contexto
 export const CartContext = createContext([])
@@ -101,15 +102,23 @@ export const CartContextProvider = ({ children }) => {
     //Manejo de usuarios
     //Seccion de prueba para autenticar usuario
     const signUp = (email, password) => {
-        const auth = getAuth();
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
     const loginForm = (email, password) => {
-        const auth = getAuth();
+
         return signInWithEmailAndPassword(auth, email, password)
     }
     
+    useEffect(()=>{
+
+        console.log('auth provider loader')
+        onAuthStateChanged(auth,currentUser => {
+            console.log(currentUser)
+        })
+
+    },[])
+
     /* ++ Toastify ++  */
     const notify = (value) => toast.success(`🥰🥰 ${value} `, {
         position: "bottom-right",
