@@ -144,9 +144,10 @@ export const CartContextProvider = ({ children }) => {
                 // The signed-in user info.
                 const user = result.user;
                 // ...
-                console.log("Credenciales: ", credential)
-                console.log("token: ", token)
-                console.log("user: ", user)
+                // console.log("Credenciales: ", credential)
+                // console.log("token: ", token)
+                // console.log("user: ", user)
+                notify(`Gracias por loguiarte ${user.displayName}`)
 
             }).catch((error) => {
                 // Handle Errors here.
@@ -157,10 +158,7 @@ export const CartContextProvider = ({ children }) => {
                 // The AuthCredential type that was used.
                 const credential = GoogleAuthProvider.credentialFromError(error);
                 // ...
-                console.log("error code: ", errorCode)
-                console.log("error msj: ", errorMessage)
-                console.log("email: ", email)
-                console.log("credencial: ", credential)
+                errorCode === "auth/popup-closed-by-user" ? errToast("cerro la ventana de login") : errToast(errorCode)
             });
     }
 

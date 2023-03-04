@@ -115,7 +115,7 @@
                 border-left: 3px solid #342e56;
                 gap: 10px;
 
-                @include notebook(){
+                @include notebook() {
                     height: 300px;
                 }
 
@@ -142,7 +142,7 @@
                         justify-content: center;
                         aspect-ratio: 1/1;
 
-                        @include notebook(){
+                        @include notebook() {
                             width: 30%;
                             flex-wrap: nowrap;
                             align-items: center;
@@ -168,7 +168,7 @@
                         flex-direction: row;
                         gap: 5px;
 
-                        @include notebook(){
+                        @include notebook() {
                             width: 70%;
                             height: 100%;
                             flex-direction: column-reverse;
@@ -185,8 +185,8 @@
                             align-content: flex-start;
                             flex-wrap: nowrap;
                             gap: 12px;
-                            
-                            @include notebook(){
+
+                            @include notebook() {
                                 width: 100%;
                                 height: 50%;
                                 overflow: hidden;
@@ -198,8 +198,8 @@
                                 font-weight: 1.2rem;
                                 font-family: $tituloGeneral;
                                 text-transform: capitalize;
-                                
-                                @include notebook(){
+
+                                @include notebook() {
                                     font-size: 1.1rem;
                                 }
                             }
@@ -211,12 +211,12 @@
                                 height: 50px;
                                 overflow: hidden;
                                 overflow-y: auto;
-                                
+
                                 &::-webkit-scrollbar {
                                     display: none;
                                 }
-                                
-                                @include notebook(){
+
+                                @include notebook() {
                                     height: 50px;
                                     overflow: hidden;
                                     overflow-y: auto;
@@ -259,7 +259,7 @@
                             align-items: center;
                             align-content: center;
 
-                            @include notebook(){
+                            @include notebook() {
                                 width: 100%;
                                 height: 40px;
                                 font-size: 1.1rem;
@@ -300,8 +300,9 @@
                                     }
 
                                 }
-                                p{
-                                    @include notebook(){
+
+                                p {
+                                    @include notebook() {
                                         font-size: 1.1rem;
                                     }
                                 }
@@ -318,7 +319,7 @@
                             justify-content: center;
                             align-content: center;
 
-                            @include notebook(){
+                            @include notebook() {
                                 width: 100%;
                                 height: 40px;
                             }
@@ -328,8 +329,8 @@
                                 color: $color3;
                                 font-size: 1.2rem;
                                 font-weight: 600;
-                                
-                                @include notebook(){
+
+                                @include notebook() {
                                     font-size: 1.1rem;
                                 }
                             }
@@ -358,4 +359,189 @@
         }
     }
 
+}
+
+.modal {
+    width: 100%;
+    height: calc(100vh - 200px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include notebook() {
+        width: 100%;
+    }
+
+    @include tablets() {
+        width: 100%;
+    }
+
+    .container {
+        position: relative;
+        width: 90%;
+        height: 90%;
+        border-radius: 2px;
+        background: $color6;
+        padding: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        gap: 15px;
+
+        .summaryPurchase {
+            width: 50%;
+            height: 300px;
+            border: solid 3px $color3;
+            padding: 15px;
+            border-radius: 2px;
+
+            .containSummaryPurchase{
+                background: $color3;
+                width: 100%;
+                height: 100%;
+                border-radius: 2px;
+                display: flex;
+                flex-wrap: nowrap;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+                align-content: center;
+                padding: 30px;
+                gap: 10px;
+
+                h2 {
+                    font-family: $tituloGeneral;
+                    font-weight: 600;
+                    font-size: 1.7rem;
+                    text-transform: capitalize;
+                    color: $color6;
+                    padding: 15px 0;
+                }
+                p{
+                    width: 100%;
+                    font-family: $parrafoGeneral;
+                    text-transform: capitalize;
+                    font-size: 1.2rem;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    align-content: center;
+
+                    &.total{
+                        border-top: 4px solid $color5;
+                        padding: 15px 0;
+                    }
+                }
+            }
+
+        }
+
+        .paymentMethod {
+            width: 50%;
+            height: auto;
+            border: solid 3px $color3;
+            padding: 15px;
+            border-radius: 2px;
+
+            .containPaymentMethod{
+                background: $color3;
+                width: 100%;
+                height: 100%;
+                border-radius: 2px;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+                align-content: center;
+                padding: 30px;
+                gap: 10px;
+
+                h2 {
+                    font-family: $tituloGeneral;
+                    font-weight: 600;
+                    font-size: 1.7rem;
+                    text-transform: capitalize;
+                    color: $color6;
+                    padding: 15px 0;
+                }
+                label{
+                    width: 100%;
+                    height: auto;
+                    display: flex;
+                    flex-direction: column;
+                    font-family: $tituloGeneral;
+                    font-size: 1.2rem;
+                    text-transform: capitalize;
+                    gap: 5px;
+
+                    input{
+                        width: 100%;
+                        padding: 10px;
+                        border-radius: 2px;
+                        outline: none;
+                        font-family: $parrafoGeneral;
+                        font-weight: 600;
+                        color: $color1a;
+                        font-size: 1rem;
+                        padding: 5px 10px;
+                        border: solid 2px $color1a;
+
+                        &::placeholder{
+                            font-family: $parrafoGeneral;
+                            font-weight: 500;
+                            text-transform: capitalize;
+                            color: $color5;
+                        }
+                    
+                    }
+                }
+                .expired{
+                    width: 100%;
+                    display: flex;
+                    gap: 10px;
+                    
+                    label{
+                        width: 25%;
+
+                        &.labelExpired{
+                            width: 50%;
+                            display: flex;
+                            flex-direction: column;
+                            
+                            div{
+                                display: flex;
+                                gap: 10px;
+
+                                input{
+                                    width: 50%;
+                                }
+                            }
+                            
+                        }
+                    }
+                    
+                }
+            }
+        }
+
+        .closeModal {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            top: 5px;
+            right: 5px;
+            font-size: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: $color4;
+            border: solid 2px $color4;
+            border-radius: 50%;
+            background: $color6;
+        }
+    }
 }
