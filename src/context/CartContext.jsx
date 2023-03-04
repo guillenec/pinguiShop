@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 import { toast } from "react-toastify"
 import { auth } from "../firebase/config";
@@ -18,6 +18,7 @@ export const CartContextProvider = ({ children }) => {
     const [login, setLogin] = useState(false)
     const [panelRoot, setPanelRoot] = useState(false)
     const [user, setUser] = useState(null)
+    const [loading, setLoading] = useState(true)
 
     // console.log("arriba ",cartList)
     const agregaAlCarrito = (newProducto) => {
@@ -108,25 +109,62 @@ export const CartContextProvider = ({ children }) => {
     }
     //permite ingresar, logiar un user
     const loginForm = (email, password) => {
-        return signInWithEmailAndPassword(auth, email, password)
+        signInWithEmailAndPassword(auth, email, password)
+        
     }
+    //permite desloguiarme 
     const logOut = () => {
         signOut(auth).then(() => {
             notify("🙋 cerrando sesion!!!")
         }).catch((error) => {
             // An error happened.
             console.log(error)
-        }).finally(()=> {
+        }).finally(() => {
             notify("🖐 bye!!!")
         })
     }
+
     useEffect(() => {
         //control delusuario activo
         onAuthStateChanged(auth, currentUser => {
             console.log(currentUser)
             setUser(currentUser)
+            setLoading(false)
         })
     }, [])
+
+    //Login con google
+    const loginGoogle = () => {
+        const provider = new GoogleAuthProvider();
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                // This gives you a Google Access Token. You can use it to access the Google API.
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+                // The signed-in user info.
+                const user = result.user;
+                // ...
+                console.log("Credenciales: ", credential)
+                console.log("token: ", token)
+                console.log("user: ", user)
+
+            }).catch((error) => {
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // The email of the user's account used.
+                const email = error.customData.email;
+                // The AuthCredential type that was used.
+                const credential = GoogleAuthProvider.credentialFromError(error);
+                // ...
+                console.log("error code: ", errorCode)
+                console.log("error msj: ", errorMessage)
+                console.log("email: ", email)
+                console.log("credencial: ", credential)
+            });
+    }
+
+
     //#endregion
 
     //#region - Toastify 
@@ -169,6 +207,8 @@ export const CartContextProvider = ({ children }) => {
             loginForm,
             user,
             logOut,
+            loading,
+            loginGoogle,
         }}>
             {children}
         </CartContext.Provider>

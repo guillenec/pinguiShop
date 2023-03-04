@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { toast } from "react-toastify"
 import { useCartContext } from '../../context/CartContext'
 
 const FormLogin = () => {
-  const {loginForm, login, handleLoginarse ,notify, errToast} = useCartContext()
+  const {loginForm, loginGoogle, login, handleLoginarse ,notify, errToast} = useCartContext()
 
   const [user, setUser] = useState({
     email:'',
@@ -24,7 +23,7 @@ const FormLogin = () => {
     catch(error){
         const errorCode = error.code;
         const errorMessage = error.message;
-        error.code === 'auth/email-already-in-use' && errToast("❌ el correo ya fue registrado") || error.code === 'auth/weak-password' &&  errToast("❌ como minimo ursar 6 caracteres para el password") 
+        error.code === 'auth/wrong-password' &&  errToast("❌ contraseña incorrecta")  || error.code === 'auth/user-not-found' && errToast('❌ el usuario no existe o no esta registrado')
         || errToast(error.message)
 
         console.log(errorCode)
@@ -37,6 +36,10 @@ const FormLogin = () => {
       ...user, [name]:value
     })
   }
+  const handleGoogleLog = async () => {
+    await loginGoogle()
+    navigate('/')
+  }
 
   return (
     <>
@@ -46,6 +49,7 @@ const FormLogin = () => {
         <input type="password" name="password" id="password" placeholder='password' onChange={handleChange} required />
         <button className='entrar' type='submit'>login</button>
       </form>
+      <button className='loginGooogle' onClick={handleGoogleLog}>login google</button>
     </>
   )
 }

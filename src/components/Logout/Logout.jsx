@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useCartContext } from '../../context/CartContext';
 
 const Logout = () => {
-  const { user, login } = useCartContext();
-  const [valor, setValor] = useState(false)
+  const { user, logOut} = useCartContext();
 
-  const handleActive = (e) => {
+  const navigate = useNavigate()
+  const handleLogOut = async (e) => {
     e.preventDefault()
-    setValor(!valor)
+    await logOut()
+    navigate('/')
   }
 
   useEffect(() => {
-
-
-  }, [valor, login])
+    console.log(user)
+  }, [user])
 
   return (
     <>
       <section className='logout'>
-        <Link to={''} onClick={handleActive}><ion-icon name="exit"></ion-icon></Link>
+        <Link to={''} onClick={handleLogOut}><ion-icon name="exit"></ion-icon></Link>
       </section>
     </>
   )

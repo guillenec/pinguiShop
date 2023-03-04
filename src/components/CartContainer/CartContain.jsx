@@ -8,6 +8,13 @@ const CartContain = () => {
 
     const { cartList, vaciarCarrito, eliminarProducto, user } = useCartContext()
     const [seccion, setSeccion] = useState(false)
+    const [boleano, setBolano] = useState(false)
+    const [activaModal, setActivaModal] = useState(false)
+    const [precioTotalCart, setPrecioTotalCart] = useState({
+        subTotal: '',
+        iva: '',
+        precioFinal: ''
+    })
     // console.log(cartList);
     console.log(user)
 
@@ -37,9 +44,27 @@ const CartContain = () => {
         // console.log("++ -- Carrito +Usuario: ", cartReal)
     }
 
+    const handleConfirm = () => {
+        setBolano(!boleano)
+        setActivaModal(boleano ? 'active' : '')
+        user == null  ? setSeccion(true) : setSeccion(false)
+    }
+
+    useEffect(() => {
+        const total = cartList.reduce((acumulador, element) => acumulador + element.precioTotal, 0)
+        const iva = 0.14
+        setPrecioTotalCart({
+            subTotal: `${total}`,
+            iva: `${total * iva}`,
+            precioFinal: `${total * iva + total}`
+        })
+    }, [cartList])
+
     const dropProduct = (identificador) => {
         eliminarProducto(identificador)
     }
+
+
     // console.log(carrito)
     return (
         <>
@@ -52,7 +77,7 @@ const CartContain = () => {
                             <h1>Mi carrito</h1>
                             <section className="botonraCompra">
                                 <button className='vaciar' onClick={vaciarCarrito}><ion-icon name="trash"></ion-icon> vaciar </button>
-                                <button className='vaciar' onClick={comprar}><ion-icon name="card-outline"></ion-icon> comprar </button>
+                                <button className='vaciar' onClick={handleConfirm}><ion-icon name="card-outline"></ion-icon> confirmar compra </button>
 
                                 {(seccion == true) ? <h2 className='userNoLogin'>Debe loguiarse para poder comprar!!!</h2> : null}
                             </section>
@@ -69,6 +94,48 @@ const CartContain = () => {
                 }
 
             </section>
+            {
+                (user !== null || activaModal) 
+                ? <section className={`modal ${activaModal}`}>
+                    <div className='container'>
+                        <section className='summaryPurchase'>
+                            <h2>resumen de cuenta</h2>
+                            <p>subtotal: ${Math.round(precioTotalCart.subTotal)}</p>
+                            <p>iva: ${Math.round(precioTotalCart.iva)}</p>
+                            <p className='total'> ${Math.round(precioTotalCart.precioFinal)}</p>
+                        </section>
+                        <section className='paymentMethod'>
+                            <h2>Metodo de pago</h2>
+                            <label htmlFor="name">
+                                name
+                                <input type="text" name='name' placeholder='name' required />
+                            </label>
+                            <label htmlFor="email">
+                                email
+                                <input type="email" name="email" id="email" placeholder='email@gmail.com' required />
+                            </label>
+                            <label htmlFor="tel">
+                                <input type="tel" name="telephone" pattern="\([0-9]{4}\) [0-9]{4}[ -][0-9]{4}[ -][0-9]{4}" placeholder='2944-123-123' required />
+                            </label>
+                            <label htmlFor="card">
+                                <input type='number' name="card" id="card" placeholder='XXXX XXXX XXXX 1234' pattern="\([0-9]{4}\) [0-9]{4}[ -][0-9]{4}" required />
+                            </label>
+                            <div className='expired'>
+                                <label>
+                                    Vencimiento
+                                    <input type="number" name="month" id="month" min={0} max={12} placeholder="MM" required />
+                                    <input type="number" name="year" id="year" min={22} max={30} placeholder="YY" required />
+                                </label>
+                                <label htmlFor="">
+                                    <input type="number" name='cvv' id cvv placeholder={123} required />
+                                </label>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+                : null
+            }
+
 
         </>
     )

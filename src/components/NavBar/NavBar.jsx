@@ -9,6 +9,7 @@ import PanelRoot from "../PanelRoot/PanelRoot";
 import PanelSettings from "../PanelSettings/PanelSettings";
 import Toggle from "../Toggle/Toggle";
 import UserWidget from "../UserWidget/UserWidget";
+import UserWidgetActive from "../UserWidgetActive/UserWidgetActive";
 
 //objetivo : crear el menú e-comerce de tu proyecto
 const NavBar = () => {
@@ -16,6 +17,7 @@ const NavBar = () => {
     const [renderLogin, setRenderLogin] = useState(null)
     const [renderPanelRoot, setRenderPanelRoot] = useState(null)
     const { panelRoot, login, user } = useCartContext()
+    const [rootActiv, setUserRootAct] = useState(false)
 
     function handleClick() {
         setToggleState(toggleState => !toggleState);
@@ -32,6 +34,12 @@ const NavBar = () => {
 
     },[panelRoot])
     //a ver cvomo lo hago, un mini panel para el admin
+
+    useEffect(()=>{
+        console.log(user)
+        user == null ? setUserRootAct(false) : (user.email === "root@gmail.com" ? setUserRootAct(true) : setUserRootAct(false))
+        
+    },[]) 
 
     return (
         <>
@@ -64,9 +72,9 @@ const NavBar = () => {
                 </section>
 
                 <section className="subMenuPrincipal">
-                    {user === "root@gmail.com" && <PanelRoot />}
-                    <Logout />
-                    <UserWidget />
+                    { rootActiv ? <PanelRoot /> : null}
+                    { user == null ? null : <Logout />}
+                    { user == null ? <UserWidget /> : <UserWidgetActive /> }
                     <LikeWidget />
                     <CartWidget />
                 </section>
@@ -75,7 +83,7 @@ const NavBar = () => {
             {
                 panelRoot || login ? (<div className="subPaneles">
                 {renderPanelRoot}
-                {renderLogin} 
+                { user == null ? renderLogin : null} 
             </div>) : null
             }
             

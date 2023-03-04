@@ -219,7 +219,7 @@
         margin-left: auto;
         gap: 15px;
 
-        @include notebook(){
+        @include notebook() {
             width: auto;
             height: auto;
             position: absolute;
@@ -326,6 +326,10 @@
         }
     }
 
+    @include tablets() {
+        width: 100%;
+    }
+
 }
 
 .subPaneles {
@@ -412,6 +416,25 @@
                     color: $color6;
                     background: $color4;
                 }
+            }
+        }
+
+        .loginGooogle {
+            font-family: $tituloGeneral;
+            font-weight: 500;
+            font-size: 1rem;
+            color: $color4;
+            background: $color6;
+            text-transform: capitalize;
+            padding: 8px 12px;
+            border-radius: 2px;
+            transition: .5s;
+            outline: none;
+            border: none;
+
+            &:hover {
+                color: $color6;
+                background: $color4;
             }
         }
 

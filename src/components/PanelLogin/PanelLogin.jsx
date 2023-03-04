@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import { useCartContext } from '../../context/CartContext';
 import FormLogin from '../FormLogin/FormLogin';
 import FormRegister from '../FormRegister/FormRegister';
 
 const PanelLogin = () => {
+  const {user} = useCartContext()
   const [valor, setValor] = useState(false)
   const [textForm, setTextForm] = useState('register')
   const [clase, setClase] = useState('')
@@ -22,15 +24,19 @@ const PanelLogin = () => {
 
   }, [valor])
 
-
   return (
-    <>
-      <section className={`login ${clase}`}>
+    <> 
+    { user == null 
+      ? (
+        <section className={`login ${clase}`}>
         {
           valor == false ? <FormLogin /> : <FormRegister />
         }
         <Link to={''} onClick={handleActive}>{textForm}</Link>
       </section>
+      ) 
+    : null  }
+      
     </>
   )
 }

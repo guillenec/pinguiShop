@@ -9,7 +9,7 @@ const UserWidget = () => {
 
   const handleActive = (e) => {
     e.preventDefault()
-    setValor(!valor)
+    user == null ? setValor(!valor) : setValor(false)
   }
 
   useEffect(() => {
@@ -17,16 +17,18 @@ const UserWidget = () => {
 
     !valor ? handleLoginarse(false) : handleLoginarse(true)
 
+
   }, [valor, login])
+
+  useEffect(() => {
+    user != null && setValor(false)
+  }, [user])
 
   return (
     <>
       <section className='userLogin'>
         <Link to='/' className={`userCountLog ${claseAct}`} onClick={handleActive}>
-          {
-            (user) ? <img src="https://res.cloudinary.com/dpiwmbsog/image/upload/v1667461454/icons/pinguino10_w1tbcm.gif" alt="giff chrmander dibujo" />
-            : <ion-icon name="person"></ion-icon>
-          }
+          <ion-icon name="log-in"></ion-icon>
         </Link>
       </section>
     </>

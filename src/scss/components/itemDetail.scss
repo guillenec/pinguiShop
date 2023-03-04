@@ -152,6 +152,12 @@
             font-size: 1rem;
             color: $color5;
             font-weight: 600;
+            overflow: hidden;
+            overflow-y: auto;
+            
+            &::-webkit-scrollbar {
+                display: none;
+            }
 
             @include notebook() {
                 font-size: 1rem;
