@@ -156,7 +156,9 @@ export const CartContextProvider = ({ children }) => {
                 // The email of the user's account used.
                 const email = error.customData.email;
                 // The AuthCredential type that was used.
-                const credential = GoogleAuthProvider.credentialFromError(error);
+                const credential = GoogleAuthProvider.
+                credentialFromError(error)
+                console.log(error)
                 // ...
                 errorCode === "auth/popup-closed-by-user" ? errToast("cerro la ventana de login") : errToast(errorCode)
             });
