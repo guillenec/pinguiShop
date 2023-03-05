@@ -3,7 +3,8 @@
 # PinguiShop
 
 <p align="center" ><img width="90%" src="https://res.cloudinary.com/dpiwmbsog/image/upload/v1675053436/Captura_desde_2023-01-30_01-36-55_zbiv35.png" alt="banner stack guille"></p>
-    
+ 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/95813aee-90c1-4f5f-8806-b7b9f5a1c848/deploy-status)](https://app.netlify.com/sites/pinguishop/deploys)    
 ## 📚 Sobre el proyecto. 
 * Se corresponde a la segunda entrega del proyectop de React de Coderhouse.
 * Posiblemente si integre mas adelante Vite + Tailwind.
@@ -26,9 +27,6 @@
 
 # 🛸🛸 Vistazo Detalles
 ![🛸🛸 Vistazo Detalles](https://res.cloudinary.com/dpiwmbsog/image/upload/v1675411081/pingui_b8uusz.jpg "titulo")
-
-
-* Tengo que añadir un banner y una seccion para el carrito, pero quiero poder reutilizar ItemCount en ese lugar para poder restar y sumar productos.. de momento solo mostrara el texto "MI CARRITO"
 
 </br>
 
