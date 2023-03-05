@@ -6,7 +6,7 @@ import ItemCart from '../ItemCart/ItemCart'
 
 const CartContain = () => {
 
-    const { cartList, vaciarCarrito, eliminarProducto, user, notify, errToast } = useCartContext()
+    const { cartList, vaciarCarrito, eliminarProducto, user, notify, errToast ,setOrdenDeCompraContext} = useCartContext()
     const [seccion, setSeccion] = useState(false)
     const [boleano, setBolano] = useState(false)
     const [activaModal, setActivaModal] = useState(false)
@@ -44,13 +44,15 @@ const CartContain = () => {
             ...precioTotalCart
         }
 
-        console.log("+++ ordenCompra: ", ordenCmpra)
+        // console.log("+++ ordenCompra: ", ordenCmpra)
+
         const db = getFirestore()
         const ordenColeccion = collection(db, 'ordenesDeCompra')
 
         addDoc(ordenColeccion, ordenCmpra)
             .then(resp => {
                 notify(`se cargo la orden: ${resp.id}`)
+                setOrdenDeCompraContext(resp)
             })
             .catch((error) => {
                 errToast(error)
@@ -60,7 +62,7 @@ const CartContain = () => {
                 setTimeout(() => {
                     handleButtonComprar()
                     vaciarCarrito()
-                    navigate('/ticket')
+                    navigate('/tiket')
                 }, 5000);
 
             })

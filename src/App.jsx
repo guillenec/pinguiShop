@@ -19,6 +19,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import FormPushProduct from './components/FormPushProduct/FormPushProduct';
 import LikeContain from './components/LikeContain/LikeContain';
+import TiketCompra from "./components/TiketCompra/TiketCompra";
 
 // creando constante
 //
@@ -49,9 +50,10 @@ function App() {
               <Route path='/cart' element={<CartContain />} />
 
               <Route path='/formProduct' element={<FormPushProduct />} />
+              <Route path="/tiket" element={<TiketCompra />} />  
 
               <Route path='*' element={<Navigate to='/'></Navigate>} />
-        
+              
             </Routes>
           </main>
           <footer className="footer"></footer>

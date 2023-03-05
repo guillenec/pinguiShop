@@ -48,7 +48,7 @@ const ItemListContainer = ({ greeting }) => {
     // console.log(productos)
 
     /* Nota: 
-    useEfect (( 
+    useEfect (( q
         //se ejecuta cada que renderiza el componente
         console.log(codigo a ejecutar)
     )=>{}) SIN PARAETRO == se ejecuta cada vez que renderiza el componente

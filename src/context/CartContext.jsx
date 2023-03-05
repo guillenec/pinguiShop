@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, GoogleAuthProvider, signInWithPopup, sendPasswordResetEmail } from "firebase/auth";
 
 import { toast } from "react-toastify"
 import { auth } from "../firebase/config";
@@ -19,6 +19,7 @@ export const CartContextProvider = ({ children }) => {
     const [panelRoot, setPanelRoot] = useState(false)
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
+    const [facturaCompra, setFacturaCompra] = useState([])
 
     // console.log("arriba ",cartList)
     const agregaAlCarrito = (newProducto) => {
@@ -171,8 +172,25 @@ export const CartContextProvider = ({ children }) => {
             });
     }
 
+    const recoverPassword = (email) => {
+        sendPasswordResetEmail(auth, email)
+            .then(() => {
+                notify("redireccion, actualiza password")
+                // Password reset email sent!
+                // ..
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // ..
+            });
+    }
 
     //#endregion
+
+    const setOrdenDeCompraContext = (orden) => {
+        setFacturaCompra(orden)
+    }
 
     //#region - Toastify 
     const notify = (value) => toast.success(`🥰🥰 ${value} `, {
@@ -216,6 +234,9 @@ export const CartContextProvider = ({ children }) => {
             logOut,
             loading,
             loginGoogle,
+            recoverPassword,
+            setOrdenDeCompraContext,
+            facturaCompra,
         }}>
             {children}
         </CartContext.Provider>
