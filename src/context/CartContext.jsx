@@ -118,7 +118,7 @@ export const CartContextProvider = ({ children }) => {
             notify("🙋 cerrando sesion!!!")
         }).catch((error) => {
             // An error happened.
-            console.log(error)
+            // console.log(error)
         }).finally(() => {
             notify("🖐 bye!!!")
         })
@@ -127,7 +127,7 @@ export const CartContextProvider = ({ children }) => {
     useEffect(() => {
         //control delusuario activo
         onAuthStateChanged(auth, currentUser => {
-            console.log(currentUser)
+            // console.log(currentUser)
             setUser(currentUser)
             setLoading(false)
         })

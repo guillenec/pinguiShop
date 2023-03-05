@@ -1,12 +1,12 @@
 import { addDoc, collection, getFirestore } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useCartContext } from '../../context/CartContext'
 import ItemCart from '../ItemCart/ItemCart'
 
 const CartContain = () => {
 
-    const { cartList, vaciarCarrito, eliminarProducto, user } = useCartContext()
+    const { cartList, vaciarCarrito, eliminarProducto, user, notify, errToast } = useCartContext()
     const [seccion, setSeccion] = useState(false)
     const [boleano, setBolano] = useState(false)
     const [activaModal, setActivaModal] = useState(false)
@@ -16,6 +16,15 @@ const CartContain = () => {
         iva: '',
         precioFinal: ''
     })
+
+    const [tiket, setTiket] = useState({
+        email: '',
+        telephone: '',
+        card: '',
+        month: '',
+        year: '',
+        cvv: '',
+    })
     // console.log(cartList);
     // console.log(user)
 
@@ -24,24 +33,38 @@ const CartContain = () => {
 
     }, [user])
 
-    const comprar = () => {
-        if (!boleano) {
-            setSeccion(true) //si seccion turue, la muestra, es el error
-        } else {
-            setSeccion(false) //seccion false, no la muestra xq hay un login
-            const ordenCmpra = {
-                buyer: { email: user.email, uid: user.uid },
-                items: cartList.map((elem => ({ id: elem.id, titulo: elem.nombre, precio: elem.precioTotal }))),
-                total: cartList.reduce((acumulador, element) => acumulador + element.precioTotal, 0)
-            }
+    const navigate = useNavigate()
 
+    const handleComprar = (e) => {
+        e.preventDefault()
 
-            const db = getFirestore()
-            const ordenColeccion = collection(db, 'ordenesDeCompra')
-
-            addDoc(ordenColeccion, ordenCmpra)
-                .then(resp => console.log(resp))
+        const ordenCmpra = {
+            buyer: tiket,
+            items: cartList.map((elem => ({ id: elem.id, titulo: elem.nombre, precio: elem.precioTotal }))),
+            ...precioTotalCart
         }
+
+        console.log("+++ ordenCompra: ", ordenCmpra)
+        const db = getFirestore()
+        const ordenColeccion = collection(db, 'ordenesDeCompra')
+
+        addDoc(ordenColeccion, ordenCmpra)
+            .then(resp => {
+                notify(`se cargo la orden: ${resp.id}`)
+            })
+            .catch((error) => {
+                errToast(error)
+            })
+            .finally(() => {
+                console.log("FINALY...")
+                setTimeout(() => {
+                    handleButtonComprar()
+                    vaciarCarrito
+                    navigate('/ticket')
+                }, 5000);
+
+            })
+
         // console.log("++ -- Carrito +Usuario: ", cartReal)
     }
 
@@ -62,9 +85,9 @@ const CartContain = () => {
         const total = cartList.reduce((acumulador, element) => acumulador + element.precioTotal, 0)
         const iva = 0.14
         setPrecioTotalCart({
-            subTotal: `${total}`,
-            iva: `${total * iva}`,
-            precioFinal: `${total * iva + total}`
+            subTotal: `${Math.round(total)}`,
+            iva: `${Math.round(total * iva)}`,
+            precioFinal: `${Math.round(total * iva + total)}`
         })
     }, [cartList])
 
@@ -72,6 +95,13 @@ const CartContain = () => {
         eliminarProducto(identificador)
     }
 
+
+    const handleChange = ({ target: { name, value } }) => {
+        setTiket({
+            ...tiket, [name]: value
+        })
+        console.log(tiket)
+    }
 
     // console.log(carrito)
     return (
@@ -115,38 +145,41 @@ const CartContain = () => {
 
                             </section>
                             <section className='paymentMethod'>
-                                <section className='containPaymentMethod'>
+
+                                <form className='containPaymentMethod' onSubmit={handleComprar}>
                                     <h2>Metodo de pago</h2>
                                     <label htmlFor="name">
                                         name
-                                        <input type="text" name='name' placeholder='name' required />
+                                        <input type="text" name='name' placeholder='name' onChange={handleChange} required />
                                     </label>
                                     <label htmlFor="email">
                                         email
-                                        <input type="email" name="email" id="email" placeholder='email@gmail.com' required />
+                                        <input type="email" name="email" id="email" placeholder='email@gmail.com' onChange={handleChange} required />
                                     </label>
                                     <label htmlFor="tel">
                                         telefono
-                                        <input type="tel" name="telephone" pattern="\([0-9]{4}\) [0-9]{4}[ -][0-9]{4}[ -][0-9]{4}" placeholder='2944-123-123' required />
+                                        <input type="tel" name="telephone" pattern="\ [0-9]{4}[ -][0-9]{6}}" placeholder='2944-123123' onChange={handleChange} required />
                                     </label>
                                     <label htmlFor="card">
                                         numero de tarjetas
-                                        <input type='number' name="card" id="card" placeholder='XXXX XXXX XXXX 1234' pattern="\([0-9]{4}\) [0-9]{4}[ -][0-9]{4}" required />
+                                        <input type='number' name="card" id="card" placeholder='XXXX XXXX XXXX 1234' pattern="\([0-9]{4}\) [0-9]{4}[ -][0-9]{4}" onChange={handleChange} required />
                                     </label>
                                     <div className='expired'>
                                         <label className='labelExpired'>
                                             Vencimiento
                                             <div>
-                                                <input type="number" name="month" id="month" min={0} max={12} placeholder="MM" required />
-                                                <input type="number" name="year" id="year" min={22} max={30} placeholder="YY" required />
+                                                <input type="number" name="month" id="month" min={0} max={12} placeholder="MM" onChange={handleChange} required />
+                                                <input type="number" name="year" id="year" min={22} max={30} placeholder="YY" onChange={handleChange} required />
                                             </div>
                                         </label>
                                         <label htmlFor="">
                                             CVV
-                                            <input type="number" name='cvv' placeholder={123} required />
+                                            <input type="number" name='cvv' placeholder={123} onChange={handleChange} required />
                                         </label>
                                     </div>
-                                </section>
+                                    <button className='entrar' type='submit'>finalizar compra</button>
+
+                                </form>
 
                             </section>
                             <button className='closeModal' onClick={handleButtonComprar}><ion-icon name="close-outline"></ion-icon></button>

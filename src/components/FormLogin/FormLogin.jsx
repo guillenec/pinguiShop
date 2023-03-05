@@ -25,9 +25,6 @@ const FormLogin = () => {
         const errorMessage = error.message;
         error.code === 'auth/wrong-password' &&  errToast("❌ contraseña incorrecta")  || error.code === 'auth/user-not-found' && errToast('❌ el usuario no existe o no esta registrado')
         || errToast(error.message)
-
-        console.log(errorCode)
-        console.log(errorMessage)
       }
   }
 

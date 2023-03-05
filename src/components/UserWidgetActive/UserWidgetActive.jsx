@@ -16,7 +16,7 @@ const UserWidgetActive = () => {
 
   useEffect(() => {
     user != null && setValor(false)
-    console.log("USUARIO :  ",user.photoURL )
+    // console.log("USUARIO :  ",user.photoURL )
     user.photoURL !== null ? setImgPred(user.photoURL) : setImgPred('https://res.cloudinary.com/dpiwmbsog/image/upload/v1667461454/icons/pinguino10_w1tbcm.gif')
 
   }, [user])
