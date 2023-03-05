@@ -59,7 +59,7 @@ const CartContain = () => {
                 console.log("FINALY...")
                 setTimeout(() => {
                     handleButtonComprar()
-                    vaciarCarrito
+                    vaciarCarrito()
                     navigate('/ticket')
                 }, 5000);
 
