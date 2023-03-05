@@ -32,7 +32,7 @@ const FormRegister = () => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        error.code === 'auth/email-already-in-use' && errToast("❌ el correo ya fue registrado") || error.code === 'auth/weak-password' &&  errToast("❌ como minimo ursar 6 caracteres para el password") 
+        error.code === 'auth/email-already-in-use' && errToast("❌ el correo ya fue registrado") || error.code === 'auth/weak-password' &&  errToast("❌ minimo 6 caracteres para el password") 
         || errToast(error.message)
 
         console.log(errorCode)
