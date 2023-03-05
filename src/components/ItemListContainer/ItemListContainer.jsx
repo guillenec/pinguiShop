@@ -5,7 +5,6 @@ import ItemList from "../ItemList/ItemList";
 import Loading from "../Loading/Loading";
 import { collection, getDocs, getFirestore, orderBy, query, where } from 'firebase/firestore';
 import SimpleSlider from "../SimpleSlider/SimpleSlider";
-import UserComponent from "../UserComponent/UserComponent";
 
 const ItemListContainer = ({ greeting }) => {
     //valor del estado  //forma de actualizar el estado
@@ -76,8 +75,6 @@ const ItemListContainer = ({ greeting }) => {
             <section className="saludo">
                 <h1>{idCategoria ? idCategoria : greeting}</h1>
             </section>
-
-            <UserComponent user={false}/>
 
             <section className="cardsContainer">
                 {
