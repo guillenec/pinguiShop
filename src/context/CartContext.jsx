@@ -110,7 +110,15 @@ export const CartContextProvider = ({ children }) => {
     //permite ingresar, logiar un user
     const loginForm = (email, password) => {
         signInWithEmailAndPassword(auth, email, password)
-        
+            .then((result) => {
+                console.log(result)
+                const user = result.user;
+                notify(`Gracias por loguiarte :${user.email}`)
+            })
+            .catch((error) => {
+                error.code === 'auth/wrong-password' && errToast("❌ contraseña incorrecta") || error.code === 'auth/user-not-found' && errToast('❌ el usuario no existe o no esta registrado') || errToast(error.message)
+            })
+
     }
     //permite desloguiarme 
     const logOut = () => {
@@ -118,7 +126,7 @@ export const CartContextProvider = ({ children }) => {
             notify("🙋 cerrando sesion!!!")
         }).catch((error) => {
             // An error happened.
-            // console.log(error)
+            console.log(error)
         }).finally(() => {
             notify("🖐 bye!!!")
         })
@@ -127,7 +135,7 @@ export const CartContextProvider = ({ children }) => {
     useEffect(() => {
         //control delusuario activo
         onAuthStateChanged(auth, currentUser => {
-            // console.log(currentUser)
+            console.log(currentUser)
             setUser(currentUser)
             setLoading(false)
         })
@@ -147,18 +155,17 @@ export const CartContextProvider = ({ children }) => {
                 // console.log("Credenciales: ", credential)
                 // console.log("token: ", token)
                 // console.log("user: ", user)
-                notify(`Gracias por loguiarte ${user.displayName}`)
+                notify(`Gracias por loguiarte :${user.displayName}`)
 
             }).catch((error) => {
                 // Handle Errors here.
                 const errorCode = error.code;
+                console.log(error)
                 const errorMessage = error.message;
                 // The email of the user's account used.
                 const email = error.customData.email;
                 // The AuthCredential type that was used.
-                const credential = GoogleAuthProvider.
-                credentialFromError(error)
-                console.log(error)
+                const credential = GoogleAuthProvider.credentialFromError(error);
                 // ...
                 errorCode === "auth/popup-closed-by-user" ? errToast("cerro la ventana de login") : errToast(errorCode)
             });
