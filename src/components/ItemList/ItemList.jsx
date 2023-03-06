@@ -1,6 +1,9 @@
 import Item from "../Item/Item"
 
 const ItemList = ({ arregloProds }) => {
+
+    console.log("Render : ItemList")
+
     return (
         <>
             {

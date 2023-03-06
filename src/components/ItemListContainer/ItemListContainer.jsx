@@ -66,6 +66,7 @@ const ItemListContainer = ({ greeting }) => {
     
     */
 
+    console.log("Render itemListContainer:")
     return (
         <>
             {

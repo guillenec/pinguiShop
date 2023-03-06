@@ -52,6 +52,8 @@ const ItemCount = ({ producto, inicial, stock, onAdd }) => {
     (cantidadProd <= 0) ? e.preventDefault() : setCantidadProd(cantidadProd - 1)
   }
 
+  console.log("Render : ItemCount")
+
   return (
     <>
       <form className="formCantidad" onSubmit={handleOnaAdd}>

@@ -39,6 +39,7 @@ const ItemDetailContainer = () => {
     }, []) //permitira que se re-renderisen los productos
     // console.log(estadoProds)
 
+    console.log("Render : ItemDetailContainer")
     return (
         <>
             {

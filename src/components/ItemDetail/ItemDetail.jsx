@@ -34,6 +34,7 @@ const ItemDetail = ({ objeto }) => {
 
     }
 
+    console.log("Render : ItemDetail")
     return (
         <>
             <section className="itemDetailContain">

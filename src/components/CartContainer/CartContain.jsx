@@ -105,6 +105,8 @@ const CartContain = () => {
         console.log(tiket)
     }
 
+    console.log("Render : CartContain")
+
     // console.log(carrito)
     return (
         <>

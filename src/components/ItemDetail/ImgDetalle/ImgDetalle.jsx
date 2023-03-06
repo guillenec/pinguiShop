@@ -46,6 +46,7 @@ const ImgDetalle = ({ objeto, describe }) => {
     //     : (setImg1(img3), setImg3(img1), setImg2(img2))
     //     // console.log(imagen1)
     // }
+    console.log("Render : ItemDetalle")
 
     return (
         <>

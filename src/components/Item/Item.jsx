@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCartContext } from "../../context/CartContext";
 
+
 const Item = ({ element }) => {
 
     const { agregaAlCarrito, agregaAMeGusta, meGusta, cartList, notify, errToast } = useCartContext()
@@ -95,6 +96,9 @@ const Item = ({ element }) => {
     // console.log("Me gusta ==== ", meGusta)
 
     const { id: id, nombre: nombre, precio: precio, descripcion: desc, imagenA: img1 } = element;
+
+    console.log("Render : Item")
+
     return (
         <>
             <div className="containerContenido">

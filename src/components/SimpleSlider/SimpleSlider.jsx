@@ -33,6 +33,7 @@ const SimpleSlider = ({ objeto }) => {
         autoplaySpeed: 55000,
     }
 
+    console.log("Render simpleSlider:")
     return (
         <div className='containSlider'>
             <Slider {...settings}>

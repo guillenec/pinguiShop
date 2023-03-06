@@ -20,6 +20,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import FormPushProduct from './components/FormPushProduct/FormPushProduct';
 import LikeContain from './components/LikeContain/LikeContain';
 import TiketCompra from "./components/TiketCompra/TiketCompra";
+import Error404 from "./components/Error404/Error404.jsx";
 
 // creando constante
 //
@@ -50,9 +51,10 @@ function App() {
               <Route path='/cart' element={<CartContain />} />
 
               <Route path='/formProduct' element={<FormPushProduct />} />
-              <Route path="/tiket" element={<TiketCompra />} />  
+              <Route path='/tiket' element={<TiketCompra />} />  
+              <Route path='/error404' element={<Error404 /> }/>
 
-              <Route path='*' element={<Navigate to='/'></Navigate>} />
+              <Route path='*' element={<Navigate to='/error404'></Navigate>} />
               
             </Routes>
           </main>
