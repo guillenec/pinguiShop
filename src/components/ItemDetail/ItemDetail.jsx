@@ -1,6 +1,3 @@
-// import { useContext } from "react";
-// import { CartContext } from "../../context/CartContext";
-
 import ItemCount from "../ItemCount/ItemCount";
 import CategoriaDetalle from "./CategoriaDetalle/CategoriaDetalle";
 import ImgDetalle from "./ImgDetalle/ImgDetalle";

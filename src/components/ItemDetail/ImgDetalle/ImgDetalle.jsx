@@ -23,11 +23,11 @@ const ImgDetalle = ({ objeto, describe }) => {
                     break;
                 case 3:
                     setImg1(img3), setImg2(img1)
-    
+
                     break;
                 case 4:
                     setImg1(img4), setImg2(img1)
-    
+
                     break;
                 case 5:
                     setImg1(img5), setImg2(img1)
@@ -35,17 +35,11 @@ const ImgDetalle = ({ objeto, describe }) => {
                 default:
                     break;
             }
-        } 
-            
-        // console.log(imagen1)
+        }
+
+
     }
-    // const handleStateImg3 = (e) => {
-    //     e.preventDefault();
-    //     e.stopPropagation();
-    //     (imagen1 === img3 || imagen1 === img2) ? (setImg1(img1), setImg3(img3), setImg2(img2))
-    //     : (setImg1(img3), setImg3(img1), setImg2(img2))
-    //     // console.log(imagen1)
-    // }
+
     console.log("Render : ItemDetalle")
 
     return (
@@ -58,13 +52,13 @@ const ImgDetalle = ({ objeto, describe }) => {
                     <div className="img2" onClick={(e) => handleStateImg(e, 2)}>
                         <img src={imagen2} alt={describe} />
                     </div>
-                    { 
-                    (img3.length !== 0) && (<div className="img3" onClick={(e) => handleStateImg(e, 3)}><img className="img3" src={imagen3} alt={describe} /></div>) }
-{
-                    (img4.length !== 0) && (<div className="img4" onClick={(e) => handleStateImg(e, 4)}><img className="img4" src={imagen4} alt={describe} /></div>)}
-{
-                    (img5.length !== 0) && (<div className="img5" onClick={(e) => handleStateImg(e, 5)}><img className="img5" src={imagen5} alt={describe} /></div>)
-                    
+                    {
+                        (img3.length !== 0) && (<div className="img3" onClick={(e) => handleStateImg(e, 3)}><img className="img3" src={imagen3} alt={describe} /></div>)}
+                    {
+                        (img4.length !== 0) && (<div className="img4" onClick={(e) => handleStateImg(e, 4)}><img className="img4" src={imagen4} alt={describe} /></div>)}
+                    {
+                        (img5.length !== 0) && (<div className="img5" onClick={(e) => handleStateImg(e, 5)}><img className="img5" src={imagen5} alt={describe} /></div>)
+
                     }
                 </div>
 

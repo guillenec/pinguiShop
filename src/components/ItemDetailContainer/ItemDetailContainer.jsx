@@ -7,22 +7,9 @@ import { doc, getDoc, getFirestore, } from 'firebase/firestore';
 
 const ItemDetailContainer = () => {
     const { idProducto } = useParams();
-    // console.log(idProducto)
     const [estadoProds, setEstadoProductos] = useState([])
     const [loading, setLoading] = useState(true)
 
-    // useEffect(() => {
-
-    //     getProducto(Number(idProducto))
-    //     .then((response)=> {
-    //         // console.log(response)
-    //         setEstadoProductos(response) //guardamos el estado 
-    //     })
-    //     .catch((err) => {
-    //         console.log(err.message)
-    //     })
-    //     .finally(() => setLoading(false))
-    // }, [])
 
     useEffect(() => { //hook
 

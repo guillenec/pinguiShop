@@ -1,13 +1,13 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { Link } from 'react-router-dom';
 import { useCartContext } from '../../context/CartContext';
 import ItemLike from '../ItemLike/ItemLike';
 
-const LikeContain = () => {
+const LikeContain = memo(() => {
 
     const { meGusta } = useCartContext()
     // console.log("mE gusta ::: ",meGusta)
-    
+
     return (
         <section className='likeContainer'>
             <Link to='/' className='linkComprar'> <ion-icon name="arrow-back-outline"></ion-icon>ir a todos los productos</Link>
@@ -20,7 +20,7 @@ const LikeContain = () => {
                             {
                                 meGusta.map(elemento => {
                                     return (<section key={elemento.id} className="elementLike">
-                                        <ItemLike  objeto={elemento}/>
+                                        <ItemLike objeto={elemento} />
                                     </section>)
                                 })
                             }
@@ -31,5 +31,6 @@ const LikeContain = () => {
         </section>
     )
 }
+)
 
 export default LikeContain
