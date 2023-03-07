@@ -69,7 +69,7 @@ const ItemCount = ({ producto, inicial, stock, onAdd }) => {
         <button type="submit" >agregar</button>
       </form>
       {
-        inputType === 'botonRedirige' && <ItemCountRedirect />
+        inputType === 'botonRedirige' && <ItemCountRedirect/>
       }
 
     </>
