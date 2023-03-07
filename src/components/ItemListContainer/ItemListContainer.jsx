@@ -9,8 +9,6 @@ import SimpleSlider from "../SimpleSlider/SimpleSlider";
 const ItemListContainer = ({ greeting }) => {
     //valor del estado  //forma de actualizar el estado
     const [productos, setProductos] = useState([]) //estado inicial array vacio
-    // const [producto, setProducto ] = useState({})
-
     let [loading, setLoading] = useState(true) //"" "" true
     const { idCategoria } = useParams()
 
@@ -72,15 +70,14 @@ const ItemListContainer = ({ greeting }) => {
             {
                 (idCategoria) ? "" : <SimpleSlider objeto={productos} />
             }
-
+            
             <section className="saludo">
                 <h1>{idCategoria ? idCategoria : greeting}</h1>
             </section>
-
             <section className="cardsContainer">
                 {
                     loading ? <Loading />
-                        : <ItemList arregloProds={productos} />
+                        : <ItemList prods={productos} />
                 }
             </section>
 

@@ -1,18 +1,18 @@
 import { memo } from "react"
 import Item from "../Item/Item"
 
-const ItemList = memo(( { arregloProds } ) => {
+const ItemList = memo(( { prods } ) => {
     
         console.log("Render : ItemList")
     
         return (
             <>
                 {
-                    arregloProds.map(producto => {
+                    prods.map(product => {
                         //key debo usarla siempre que hago una lista de elementos. mejora performance, permite mantener el estado
-                        return ( <article key={producto.id} className='card'>
-                            <Item element={producto} />
-                        </article> )
+                        return (
+                            <Item key={product.id}  element={product} />
+                        )
                     })
                 }
             </>
