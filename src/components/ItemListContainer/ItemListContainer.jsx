@@ -14,10 +14,10 @@ const ItemListContainer = ({ greeting }) => {
 
     useEffect(() => { //hook
         setLoading(true)
-        if (idCategoria) {
+        // if (idCategoria) {
             const db = getFirestore()
             const queryColection = collection(db, 'productos')
-            const queryFiltrado = query(queryColection, where('claves', 'array-contains-any', [idCategoria]))
+            const queryFiltrado = idCategoria ? query(queryColection, where('claves', 'array-contains-any', [idCategoria])) : query(queryColection, orderBy("nombre", "asc"))
 
             getDocs(queryFiltrado)
                 .then(response => setProductos(response.docs.map(element => (
@@ -27,21 +27,20 @@ const ItemListContainer = ({ greeting }) => {
                     console.log(err.message)
                 })
                 .finally(() => setLoading(false))
-
-
-        } else {
-            const db = getFirestore()
-            const queryColeccion = collection(db, 'productos')
-            const ordenadas = query(queryColeccion, orderBy("nombre", "asc")) // de esta forma los ordeno ascendentemente
-            getDocs(ordenadas)
-                .then(response => setProductos(response.docs.map(element => (
-                    { id: element.id, ...element.data() }
-                ))))
-                .catch((err) => {
-                    console.log(err.message)
-                })
-                .finally(() => setLoading(false))
-        }
+            // }
+        // } else {
+        //     const db = getFirestore()
+        //     const queryColeccion = collection(db, 'productos')
+        //     const ordenadas = query(queryColeccion, orderBy("nombre", "asc")) // de esta forma los ordeno ascendentemente
+        //     getDocs(ordenadas)
+        //         .then(response => setProductos(response.docs.map(element => (
+        //             { id: element.id, ...element.data() }
+        //         ))))
+        //         .catch((err) => {
+        //             console.log(err.message)
+        //         })
+        //         .finally(() => setLoading(false))
+        // }
     }, [idCategoria]) //permitira que se re-renderisen los productos
     // console.log(productos)
 
