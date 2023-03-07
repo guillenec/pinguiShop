@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
+import ItemCountRedirect from '../ItemCountRedirect/ItemCountRedirect';
 
 
 const ItemCount = ({ producto, inicial, stock, onAdd }) => {
@@ -68,19 +69,10 @@ const ItemCount = ({ producto, inicial, stock, onAdd }) => {
         <button type="submit" >agregar</button>
       </form>
       {
-        inputType === 'botonRedirige' && <Redirige />
+        inputType === 'botonRedirige' && <ItemCountRedirect />
       }
 
     </>
-  )
-}
-
-const Redirige = () => {
-  return (
-    <div className='botonRedireccion'>
-      <Link to='/'> seguir comprando </Link>
-      <Link to='/cart' >carrito</Link>
-    </div>
   )
 }
 
