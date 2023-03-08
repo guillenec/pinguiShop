@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
 import ItemCountRedirect from '../ItemCountRedirect/ItemCountRedirect';
 
 
@@ -15,18 +14,9 @@ const ItemCount = ({ producto, inicial, stock, onAdd }) => {
   }
 
   const handleChange = (e) => {
-    // const num = e.target.name;
-    // const value = e.target.value;
-    // console.log(e)
     const { value } = e.target;
-    // const { name, value } = e.target;
-    // console.log(num,value)
     console.log(value)
     setCantidadProd(value)
-
-    // setCantidadProd((prev) => {
-    //   return { ...prev, [name]: value }
-    // })
   }
 
   const handleOnaAdd = (e) => { //

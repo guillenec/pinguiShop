@@ -97,7 +97,7 @@ const Item = memo( ({ element }) => {
         
             const { id: id, nombre: nombre, precio: precio, descripcion: desc, imagenA: img1 } = element;
         
-            console.log("Render : Item")
+            // console.log("Render : Item")
         
             return (
                 <>
