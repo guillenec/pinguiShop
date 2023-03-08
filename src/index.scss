@@ -13,7 +13,6 @@
 // layout
 @import './scss/layout/header';
 @import './scss/layout/main';
-@import './scss/layout/footer';
 
 @import './scss/components/navBar.scss';
 @import './scss/components/toggle.scss';
@@ -31,3 +30,5 @@
 
 
 @import './scss/components/error404.scss';
+
+@import './scss/layout/footer';

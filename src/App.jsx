@@ -21,6 +21,7 @@ import FormPushProduct from './components/FormPushProduct/FormPushProduct';
 import LikeContain from './components/LikeContain/LikeContain';
 import TiketCompra from "./components/TiketCompra/TiketCompra";
 import Error404 from "./components/Error404/Error404.jsx";
+import Footer from "./components/Footer/Footer";
 
 // creando constante
 //
@@ -58,7 +59,9 @@ function App() {
               
             </Routes>
           </main>
-          <footer className="footer"></footer>
+          <footer className="footer">
+            <Footer />
+          </footer>
         </div>
         <ToastContainer
           position="bottom-right"
