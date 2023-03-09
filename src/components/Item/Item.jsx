@@ -13,14 +13,10 @@ const Item = memo( ({ element }) => {
             const [activaWallet, setActivaWallet] = useState('')
             const [valorHeart, setValorHeart] = useState('')
             const [valorActiveCart, setValorActivoCart] = useState('')
-        
-            // const [activaEstado, setActivaEstado] = useState(false)
-        
+                
             useEffect(() => {
                 if (cartList.some(elem => (elem.id === element.id && elem.nombre === element.nombre))) {
-                    // console.log("----  este id se repite ----")
                     const objeto2 = cartList.find(elem => elem.id === element.id)
-                    // console.log(objeto2)
                     element = objeto2
                     if (activaHeart === true) {
                         setTimeout(() => {
@@ -93,12 +89,8 @@ const Item = memo( ({ element }) => {
                 agregaAMeGusta(element);
             }
         
-            // console.log("Me gusta ==== ", meGusta)
-        
             const { id: id, nombre: nombre, precio: precio, descripcion: desc, imagenA: img1 } = element;
-        
-            // console.log("Render : Item")
-        
+                
             return (
                 <>
                 <article className='card'>

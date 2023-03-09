@@ -40,8 +40,6 @@ const ImgDetail = ({ objeto, describe }) => {
 
     }
 
-    console.log("Render : ItemDetalle")
-
     return (
         <>
             <section className="containerImgs">

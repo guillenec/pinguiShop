@@ -15,7 +15,6 @@ const ItemCount = ({ producto, inicial, stock, onAdd }) => {
 
   const handleChange = (e) => {
     const { value } = e.target;
-    console.log(value)
     setCantidadProd(value)
   }
 
@@ -24,9 +23,6 @@ const ItemCount = ({ producto, inicial, stock, onAdd }) => {
     e.stopPropagation();
     onAdd(producto, cantidadProd, producto.precio)
 
-    // // console.log(cantidadProd) //despues puedo remplazarlo
-    // notify(cantidadProd, nombre);
-
     setTimeout(() => {
       handleInter();
     }, 2000);
@@ -34,16 +30,12 @@ const ItemCount = ({ producto, inicial, stock, onAdd }) => {
   }
 
   const sumarProd = (e) => {
-    // console.log(e)
-    // console.log(stock, cantidadProd);
     (stock <= cantidadProd) ? e.preventDefault() : setCantidadProd(cantidadProd + 1);
   }
 
   const restProd = (e) => {
     (cantidadProd <= 0) ? e.preventDefault() : setCantidadProd(cantidadProd - 1)
   }
-
-  console.log("Render : ItemCount")
 
   return (
     <>

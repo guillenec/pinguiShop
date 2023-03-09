@@ -5,8 +5,6 @@ const DetailCategory = ({objeto}) => {
     
     const { nombre: nombre, genero: genero, tipo: tipo, clave1: cl1, clave2: cl2, clave3: cl3 } = objeto;
 
-    console.log("Render : CategoriaDetalle")
-
     return (
         <>
             <p className="categoria"><strong>Categorias:</strong></p>

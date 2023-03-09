@@ -20,9 +20,6 @@ const PanelRoot = () => {
 
     !valor ? handlePanelRooot(false) : handlePanelRooot(true)
     
-    
-    // console.log("elpanel se activo??? ",panelRoot)
-
   }, [valor, panelRoot])
   
   return (

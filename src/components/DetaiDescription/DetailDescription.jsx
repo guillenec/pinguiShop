@@ -1,7 +1,6 @@
 import React from 'react'
 
 const DetailDescription = ({object}) => {
-  console.log(object)
   return (
     <>
       <h2 className="nombre"># {object.nombre}</h2>

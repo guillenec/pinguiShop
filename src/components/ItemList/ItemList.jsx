@@ -4,7 +4,6 @@ import NotItem from "../NotItem/NotItem"
 
 const ItemList = memo(( { prods } ) => {
         // prods = []
-        console.log("Render : ItemList")
         return (
             <>
                 {

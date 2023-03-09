@@ -36,7 +36,6 @@ const NavBar = () => {
     //a ver cvomo lo hago, un mini panel para el admin
 
     useEffect(()=>{
-        console.log(user)
         user == null ? setUserRootAct(false) : (user.email === "root@gmail.com" ? setUserRootAct(true) : setUserRootAct(false))
         
     },[]) 
