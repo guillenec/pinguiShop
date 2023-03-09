@@ -3,17 +3,29 @@
 # 🐧 PinguiShop
 
 <p align="center" ><img width="100%" src="https://res.cloudinary.com/dpiwmbsog/image/upload/v1677977326/Captura_desde_2023-03-04_21-45-15_qy8whb.png" alt="banner stack guille"></p>
- 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/95813aee-90c1-4f5f-8806-b7b9f5a1c848/deploy-status)](https://app.netlify.com/sites/pinguishop/deploys)    
+
+</br>
+
+
+## 😘 Demo
+[![Netlify Status](https://api.netlify.com/api/v1/badges/95813aee-90c1-4f5f-8806-b7b9f5a1c848/deploy-status)](https://app.netlify.com/sites/pinguishop/deploys) 
+
+</br>
+
 ## 📚 Sobre el proyecto. 
 * Se corresponde al proyecto final de React en Coderhouse.
 * Ecomerce echo con react y vite y firebase,
 
 </br>
 
-# 🛸🛸 Vistazo Detalles
+## 🛸 Vistao a la seccion de detalles
 ![🛸🛸 Vistazo Detalles](https://res.cloudinary.com/dpiwmbsog/image/upload/v1677978216/Captura_desde_2023-03-04_21-55-21_s0oiv1.png "titulo")
 
+## 🛸 Vistao añadiendo productos al cart y a meGustan
+![🛸🛸 Vistazo Detalles](https://res.cloudinary.com/dpiwmbsog/image/upload/v1678404584/ItemListContainer_u5ejgy.png "titulo")
+
+## 🛸 Vistao a cart y meGusta
+![🛸🛸 Vistazo Detalles](https://res.cloudinary.com/dpiwmbsog/image/upload/v1678404895/cart_meGUsta_jkdop0.png "titulo")
 </br>
 
 ## 📘 Nota: 
@@ -21,7 +33,7 @@ Quedo a la espera de sugerencias..  🐧🐧🐧
 
 </br>
 
-## 👨‍💻 Dependencies
+## 👨‍💻 Dependencias
 * react : 18.2.0:
   * Biblioteca de JavaScript de código abierto para la construcción de interfaces de usuario (UI) en aplicaciones web.  
   * En mi caso en mi proyecto use React+vite, por lo que use:  
@@ -98,6 +110,34 @@ Quedo a la espera de sugerencias..  🐧🐧🐧
     ```bash  
     ╭─pescado at rabioso in ~/proyectoConReact on main✔
     ╰─± cp npm install vite
+    ```
+</br>
+
+## 🚀 Caracteristica
+  * Carrito de compras
+  * Integración con Firebase Firestore
+  * Integración con Firebase Authentication
+  * Responsive design
+  * Slider de productos destacados
+
+</br>
+
+## 📦 Instalación
+  * Clonar el repositorio: 
+    ```bash
+    git clone https://github.com/guillenec/pinguiShop.git
+    ```
+  * Acceder a la carpeta del proyecto:
+    ```bash
+    cd ./pinguiShop
+    ```
+  * Instalar las dependencias: 
+    ```bash
+    npm install
+    ```
+  * Iniciar la aplicación: 
+    ```bash
+    npm start
     ```
 
 ## 👍 Espero te guste. 
