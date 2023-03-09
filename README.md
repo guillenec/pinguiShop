@@ -6,7 +6,7 @@
  
 [![Netlify Status](https://api.netlify.com/api/v1/badges/95813aee-90c1-4f5f-8806-b7b9f5a1c848/deploy-status)](https://app.netlify.com/sites/pinguishop/deploys)    
 ## 📚 Sobre el proyecto. 
-* Se corresponde al proyecto dinal de React en Coderhouse.
+* Se corresponde al proyecto final de React en Coderhouse.
 * Ecomerce echo con react y vite y firebase,
 
 </br>
@@ -23,10 +23,20 @@ Quedo a la espera de sugerencias..  🐧🐧🐧
 
 ## 👨‍💻 Dependencies
 * firebase": 9.17.1:
-  * Firebase es una plataforma de desarrollo de aplicaciones móviles y web, propiedad de Google, que proporciona una variedad de herramientas y servicios para el desarrollo de aplicaciones, la gestión de usuarios, el análisis y la monetización.
+  * Firebase es una plataforma de desarrollo de aplicaciones móviles y web, propiedad de Google, que proporciona una variedad de herramientas y servicios para el desarrollo de aplicaciones, la gestión de usuarios, el análisis y la monetización.  
+  ╭─pescado at rabioso in ~      
+  ╰─○ npm install firebase
 
 * react : 18.2.0:
-  * Biblioteca de JavaScript de código abierto para la construcción de interfaces de usuario (UI) en aplicaciones web. 
+  * Biblioteca de JavaScript de código abierto para la construcción de interfaces de usuario (UI) en aplicaciones web.  
+  * En mi caso en mi proyecto use React+vite, por lo que use:  
+    ╭─pescado at rabioso in ~    
+    ╰─○ npm create vite@latest proyectoConReact
+  * Luego:  
+    ╭─pescado at rabioso in ~    
+    ╰─○ cd proyectoConReact    
+	  ╰─○ npm install  
+	  ╰─○ npm run dev  
 
 * react-dom: 18.2.0:
   * Librería de React que proporciona una forma eficiente de actualizar el árbol de elementos de la interfaz de usuario (UI) de una página web.  
@@ -50,8 +60,11 @@ Quedo a la espera de sugerencias..  🐧🐧🐧
 
 * sass: 1.57.1:
   * Sass es un preprocesador de CSS que agrega características adicionales a los estilos CSS, como variables, anidamiento, mixins, etc.  
-  ╭─pescado at rabioso in ~  
-  ╰─○ npm install node-sass
+  en mi caso intetegrare sass a mi proyecto
+
+╭─pescado at rabioso in ~  
+╰─○ npm i -D sass
+
   * Arme un script para poder crear automaticamente todo el arbol de directorio de scss, segun mi criterio.. si desea usarla, esta desponible abajo.
 
 * Script: [integrar-sas-vite.zsh](./integrar-sas-vite.zsh)
