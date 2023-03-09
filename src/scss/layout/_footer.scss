@@ -196,16 +196,16 @@
           width: 100%;
           padding: 10px;
           font-size: 1rem;
-          background: $color5;
-          color: $color4;
-          border: solid 4px $color5;
+          background: $color3;
+          color: $color2;
+          border: solid 4px $color3;
           border-radius: 2px;
           transition: .7s;
 
           &:hover {
             background: $color4;
-            color: $color2;
-            border: solid 4px $color1a;
+            color: $color1a;
+            border: solid 4px $color4;
           }
         }
 
