@@ -30,13 +30,22 @@ Quedo a la espera de sugerencias..  🐧🐧🐧
 * react : 18.2.0:
   * Biblioteca de JavaScript de código abierto para la construcción de interfaces de usuario (UI) en aplicaciones web.  
   * En mi caso en mi proyecto use React+vite, por lo que use:  
-    ╭─pescado at rabioso in ~    
+    ```zsh
+    ╭─pescado at rabioso in ~
     ╰─○ npm create vite@latest proyectoConReact
-  * Luego:  
+    ```
+    
+  * Luego:
+  ```zsh  
+╭─guille at pescado in ~
+╰─○ cd proyectoConReact
+  
     ╭─pescado at rabioso in ~    
-    ╰─○ cd proyectoConReact    
-	  ╰─○ npm install  
-	  ╰─○ npm run dev  
+
+  npm install  
+  
+	npm run dev  
+  ```
 
 * react-dom: 18.2.0:
   * Librería de React que proporciona una forma eficiente de actualizar el árbol de elementos de la interfaz de usuario (UI) de una página web.  
