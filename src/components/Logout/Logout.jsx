@@ -6,6 +6,7 @@ const Logout = () => {
   const { user, logOut} = useCartContext();
 
   const navigate = useNavigate()
+  
   const handleLogOut = async (e) => {
     e.preventDefault()
     await logOut()

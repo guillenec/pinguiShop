@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useCartContext } from "../../context/CartContext";
 import CartWidget from "../CartWidget/CartWidget "
@@ -12,7 +12,7 @@ import UserWidget from "../UserWidget/UserWidget";
 import UserWidgetActive from "../UserWidgetActive/UserWidgetActive";
 
 //objetivo : crear el menú e-comerce de tu proyecto
-const NavBar = () => {
+const NavBar = ({ footerRef }) => {
     const [toggleState, setToggleState] = useState(false)
     const [renderLogin, setRenderLogin] = useState(null)
     const [renderPanelRoot, setRenderPanelRoot] = useState(null)
@@ -40,6 +40,18 @@ const NavBar = () => {
         
     },[]) 
 
+    // useEffect(()=>{
+    //     const handleScroll = () => {
+    //         console.log("sehizo scroll")
+    //     }
+    //     window.addEventListener('scroll',handleScroll)
+    // },[])
+
+    const handleContact = (e) => {
+        e.preventDefault()
+        footerRef.current.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest", });
+    }
+
     return (
         <>
             <nav className={`navBar ${toggleClassCheck}`}>
@@ -63,7 +75,7 @@ const NavBar = () => {
                                 </ul>
                             </li>
                             <li><NavLink to='/nosotros' className={({ isActive }) => isActive ? 'rutaActiva' : ''}>nosotros</NavLink></li>
-                            <li><NavLink to='/contacto' className={({ isActive }) => isActive ? 'rutaActiva' : ''}>contacto</NavLink></li>
+                            <li><NavLink onClick={handleContact} to='/contacto' className={({ isActive }) => isActive ? 'rutaActiva' : ''}>contacto</NavLink></li>
                         </ul>
 
                     </section>

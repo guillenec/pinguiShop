@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { useCartContext } from '../../context/CartContext';
 import FormLogin from '../FormLogin/FormLogin';
@@ -9,6 +9,8 @@ const PanelLogin = () => {
   const [valor, setValor] = useState(false)
   const [textForm, setTextForm] = useState('register')
   const [clase, setClase] = useState('')
+
+  const [activaLog, setActivaLog] = useState(false)
 
   setTimeout(() => {
     setClase('visible')
@@ -24,11 +26,34 @@ const PanelLogin = () => {
 
   }, [valor])
 
+  const refElementLog = useRef()
+
+  useEffect(() => {
+    //evento click al documento
+    document.addEventListener("click", handleClick)
+
+    //eliminamos el evento del documento cuando el componente se desmonta
+    return () => { 
+      document.removeEventListener("click", handleClick)
+    }
+
+  }, [])
+
+  const handleClick = (e) => {
+    if (refElementLog.current.contains(e.target)){
+      console.log(true)
+      return
+    }
+    //desactiva el componente si se cliqueo fuera
+    setActivaLog(false)
+    console.log(activaLog);
+  }
+
   return (
     <> 
     { user == null 
       ? (
-        <section className={`login ${clase}`}>
+        <section ref={refElementLog} className={`login ${clase}`}>
         {
           valor == false ? <FormLogin /> : <FormRegister />
         }
