@@ -57,41 +57,41 @@ const Footer = () => {
               <h2><a>pagos 100% seguros</a></h2>
               <p>envio de datos encriptados a travez de certificacion SSL.</p>
             </div>
-            </section><section className="cont_faq">
-              <div className="icon">
-                <a>
-                  <ion-icon name="wallet-outline" role="img" className="md hydrated" aria-label="wallet outline"></ion-icon>
-                </a>
-              </div>
-              <div className="textos">
-                <h2><a>metodos de pagos</a></h2>
-                <p>aceptamos Mercadoo pago, PayPal, Tarjetas y Transferencias.</p>
-              </div>
-            </section><section className="cont_faq">
-              <div className="icon">
-                <a>
-                  <ion-icon name="rocket-outline" role="img" className="md hydrated" aria-label="rocket outline"></ion-icon>
-                </a>
-              </div>
-              <div className="textos">
-                <h2><a>entregas rapidas</a></h2>
-                <p>entregas en 24hs en la mayoria de los articulos.</p>
-              </div>
+          </section><section className="cont_faq">
+            <div className="icon">
+              <a>
+                <ion-icon name="wallet-outline" role="img" className="md hydrated" aria-label="wallet outline"></ion-icon>
+              </a>
+            </div>
+            <div className="textos">
+              <h2><a>metodos de pagos</a></h2>
+              <p>aceptamos Mercadoo pago, PayPal, Tarjetas y Transferencias.</p>
+            </div>
+          </section><section className="cont_faq">
+            <div className="icon">
+              <a>
+                <ion-icon name="rocket-outline" role="img" className="md hydrated" aria-label="rocket outline"></ion-icon>
+              </a>
+            </div>
+            <div className="textos">
+              <h2><a>entregas rapidas</a></h2>
+              <p>entregas en 24hs en la mayoria de los articulos.</p>
+            </div>
 
-            </section><section className="cont_faq">
+          </section><section className="cont_faq">
 
-              <div className="icon">
-                <a>
-                  <ion-icon name="send-outline" role="img" className="md hydrated" aria-label="send outline"></ion-icon>
-                </a>
-              </div>
-              <div className="textos">
-                <h2><a>envios gratis</a></h2>
-                <p>gratis a partir de los $5000. o estando suscripto.</p>
-              </div>
+            <div className="icon">
+              <a>
+                <ion-icon name="send-outline" role="img" className="md hydrated" aria-label="send outline"></ion-icon>
+              </a>
+            </div>
+            <div className="textos">
+              <h2><a>envios gratis</a></h2>
+              <p>gratis a partir de los $5000. o estando suscripto.</p>
+            </div>
 
-            </section>
-          </div>
+          </section>
+        </div>
       </section>
       <section className="f_footer">
         <section className="footer_bot">

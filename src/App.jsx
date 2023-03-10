@@ -22,6 +22,7 @@ import LikeContain from './components/LikeContain/LikeContain';
 import TiketCompra from "./components/TiketCompra/TiketCompra";
 import Error404 from "./components/Error404/Error404.jsx";
 import Footer from "./components/Footer/Footer";
+import UpScroll from "./components/UpScroll/UpScroll";
 
 // creando constante
 //
@@ -47,18 +48,19 @@ function App() {
               <Route path='/categoria/:idCategoria' element={<ItemListContainer greeting={saludo} />} />
 
               <Route path='/detalle/:idProducto' element={<ItemDetailContainer />} />
-              
-              <Route path='/like' element={<LikeContain/> } />
+
+              <Route path='/like' element={<LikeContain />} />
               <Route path='/cart' element={<CartContain />} />
 
               <Route path='/formProduct' element={<FormPushProduct />} />
-              <Route path='/tiket' element={<TiketCompra />} />  
-              <Route path='/error404' element={<Error404 /> }/>
+              <Route path='/tiket' element={<TiketCompra />} />
+              <Route path='/error404' element={<Error404 />} />
 
               <Route path='*' element={<Navigate to='/error404'></Navigate>} />
-              
+
             </Routes>
           </main>
+          <UpScroll/>
           <footer className="footer">
             <Footer />
           </footer>
