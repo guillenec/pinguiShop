@@ -2,11 +2,13 @@ import { addDoc, collection, getFirestore } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useCartContext } from '../../context/CartContext'
-import ItemCart from '../ItemCart/ItemCart'
+import CartButtons from '../CartButtons/CartButtons'
+import CartFormCompra from '../CartFormCompra/CartFormCompra'
+import ItemCartList from '../ItemCartList/ItemCartList'
 
 const CartContain = () => {
 
-    const { cartList, vaciarCarrito, eliminarProducto, user, notify, errToast ,setOrdenDeCompraContext} = useCartContext()
+    const { cartList, vaciarCarrito, eliminarProducto, user, notify, errToast, setOrdenDeCompraContext } = useCartContext()
     const [seccion, setSeccion] = useState(false)
     const [boleano, setBolano] = useState(false)
     const [activaModal, setActivaModal] = useState(false)
@@ -18,6 +20,7 @@ const CartContain = () => {
     })
 
     const [tiket, setTiket] = useState({
+        name: '',
         email: '',
         telephone: '',
         card: '',
@@ -82,7 +85,6 @@ const CartContain = () => {
         }
     }
 
-
     useEffect(() => {
         const total = cartList.reduce((acumulador, element) => acumulador + element.precioTotal, 0)
         const iva = 0.14
@@ -93,106 +95,104 @@ const CartContain = () => {
         })
     }, [cartList])
 
-    const dropProduct = (identificador) => {
-        eliminarProducto(identificador)
-    }
+    const [erorBlur, setErrorBlur] = useState({})
 
-
-    const handleChange = ({ target: { name, value } }) => {
+    const handleChange = (e) => {
+        const { name, value } = e.target
         setTiket({
             ...tiket, [name]: value
         })
-        console.log(tiket)
+        // console.log(tiket)
     }
 
-    console.log("Render : CartContain")
+    //vamos a manejar los errores en el blur junto con el html
+    const handleBlur = (e) => {
+        handleChange(e)
+        setErrorBlur(validateForm(tiket))
+    }
 
+    const validateForm = (campoForm) => {
+        const errors = {
+            name: '',
+            email: '',
+            telephone: '',
+            card: '',
+            month: '',
+            year: '',
+            cvv: '',
+        }
+
+        if (!campoForm.name.trim()) {
+            console.log("error Campo", campoForm);
+            errors.name = "❌ El campo Name es requerido";
+        }
+        if (!campoForm.email.trim()) {
+            console.log("error Campo", campoForm);
+            errors.email = "❌ El campo Email es requerido";
+        }
+        if (!campoForm.telephone.trim()) {
+            console.log("error Campo", campoForm);
+            errors.telephone = "❌ El campo Telephone es requerido";
+        }
+        if (!campoForm.card.trim()) {
+            console.log("error Campo", campoForm);
+            errors.card = "❌ El campo Card es requerido";
+        }
+        if (!campoForm.month.trim()) {
+            console.log("error Campo", campoForm);
+            errors.month = "❌ 📅";
+        }
+        if (!campoForm.year.trim()) {
+            console.log("error Campo", campoForm);
+            errors.year = "❌ 🧨";
+        }
+        if (!campoForm.cvv.trim()) {
+            console.log("error Campo", campoForm);
+            errors.cvv = "❌ 💳";
+        }
+
+
+        return errors
+    }
+
+    console.log("blur name ", erorBlur.name == undefined ? "esta vacio" : erorBlur)
     // console.log(carrito)
     return (
-        <>
-            {
-                !activaModal ? <section className='cartContainer'>
+        <>{
+            !activaModal
+                ? <section className='cartContainer'>
                     <Link to='/' className='linkComprar'> <ion-icon name="arrow-back-outline"></ion-icon> seguir comprando</Link>
                     {
-                        cartList.length == 0 ? <section className='cartVacio'><h2>cart vacio</h2></section>
-                            :
-                            <section className='containCarrito'>
-                                <h1>Mi carrito</h1>
-                                <section className="botonraCompra">
-                                    <button className='vaciar' onClick={vaciarCarrito}><ion-icon name="trash"></ion-icon> vaciar </button>
-                                    <button className='vaciar' onClick={handleButtonComprar}><ion-icon name="card-outline"></ion-icon> confirmar compra </button>
-
-                                    {(seccion == true) ? <h2 className='userNoLogin'>Debe loguiarse para poder comprar!!!</h2> : null}
-                                </section>
-                                <section className='carrito'>
-                                    {
-                                        cartList.map(elemento => {
-                                            return (<section key={elemento.id} className="cartProducto">
-                                                <ItemCart element={elemento} dropProduct={dropProduct} />
-                                            </section>)
-                                        })
-                                    }
-                                </section>
+                        cartList.length == 0
+                            ? <section className='cartVacio'>
+                                <h2>cart vacio</h2>
+                            </section>
+                            : <section className='containCarrito'>
+                                <CartButtons seccion={seccion} handleButtonComprar={handleButtonComprar} />
+                                <ItemCartList />
                             </section>
                     }
                 </section>
 
-                    : <section className={`modal`}>
-                        <div className='container'>
-                            <section className='summaryPurchase'>
-                                <section className='containSummaryPurchase'>
-                                    <h2>resumen de cuenta</h2>
-                                    <p><strong>subtotal:</strong> ${Math.round(precioTotalCart.subTotal)}</p>
-                                    <p><strong>iva:</strong> ${Math.round(precioTotalCart.iva)}</p>
-                                    <p className='total'><strong>total</strong> ${Math.round(precioTotalCart.precioFinal)}</p>
-                                </section>
-
+                : <section className={`modal`}>
+                    <div className='container'>
+                        <section className='summaryPurchase'>
+                            <section className='containSummaryPurchase'>
+                                <h2>resumen de cuenta</h2>
+                                <p><strong>subtotal:</strong> ${Math.round(precioTotalCart.subTotal)}</p>
+                                <p><strong>iva:</strong> ${Math.round(precioTotalCart.iva)}</p>
+                                <p className='total'><strong>total</strong> ${Math.round(precioTotalCart.precioFinal)}</p>
                             </section>
-                            <section className='paymentMethod'>
 
-                                <form className='containPaymentMethod' onSubmit={handleComprar}>
-                                    <h2>Metodo de pago</h2>
-                                    <label htmlFor="name">
-                                        name
-                                        <input type="text" name='name' placeholder='name' onChange={handleChange} required />
-                                    </label>
-                                    <label htmlFor="email">
-                                        email
-                                        <input type="email" name="email" id="email" placeholder='email@gmail.com' onChange={handleChange} required />
-                                    </label>
-                                    <label htmlFor="tel">
-                                        telefono
-                                        <input type="tel" name="telephone" pattern="\ [0-9]{4}[ -][0-9]{6}}" placeholder='2944-123123' onChange={handleChange} required />
-                                    </label>
-                                    <label htmlFor="card">
-                                        numero de tarjetas
-                                        <input type='number' name="card" id="card" placeholder='XXXX XXXX XXXX 1234' pattern="\([0-9]{4}\) [0-9]{4}[ -][0-9]{4}" onChange={handleChange} required />
-                                    </label>
-                                    <div className='expired'>
-                                        <label className='labelExpired'>
-                                            Vencimiento
-                                            <div>
-                                                <input type="number" name="month" id="month" min={0} max={12} placeholder="MM" onChange={handleChange} required />
-                                                <input type="number" name="year" id="year" min={22} max={30} placeholder="YY" onChange={handleChange} required />
-                                            </div>
-                                        </label>
-                                        <label htmlFor="">
-                                            CVV
-                                            <input type="number" name='cvv' placeholder={123} onChange={handleChange} required />
-                                        </label>
-                                    </div>
-                                    <button className='entrar' type='submit'>finalizar compra</button>
+                        </section>
+                        <section className='paymentMethod'>
 
-                                </form>
-
-                            </section>
-                            <button className='closeModal' onClick={handleButtonComprar}><ion-icon name="close-outline"></ion-icon></button>
-                        </div>
-                    </section>
-            }
-
-
-        </>
+                            <CartFormCompra handleComprar={handleComprar} handleChange={handleChange} handleBlur={handleBlur} error={erorBlur} />
+                        </section>
+                        <button className='closeModal' onClick={handleButtonComprar}><ion-icon name="close-outline"></ion-icon></button>
+                    </div>
+                </section>
+        }</>
     )
 }
 
