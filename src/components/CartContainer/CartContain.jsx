@@ -121,6 +121,13 @@ const CartContain = () => {
             year: '',
             cvv: '',
         }
+        const regexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/
+        const regexEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/
+        const regexCard = /^.{8}$/
+        const regexMoth = /^.{2}$/
+        const regexYear = /^.{2}$/
+        const regexCvv = /^.{3}$/
+
 
         if (!campoForm.name.trim()) {
             console.log("error Campo", campoForm);
