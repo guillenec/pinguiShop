@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CartFormCompra = ({ handleComprar, handleChange, handleBlur, error }) => {
+const CartFormCompra = ({ handleComprar, handleChange, handleBlur, error,errorFormEnvio}) => {
   return (
     <>
       <form className='containPaymentMethod' onSubmit={handleComprar}>
@@ -17,12 +17,12 @@ const CartFormCompra = ({ handleComprar, handleChange, handleBlur, error }) => {
         </label>
         <label htmlFor="tel">
           telefono
-          <input type="tel" name="telephone" pattern="\ [0-9]{4}[ -][0-9]{6}}" placeholder='2944-123123' onChange={handleChange} onBlur={handleBlur} required />
+          <input type="tel" name="telephone" placeholder='2944-123123' onChange={handleChange} onBlur={handleBlur} required />
           {error.telephone && <p className='errorForm'>{error.telephone}</p>}
         </label>
         <label htmlFor="card">
           numero de tarjetas
-          <input type='number' name="card" id="card" placeholder='XXXX XXXX XXXX 1234' pattern="\([0-9]{4}\) [0-9]{4}[ -][0-9]{4}" onChange={handleChange} onBlur={handleBlur} required />
+          <input type='number' name="card" id="card" placeholder='XXXX XXXX XXXX 1234' pattern="^\d{4}([- ])?\d{4}\1\d{4}\1\d{4}$" onChange={handleChange} onBlur={handleBlur} required />
           {error.card && <p className='errorForm'>{error.card}</p>}
         </label>
         <div className='expired'>
@@ -46,7 +46,7 @@ const CartFormCompra = ({ handleComprar, handleChange, handleBlur, error }) => {
           </label>
         </div>
         <button className='entrar' type='submit'>finalizar compra</button>
-
+        {errorFormEnvio ? <p>❌❌❌ ahun quedan errores</p> : <p>✔✔✔</p>}
       </form>
 
     </>
