@@ -585,6 +585,20 @@
                         background: $color4;
                     }
                 }
+                .error, .verificado{
+                    background: $color6;
+                    width: 100%;
+                    padding: 8px;
+                    font-family: $parrafoGeneral;
+                    color: $color8;
+                    font-weight: 500;
+                    text-transform: capitalize;
+                    border-radius: 2px;
+                    font-size: 1rem;
+                }
+                .verificado{
+                    color: $color3;
+                }
             }
         }
 

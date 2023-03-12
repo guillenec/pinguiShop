@@ -46,7 +46,7 @@ const CartFormCompra = ({ handleComprar, handleChange, handleBlur, error,errorFo
           </label>
         </div>
         <button className='entrar' type='submit'>finalizar compra</button>
-        {errorFormEnvio ? <p>❌❌❌ ahun quedan errores</p> : <p>✔✔✔</p>}
+        {errorFormEnvio ? <p className='error'>❌❌❌ ahun quedan errores</p> : <p className='verificado'>✔✔✔ puede comprar</p>}
       </form>
 
     </>
