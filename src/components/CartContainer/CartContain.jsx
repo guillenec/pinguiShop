@@ -28,8 +28,7 @@ const CartContain = () => {
         year: '',
         cvv: '',
     })
-    // console.log(cartList);
-    // console.log(user)
+
     const [erorBlur, setErrorBlur] = useState({})
     const [errorFormEnvio, setErrorFormEnvio] = useState(false)
 
@@ -58,8 +57,6 @@ const CartContain = () => {
                 ...precioTotalCart
             }
 
-            // console.log("+++ ordenCompra: ", ordenCmpra)
-
             const db = getFirestore()
             const ordenColeccion = collection(db, 'ordenesDeCompra')
 
@@ -72,7 +69,7 @@ const CartContain = () => {
                     errToast(error)
                 })
                 .finally(() => {
-                    console.log("FINALY...")
+                    // console.log("FINALY...")
                     setTimeout(() => {
                         handleButtonComprar()
                         vaciarCarrito()
@@ -83,7 +80,6 @@ const CartContain = () => {
         } else {
             console.log("errores tipeo")
         }
-        // console.log("++ -- Carrito +Usuario: ", cartReal)
     }
 
     const handleButtonComprar = () => {
@@ -114,7 +110,6 @@ const CartContain = () => {
         setTiket({
             ...tiket, [name]: value
         })
-        // console.log(tiket)
     }
 
     //vamos a manejar los errores en el blur junto con el html
@@ -136,7 +131,6 @@ const CartContain = () => {
 
         const regexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/
         const regexEmail = /^(\w+[./-]?)*\w+@[a-z]+[/.]\w{2,}$/i
-        // /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/
         const regexTelephone = /^\d{4}-\d{6}$/
         const regexCard = /^\d{4}([- ])?\d{4}\1\d{4}\1\d{4}$/
         const regexMoth = /^\d{2}$/;
@@ -189,8 +183,6 @@ const CartContain = () => {
         return errors
     }
 
-    console.log("blur ", erorBlur)
-    // console.log(carrito)
     return (
         <>{
             !activaModal
