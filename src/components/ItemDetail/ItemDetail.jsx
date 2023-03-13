@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import ItemCount from "../ItemCount/ItemCount";
 import { useCartContext } from "../../context/CartContext";
 import ImgDetail from "../ImgDetail/ImgDetail";
@@ -12,7 +13,6 @@ const ItemDetail = ({ objeto }) => {
         const objeto2 = cartList.find(elem => elem.id === objeto.id)
         objeto = objeto2
     }
-
 
     const onAdd = (objeto, cant, precioTotal) => {
 
