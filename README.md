@@ -14,12 +14,16 @@
 
 ## 📚 Sobre el proyecto. 
 * Se corresponde al proyecto final de React en Coderhouse.
+* Opte por realizar una tienda de funkos ya que tenia imagenes ya guardadas de un proyecto anterior.
 * Ecomerce creado con react, vite, scss y firebase,
+* En mi caso nombre diferentes algunos componentes pedidos opcionales:
+  * wishlist = LikeContain: en el mismo se crea una lista de productos que hayas marcado con like.. desde la lista se pueden desmarcar o comprar.
+
 
 </br>
 
 ## 🏗️ Componentes Creados
-![🏗️ Componentes creados pinguiShop](https://res.cloudinary.com/dpiwmbsog/image/upload/v1678757921/pinguiShop-components_wxdupk.svg "componentes creados pinguishop")
+![🏗️ Componentes creados pinguiShop](https://res.cloudinary.com/dpiwmbsog/image/upload/v1678759746/pinguiShop-components_qpithx.svg "componentes creados pinguishop")
 
 </br>
 
