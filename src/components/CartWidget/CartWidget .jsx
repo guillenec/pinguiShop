@@ -6,17 +6,13 @@ import { useCartContext } from "../../context/CartContext";
 
 
 const CartWidget = () => {
-    // const [count, setCount] = useState(0)
-    // const hanldeCount = () => {
-    //     setCount(count + 1);
-    // };
+
     const { cartList, contador, contadorComprados } = useCartContext()
     
     useEffect(()=>{
         contador(cartList)
     }, [cartList])
 
-    // console.log(`cartWeidght contador`, contadorComprados)
 
     return (
         <>
@@ -25,8 +21,6 @@ const CartWidget = () => {
                 <ion-icon name="cart"></ion-icon>
                 <p>{contadorComprados}</p>
             </Link>
-            {/* <a onClick={hanldeCount}><ion-icon name="cart"></ion-icon></a>
-            <ItemCount contador={count}/> */}
         </section> 
         </>
     )

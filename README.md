@@ -14,18 +14,23 @@
 
 ## 📚 Sobre el proyecto. 
 * Se corresponde al proyecto final de React en Coderhouse.
-* Ecomerce echo con react y vite y firebase,
+* Ecomerce creado con react, vite, scss y firebase,
+
+</br>
+
+## 🏗️ Componentes Creados
+![🏗️ Componentes creados pinguiShop](https://res.cloudinary.com/dpiwmbsog/image/upload/v1678757921/pinguiShop-components_wxdupk.svg "componentes creados pinguishop")
 
 </br>
 
 ## 🛸 Vistao a la seccion de detalles
-![🛸🛸 Vistazo Detalles](https://res.cloudinary.com/dpiwmbsog/image/upload/v1677978216/Captura_desde_2023-03-04_21-55-21_s0oiv1.png "titulo")
+![🛸 Vistazo Detalles](https://res.cloudinary.com/dpiwmbsog/image/upload/v1677978216/Captura_desde_2023-03-04_21-55-21_s0oiv1.png "titulo")
 
 ## 🛸 Vistao añadiendo productos al cart y a meGustan
-![🛸🛸 Vistazo Detalles](https://res.cloudinary.com/dpiwmbsog/image/upload/v1678404584/ItemListContainer_u5ejgy.png "titulo")
+![🛸 Vistazo Detalles](https://res.cloudinary.com/dpiwmbsog/image/upload/v1678404584/ItemListContainer_u5ejgy.png "titulo")
 
 ## 🛸 Vistao a cart y meGusta
-![🛸🛸 Vistazo Detalles](https://res.cloudinary.com/dpiwmbsog/image/upload/v1678404895/cart_meGUsta_jkdop0.png "titulo")
+![🛸 Vistazo Detalles](https://res.cloudinary.com/dpiwmbsog/image/upload/v1678404895/cart_meGUsta_jkdop0.png "titulo")
 </br>
 
 ## 📘 Nota: 
