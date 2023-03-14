@@ -13,8 +13,6 @@ const ItemLike = ({ objeto }) => {
         if (cartList.some(elem => (elem.id === objeto.id && elem.nombre === objeto.nombre))) {
             //traemos el objeto que ya exisste en el cart y coincide
             const objeto2 = cartList.find(elem => elem.id === objeto.id)
-            console.log(objeto2);
-            console.log(objeto2.stock, objeto2.comprado)
             if (objeto2.stock >= objeto2.comprado) {
                 agregaAlCarrito(
                     {
@@ -33,8 +31,6 @@ const ItemLike = ({ objeto }) => {
         }
 
     }
-
-    // console.log(objeto)
 
     return (
         <>

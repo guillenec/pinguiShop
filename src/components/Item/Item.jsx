@@ -17,7 +17,6 @@ const Item = memo(({ element }) => {
     if (cartList.some(elem => (elem.id === element.id && elem.nombre === element.nombre))) {
         const objeto2 = cartList.find(elem => elem.id === element.id)
         element = objeto2
-
     }
 
     useEffect(() => {

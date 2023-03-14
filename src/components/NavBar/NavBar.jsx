@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useCartContext } from "../../context/CartContext";
 import CartWidget from "../CartWidget/CartWidget "
@@ -40,13 +40,6 @@ const NavBar = ({ footerRef }) => {
         
     },[]) 
 
-    // useEffect(()=>{
-    //     const handleScroll = () => {
-    //         console.log("sehizo scroll")
-    //     }
-    //     window.addEventListener('scroll',handleScroll)
-    // },[])
-
     const handleContact = (e) => {
         e.preventDefault()
         footerRef.current.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest", });
@@ -81,7 +74,6 @@ const NavBar = ({ footerRef }) => {
                     </section>
                     <Toggle prop1={toggleClassCheck} func2={handleClick} />
                 </section>
-
                 <section className="subMenuPrincipal">
                     { rootActiv ? <PanelRoot /> : null}
                     { user == null ? null : <Logout />}
@@ -92,7 +84,7 @@ const NavBar = ({ footerRef }) => {
 
             </nav>
             {
-                panelRoot || login ? (<div className="subPaneles">
+                (panelRoot || login) ? (<div className="subPaneles">
                 {renderPanelRoot}
                 { user == null ? renderLogin : null} 
             </div>) : null
