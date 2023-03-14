@@ -23,7 +23,7 @@
 </br>
 
 ## 🏗️ Componentes Creados
-![🏗️ Componentes creados pinguiShop](https://res.cloudinary.com/dpiwmbsog/image/upload/v1678759746/pinguiShop-components_qpithx.svg "componentes creados pinguishop")
+![🏗️ Componentes creados pinguiShop](https://res.cloudinary.com/dpiwmbsog/image/upload/v1678760161/pinguiShopComponents_u4lxlo.svg "componentes creados pinguishop")
 
 </br>
 
