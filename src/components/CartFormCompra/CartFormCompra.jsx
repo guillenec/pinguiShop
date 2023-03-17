@@ -1,9 +1,9 @@
 import React from 'react'
 
-const CartFormCompra = ({ handleComprar, handleChange, handleBlur, error,errorFormEnvio}) => {
+const CartFormCompra = ({ purchaseHandler, handleChange, handleBlur, error,errorFormEnvio}) => {
   return (
     <>
-      <form className='containPaymentMethod' onSubmit={handleComprar}>
+      <form className='containPaymentMethod' onSubmit={purchaseHandler}>
         <h2>Metodo de pago</h2>
         <label htmlFor="name">
           name

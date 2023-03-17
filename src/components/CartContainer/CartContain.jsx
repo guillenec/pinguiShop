@@ -8,7 +8,7 @@ import ItemCartList from '../ItemCartList/ItemCartList'
 
 const CartContain = () => {
 
-    const { cartList, vaciarCarrito, eliminarProducto, user, notify, errToast, setOrdenDeCompraContext } = useCartContext()
+    const { cartList, vaciarCarrito, eliminarProducto, user, notify, errToast, setPurchaseOrderContext } = useCartContext()
     const [seccion, setSeccion] = useState(false)
     const [boleano, setBolano] = useState(false)
     const [activaModal, setActivaModal] = useState(false)
@@ -47,42 +47,47 @@ const CartContain = () => {
     
     },[erorBlur])
 
-    const handleComprar = (e) => {
+    const purchaseHandler = (e) => {
         e.preventDefault()
 
         if (!errorFormEnvio) {
-            const ordenCmpra = {
-                buyer: tiket,
-                items: cartList.map((elem => ({ id: elem.id, titulo: elem.nombre, precio: elem.precioTotal }))),
-                ...precioTotalCart
-            }
-
-            const db = getFirestore()
-            const ordenColeccion = collection(db, 'ordenesDeCompra')
-
-            addDoc(ordenColeccion, ordenCmpra)
-                .then(resp => {
-                    notify(`se cargo la orden: ${resp.id}`)
-                    setOrdenDeCompraContext(resp)
-                })
-                .catch((error) => {
-                    errToast(error)
-                })
-                .finally(() => {
-                    // console.log("FINALY...")
-                    setTimeout(() => {
-                        handleButtonComprar()
-                        vaciarCarrito()
-                        navigate('/tiket')
-                    }, 5000);
-
-                })
+            loadOfData()
+            
         } else {
             console.log("errores tipeo")
         }
     }
 
-    const handleButtonComprar = () => {
+    const loadOfData = () => {
+        const ordenCmpra = {
+            buyer: tiket,
+            items: cartList.map((elem => ({ idProd: elem.id, titulo: elem.nombre, precio: elem.precioTotal }))),
+            ...precioTotalCart
+        }
+
+        const db = getFirestore()
+        const ordenColeccion = collection(db, 'tiketsCompra')
+
+        addDoc(ordenColeccion, ordenCmpra)
+            .then(resp => {
+                notify(`se cargo la orden: ${resp.id}`)
+                setPurchaseOrderContext(resp)
+            })
+            .catch((error) => {
+                errToast(error)
+            })
+            .finally(() => {
+                // console.log("FINALY...")
+                setTimeout(() => {
+                    buyButtonHandler()
+                    vaciarCarrito()
+                    navigate('/tiket')
+                }, 5000);
+
+            })
+    }
+
+    const buyButtonHandler = () => {
 
         if (!boleano) {
             setSeccion(true) //si seccion turue, la muestra, es el error
@@ -194,7 +199,7 @@ const CartContain = () => {
                                 <h2>cart vacio</h2>
                             </section>
                             : <section className='containCarrito'>
-                                <CartButtons seccion={seccion} handleButtonComprar={handleButtonComprar} />
+                                <CartButtons seccion={seccion} buyButtonHandler={buyButtonHandler} />
                                 <ItemCartList />
                             </section>
                     }
@@ -213,9 +218,9 @@ const CartContain = () => {
                         </section>
                         <section className='paymentMethod'>
 
-                            <CartFormCompra handleComprar={handleComprar} handleChange={handleChange} handleBlur={handleBlur} error={erorBlur} errorFormEnvio={errorFormEnvio} />
+                            <CartFormCompra purchaseHandler={purchaseHandler} handleChange={handleChange} handleBlur={handleBlur} error={erorBlur} errorFormEnvio={errorFormEnvio} />
                         </section>
-                        <button className='closeModal' onClick={handleButtonComprar}><ion-icon name="close-outline"></ion-icon></button>
+                        <button className='closeModal' onClick={buyButtonHandler}><ion-icon name="close-outline"></ion-icon></button>
                     </div>
                 </section>
         }</>

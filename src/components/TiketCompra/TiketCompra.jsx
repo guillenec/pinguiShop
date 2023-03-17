@@ -1,15 +1,55 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useCartContext } from '../../context/CartContext'
+import { doc, getDoc, getFirestore } from "firebase/firestore";
+import { async } from '@firebase/util';
 
 const TiketCompra = () => {
-  const {facturaCompra} = useCartContext()
-  // console.log("--++FACTURACION: ",facturaCompra)
-  return (
-    <div>
-      <h2>TiketCompra</h2>
-      <p>{facturaCompra.id}</p>
+  const { invoicePurchase } = useCartContext()
+  const [compra, setCompra] = useState([]) //estado inicial array vacio
 
-    </div>
+  const identificador = (invoicePurchase !== []) ? invoicePurchase.id : "null"
+
+  useEffect(() => {
+    if(invoicePurchase.id !== undefined) {
+      const db = getFirestore()
+      const docRef = doc(db, "tiketsCompra", identificador)
+  
+      const traer = async () => {
+        const docSnap = await getDoc(docRef)
+        if (docSnap.exists()) {
+          console.log("Document data:", docSnap.data());
+          setCompra({ id: docSnap.id, ...docSnap.data() })
+        } else {
+          // doc.data() will be undefined in this case
+          console.log("No such document!");
+        }
+      }
+      traer()
+    }
+  }, [])
+
+  return (
+    <>
+    {
+      invoicePurchase.id !== undefined ? (
+      <div className='ContainerTiketPurchase'>
+        <h2>Tiket de compra</h2>
+        <section className='tiketPurchase'>
+          <section className='cuadriculado'>
+            <h3>{compra.id}</h3>
+            <p><strong>Iva:</strong> ${compra.iva}</p>
+            <p><strong>Sub total:</strong> ${compra.subTotal}</p>
+            <p><strong>Precio Final:</strong> ${compra.precioFinal}</p>
+
+          </section>
+        </section>
+
+      </div>
+      )
+      : <h2> no hay tiket</h2>
+    }
+
+    </>
   )
 }
 

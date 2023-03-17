@@ -19,7 +19,7 @@ export const CartContextProvider = ({ children }) => {
     const [panelRoot, setPanelRoot] = useState(false)
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
-    const [facturaCompra, setFacturaCompra] = useState([])
+    const [invoicePurchase, setInvoicePurchase] = useState([])
 
     // console.log("arriba ",cartList)
     const agregaAlCarrito = (newProducto) => {
@@ -188,8 +188,8 @@ export const CartContextProvider = ({ children }) => {
 
     //#endregion
 
-    const setOrdenDeCompraContext = (orden) => {
-        setFacturaCompra(orden)
+    const setPurchaseOrderContext = (orden) => {
+        setInvoicePurchase(orden)
     }
 
     //#region - Toastify 
@@ -235,8 +235,8 @@ export const CartContextProvider = ({ children }) => {
             loading,
             loginGoogle,
             recoverPassword,
-            setOrdenDeCompraContext,
-            facturaCompra,
+            setPurchaseOrderContext,
+            invoicePurchase,
         }}>
             {children}
         </CartContext.Provider>
