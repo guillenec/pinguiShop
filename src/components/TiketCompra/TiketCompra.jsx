@@ -7,26 +7,27 @@ const TiketCompra = () => {
   const { invoicePurchase } = useCartContext()
   const [compra, setCompra] = useState([]) //estado inicial array vacio
 
-  const identificador = (invoicePurchase !== []) ? invoicePurchase.id : "null"
+  const identificador = invoicePurchase.id;
 
   useEffect(() => {
     if(invoicePurchase.id !== undefined) {
-      const db = getFirestore()
-      const docRef = doc(db, "tiketsCompra", identificador)
-  
-      const traer = async () => {
-        const docSnap = await getDoc(docRef)
-        if (docSnap.exists()) {
-          console.log("Document data:", docSnap.data());
-          setCompra({ id: docSnap.id, ...docSnap.data() })
-        } else {
-          // doc.data() will be undefined in this case
-          console.log("No such document!");
-        }
-      }
       traer()
     }
   }, [])
+
+  const traer = async () => {
+    const db = getFirestore()
+    const docRef = doc(db, "tiketsCompra", identificador)
+
+    const docSnap = await getDoc(docRef)
+    if (docSnap.exists()) {
+      console.log("Document data:", docSnap.data());
+      setCompra({ id: docSnap.id, ...docSnap.data() })
+    } else {
+      // doc.data() will be undefined in this case
+      console.log("No such document!");
+    }
+  }
 
   return (
     <>
