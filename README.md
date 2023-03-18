@@ -13,12 +13,11 @@
 </br>
 
 ## 📚 Sobre el proyecto. 
-* Se corresponde al proyecto final de React en Coderhouse.
-* Opte por realizar una tienda de funkos ya que tenia imagenes ya guardadas de un proyecto anterior.
-* Ecomerce creado con react, vite, scss y firebase,
-* En mi caso nombre diferentes algunos componentes pedidos opcionales:
-  * wishlist = LikeContain: en el mismo se crea una lista de productos que hayas marcado con like.. desde la lista se pueden desmarcar o comprar.
-
+* Este proyecto corresponde al trabajo final del curso de React en Coderhouse.
+* Opté por crear una tienda de Funkos porque ya tenía imágenes guardadas de un proyecto anterior.
+* Este e-commerce fue creado con React, Vite, SCSS y Firebase.
+* En mi caso, he nombrado de manera diferente algunos componentes opcionales requeridos:
+  * Wishlist = LikeContain: con este componente, se puede crear una lista de productos que hayas marcado con "like". Desde esta lista, se pueden desmarcar o comprar los productos seleccionados.
 
 </br>
 
