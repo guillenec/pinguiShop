@@ -5,11 +5,13 @@ import ItemList from "../ItemList/ItemList";
 import Loading from "../Loading/Loading";
 import { collection, getDocs, getFirestore, orderBy, query, where } from 'firebase/firestore';
 import SimpleSlider from "../SimpleSlider/SimpleSlider";
+import { useCartContext } from "../../context/CartContext";
 
 const ItemListContainer = ({ greeting }) => {
     const [productos, setProductos] = useState([]) //estado inicial array vacio
     const [loading, setLoading] = useState(true) //"" "" true
     const { idCategoria } = useParams()
+    const { errToast } = useCartContext()
 
     useEffect(() => { //hook
         setLoading(true)
@@ -22,7 +24,7 @@ const ItemListContainer = ({ greeting }) => {
                     { id: element.id, ...element.data() }
                 ))))
                 .catch((err) => {
-                    console.log(err.message)
+                    errToast(err.message)
                 })
                 .finally(() => setLoading(false))
 
