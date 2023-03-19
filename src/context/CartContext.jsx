@@ -51,13 +51,12 @@ export const CartContextProvider = ({ children }) => {
     }
 
     useEffect(() => {
+        localStorage.setItem('carritoStorage', JSON.stringify(cartList))
         const carritoStorage = JSON.parse(localStorage.getItem('carritoStorage'));
 
         if (carritoStorage.length > 0  && cartList.length == 0) {
             setCartList(carritoStorage)
-        } else {
-            localStorage.setItem('carritoStorage', JSON.stringify(cartList))
-        }
+        } 
     }, [cartList])
     //funcion que vacia el carrito
 
