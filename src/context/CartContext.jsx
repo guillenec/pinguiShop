@@ -50,24 +50,14 @@ export const CartContextProvider = ({ children }) => {
         }
     }
 
-    useEffect(() => {
-        localStorage.setItem('carritoStorage', JSON.stringify(cartList))
-        const carritoStorage = JSON.parse(localStorage.getItem('carritoStorage'));
 
-        if (carritoStorage.length > 0  && cartList.length == 0) {
-            setCartList(carritoStorage)
-        } 
-    }, [cartList])
-    //funcion que vacia el carrito
 
     const vaciarCarrito = () => {
-        localStorage.setItem('carritoStorage', JSON.stringify([]))
         setCartList([]) 
     };
 
     const eliminarProducto = (identificador) => {
         const nuevoCart = cartList.filter((obj) => obj.id !== identificador)
-        localStorage.setItem('carritoStorage', JSON.stringify(nuevoCart))
         setCartList(nuevoCart)
     }
 
