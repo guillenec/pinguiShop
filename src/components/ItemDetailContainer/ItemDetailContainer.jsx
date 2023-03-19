@@ -4,12 +4,13 @@ import { useParams } from "react-router-dom"
 import ItemDetail from "../ItemDetail/ItemDetail"
 import Loading from "../Loading/Loading"
 import { doc, getDoc, getFirestore, } from 'firebase/firestore';
+import { useCartContext } from "../../context/CartContext"
 
 const ItemDetailContainer = () => {
     const { idProducto } = useParams();
     const [estadoProds, setEstadoProductos] = useState([])
     const [loading, setLoading] = useState(true)
-
+    const {errToast} = useCartContext()
 
     useEffect(() => { //hook
 
@@ -18,7 +19,8 @@ const ItemDetailContainer = () => {
         getDoc(query)
             .then(response => setEstadoProductos({ id: response.id, ...response.data() }))
             .catch((err) => {
-                console.log(err.message)
+                // console.log(err.message)
+                errToast(err.message)
             })
             .finally(() => setLoading(false))
 
