@@ -89,8 +89,8 @@ const Item = memo(({ element }) => {
             <article className='card'>
                 <div className="containerContenido">
                     <Link to={`/detalle/${element.id} `} className="cardImg">
-                        <img src={img1} alt={nombre} />
-                        <p>${precio}</p>
+                        <img className="imgCard" src={img1} alt={nombre} />
+                        <p className="precioCard">${precio}</p>
                     </Link>
                     <section className="cardDescripcion">
                         <h2 className="cardHeader">{nombre}
