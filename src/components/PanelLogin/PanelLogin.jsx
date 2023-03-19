@@ -41,12 +41,10 @@ const PanelLogin = () => {
 
   const handleClick = (e) => {
     if (refElementLog.current.contains(e.target)){
-      console.log(true)
       return
     }
     //desactiva el componente si se cliqueo fuera
     setActivaLog(false)
-    console.log(activaLog);
   }
 
   return (

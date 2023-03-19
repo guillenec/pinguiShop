@@ -21,12 +21,10 @@ export const CartContextProvider = ({ children }) => {
     const [loading, setLoading] = useState(true)
     const [invoicePurchase, setInvoicePurchase] = useState([])
 
-    // console.log("arriba ",cartList)
     const agregaAlCarrito = (newProducto) => {
         //includes me da error
 
         if (cartList.some(objeto => objeto.id === newProducto.id)) {
-            // console.log("++ Entre a productos repetidos: ++ ");
             setCartList(
                 cartList.map(producto => {
                     if (producto.id === newProducto.id) {
@@ -50,14 +48,27 @@ export const CartContextProvider = ({ children }) => {
                 }
             ])
         }
-        // console.log("Sin Duplas: ",cartList)
     }
 
+    useEffect(() => {
+        const carritoStorage = JSON.parse(localStorage.getItem('carritoStorage'));
+
+        if (carritoStorage.length > 0  && cartList.length == 0) {
+            setCartList(carritoStorage)
+        } else {
+            localStorage.setItem('carritoStorage', JSON.stringify(cartList))
+        }
+    }, [cartList])
     //funcion que vacia el carrito
-    const vaciarCarrito = () => setCartList([]);
+
+    const vaciarCarrito = () => {
+        localStorage.setItem('carritoStorage', JSON.stringify([]))
+        setCartList([]) 
+    };
 
     const eliminarProducto = (identificador) => {
         const nuevoCart = cartList.filter((obj) => obj.id !== identificador)
+        localStorage.setItem('carritoStorage', JSON.stringify(nuevoCart))
         setCartList(nuevoCart)
     }
 
@@ -69,7 +80,6 @@ export const CartContextProvider = ({ children }) => {
                     return sum + producto.comprado;
                 }, 0)
             )
-        // console.log(" + --- contador: ",contadorComprados)
     }
 
     //añade elementos a Elemento que me gustan
@@ -92,7 +102,6 @@ export const CartContextProvider = ({ children }) => {
                 }
             ])
         }
-        // console.log("Sin Duplas: ",cartList)
     }
 
     const handlePanelRooot = (val) => {
@@ -112,7 +121,6 @@ export const CartContextProvider = ({ children }) => {
     const loginForm = (email, password) => {
         signInWithEmailAndPassword(auth, email, password)
             .then((result) => {
-                console.log(result)
                 const user = result.user;
                 notify(`Gracias por loguiarte :${user.email}`)
             })
@@ -126,8 +134,7 @@ export const CartContextProvider = ({ children }) => {
         signOut(auth).then(() => {
             notify("🙋 cerrando sesion!!!")
         }).catch((error) => {
-            // An error happened.
-            console.log(error)
+            errToast(`❌ ${error.code}`)
         }).finally(() => {
             notify("🖐 bye!!!")
         })
@@ -136,7 +143,6 @@ export const CartContextProvider = ({ children }) => {
     useEffect(() => {
         //control delusuario activo
         onAuthStateChanged(auth, currentUser => {
-            // console.log(currentUser)
             setUser(currentUser)
             setLoading(false)
         })
@@ -152,16 +158,13 @@ export const CartContextProvider = ({ children }) => {
                 const token = credential.accessToken;
                 // The signed-in user info.
                 const user = result.user;
-                // ...
-                // console.log("Credenciales: ", credential)
-                // console.log("token: ", token)
-                // console.log("user: ", user)
                 notify(`Gracias por loguiarte :${user.displayName}`)
 
             }).catch((error) => {
                 // Handle Errors here.
                 const errorCode = error.code;
-                console.log(error)
+                // console.log(error)
+                errToast(`❌ ${error.code}`)
                 const errorMessage = error.message;
                 // The email of the user's account used.
                 const email = error.customData.email;
