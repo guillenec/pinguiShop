@@ -1,6 +1,10 @@
 import React from 'react'
+import { useCartContext } from '../../context/CartContext'
 
 const CartFormCompra = ({ purchaseHandler, handleChange, handleBlur, error,errorFormEnvio}) => {
+
+  const { user } = useCartContext()
+
   return (
     <>
       <form className='containPaymentMethod' onSubmit={purchaseHandler}>
@@ -12,8 +16,9 @@ const CartFormCompra = ({ purchaseHandler, handleChange, handleBlur, error,error
         </label>
         <label htmlFor="email">
           email
-          <input type="email" name="email" id="email" placeholder='email@gmail.com' onChange={handleChange} onBlur={handleBlur} required />
-          {error.email && <p className='errorForm'>{error.email}</p>}
+          {/* <input type="email" name="email" id="email" placeholder='email@gmail.com' onChange={handleChange} onBlur={handleBlur} required />
+          {error.email && <p className='errorForm'>{error.email}</p>} */}
+          <p name='email' className='emailUs'>{user.email}</p>
         </label>
         <label htmlFor="tel">
           telefono

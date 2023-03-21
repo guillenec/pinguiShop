@@ -5,16 +5,14 @@ import FormLogin from '../FormLogin/FormLogin';
 import FormRegister from '../FormRegister/FormRegister';
 
 const PanelLogin = () => {
-  const {user} = useCartContext()
+  const {user,handleLoginarse} = useCartContext()
   const [valor, setValor] = useState(false)
   const [textForm, setTextForm] = useState('register')
   const [clase, setClase] = useState('')
 
   const [activaLog, setActivaLog] = useState(false)
 
-  setTimeout(() => {
-    setClase('visible')
-  }, 100);
+  const refElementLog = useRef()
 
   const handleActive = (e) => {
     e.preventDefault()
@@ -26,7 +24,12 @@ const PanelLogin = () => {
 
   }, [valor])
 
-  const refElementLog = useRef()
+  useEffect(()=>{
+    setTimeout(() => {
+      setClase('visible')
+    }, 100);
+  },[valor])
+
 
   useEffect(() => {
     //evento click al documento
@@ -40,11 +43,13 @@ const PanelLogin = () => {
   }, [])
 
   const handleClick = (e) => {
-    if (refElementLog.current.contains(e.target)){
-      return
+    if (refElementLog.current && !refElementLog.current.contains(e.target)){
+      setActivaLog(false)
+    }else {
+      setActivaLog(true)
     }
     //desactiva el componente si se cliqueo fuera
-    setActivaLog(false)
+    // setActivaLog(false)
   }
 
   return (

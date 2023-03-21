@@ -337,7 +337,7 @@
     height: auto;
     position: fixed;
     gap: 10px;
-    padding: 10px;
+    // padding: 10px;
     background-color: $color6;
     border-radius: 2px;
     z-index: 2;
@@ -468,27 +468,38 @@
             align-items: flex-start;
             justify-content: center;
             align-content: center;
-            gap: 10px;
+            gap: 20px;
 
             h2 {
                 font-family: $tituloGeneral;
                 text-transform: capitalize;
             }
-
-            input {
-                font-family: $parrafoGeneral;
-                font-weight: 600;
+            label{
+                width: 100%;
+                height: auto;
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                font-family: $tituloGeneral;
+                font-weight: 500;
                 color: $color1a;
-                font-size: 1rem;
-                padding: 5px 10px;
-                border: solid 2px $color1a;
-                border-radius: 2px;
-                outline: none;
+                font-size: 1.1rem;
 
-                &::placeholder {
+                input {
                     font-family: $parrafoGeneral;
-                    color: $color5;
-                    text-transform: capitalize;
+                    font-weight: 600;
+                    color: $color1a;
+                    font-size: 1rem;
+                    padding: 5px 10px;
+                    border: solid 2px $color1a;
+                    border-radius: 2px;
+                    outline: none;
+    
+                    &::placeholder {
+                        font-family: $parrafoGeneral;
+                        color: $color5;
+                        text-transform: capitalize;
+                    }
                 }
             }
 
@@ -510,6 +521,23 @@
                     color: $color6;
                     background: $color4;
                 }
+            }
+            .error, .verificado{
+                width: 100%;
+                font-weight: 700;
+                height: auto;
+                font-family: $parrafoGeneral;
+                background: $color6;
+                font-weight: 1rem;
+                text-transform: capitalize;
+                border-radius: 2px;
+                padding: 5px;
+            }
+            .error{
+                color: $color7;
+            }
+            .verificado{
+                color: $color3;
             }
         }
 

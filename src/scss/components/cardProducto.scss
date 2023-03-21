@@ -13,8 +13,8 @@
 
     .card {
         position: relative;
-        width: 320px;
-        // height: 400px;
+        width: 280px;
+        height: 350px;
         background-color: $color5;
         aspect-ratio: 3/4;
 
@@ -30,7 +30,8 @@
         // background: $color3;
 
         @include notebook(){
-            width: 300px;
+            width: 260px;
+            height: 340px;
         }
 
         @include tablets(){

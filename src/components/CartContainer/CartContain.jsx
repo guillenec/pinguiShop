@@ -8,7 +8,7 @@ import ItemCartList from '../ItemCartList/ItemCartList'
 
 const CartContain = () => {
 
-    const { cartList, vaciarCarrito, eliminarProducto, user, notify, errToast, setPurchaseOrderContext } = useCartContext()
+    const { cartList, vaciarCarrito, user, notify, errToast, setPurchaseOrderContext } = useCartContext()
     const [seccion, setSeccion] = useState(false)
     const [boleano, setBolano] = useState(false)
     const [activaModal, setActivaModal] = useState(false)
@@ -21,7 +21,6 @@ const CartContain = () => {
 
     const [tiket, setTiket] = useState({
         name: '',
-        email: '',
         telephone: '',
         card: '',
         month: '',
@@ -113,7 +112,7 @@ const CartContain = () => {
     const handleChange = (e) => {
         const { name, value } = e.target
         setTiket({
-            ...tiket, [name]: value
+            mail:user.email, ...tiket, [name]: value
         })
     }
 
@@ -126,7 +125,6 @@ const CartContain = () => {
     const validateForm = (campoForm) => {
         const errors = {
             name: '',
-            email: '',
             telephone: '',
             card: '',
             month: '',
@@ -135,7 +133,7 @@ const CartContain = () => {
         }
 
         const regexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/
-        const regexEmail = /^(\w+[./-]?)*\w+@[a-z]+[/.]\w{2,}$/i
+        // const regexEmail = /^(\w+[./-]?)*\w+@[a-z]+[/.]\w{2,}$/i
         const regexTelephone = /^\d{4}-\d{6}$/
         const regexCard = /^\d{4}([- ])?\d{4}\1\d{4}\1\d{4}$/
         const regexMoth = /^\d{2}$/;
@@ -149,11 +147,11 @@ const CartContain = () => {
             errors.name = "❌ ⌨ Solo letras y espacios";
         }
 
-        else if (!campoForm.email.trim()) {
-            errors.email = "❌ El campo Email es requerido";
-        } else if (!regexEmail.test(tiket.email.trim())) {
-            errors.email = "❌ ⌨ email incorrecto";
-        }
+        // else if (!campoForm.email.trim()) {
+        //     errors.email = "❌ El campo Email es requerido";
+        // } else if (!regexEmail.test(tiket.email.trim())) {
+        //     errors.email = "❌ ⌨ email incorrecto";
+        // }
 
         else if (!campoForm.telephone.trim()) {
             errors.telephone = "❌ El campo Telephone es requerido";
@@ -188,6 +186,7 @@ const CartContain = () => {
         return errors
     }
 
+    // console.log(user)
     return (
         <>{
             !activaModal
